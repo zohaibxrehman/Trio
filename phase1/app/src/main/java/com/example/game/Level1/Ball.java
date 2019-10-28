@@ -20,6 +20,11 @@ public class Ball {
         this.red = true;
     }
 
+    public boolean getRed(){
+        return red;
+    }
+
+
     public boolean contains(float l, float m){
         if(x - 100 <= l && l <= x + 100){
             if(y - 100 <= m && m <= y + 100)

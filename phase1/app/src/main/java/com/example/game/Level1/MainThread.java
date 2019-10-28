@@ -48,24 +48,55 @@ public class MainThread extends Thread implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent e) {
         float x1 = e.getX();
         float y1 = e.getY();
+        boolean ct = false;
         if(gameview.b1.contains(x1, y1))
+        {
             gameview.b1.setColor();
+            ct = !(gameview.b1.getRed());
+        }
         else if(gameview.b2.contains(x1, y1))
+        {
             gameview.b2.setColor();
+            ct = !(gameview.b2.getRed());
+        }
         else if(gameview.b3.contains(x1, y1))
+        {
             gameview.b3.setColor();
+            ct = !(gameview.b3.getRed());
+        }
         else if(gameview.b4.contains(x1, y1))
+        {
             gameview.b4.setColor();
+            ct = !(gameview.b4.getRed());
+        }
         else if(gameview.b5.contains(x1, y1))
+        {
             gameview.b5.setColor();
+            ct = !(gameview.b5.getRed());
+        }
         else if(gameview.b6.contains(x1, y1))
+        {
             gameview.b6.setColor();
+            ct = !(gameview.b6.getRed());
+        }
         else if(gameview.b7.contains(x1, y1))
+        {
             gameview.b7.setColor();
+            ct = !(gameview.b7.getRed());
+        }
         else if(gameview.b8.contains(x1, y1))
+        {
             gameview.b8.setColor();
+            ct = !(gameview.b8.getRed());
+        }
         else if(gameview.b9.contains(x1, y1))
+        {
             gameview.b9.setColor();
+            ct = !(gameview.b9.getRed());
+        }
+        if(ct){
+            setrun(false);
+        }
         return true;
     }
 
@@ -73,4 +104,7 @@ public class MainThread extends Thread implements View.OnTouchListener {
         this.running = b;
     }
 
+    public int getTime() {
+        return time;
+    }
 }

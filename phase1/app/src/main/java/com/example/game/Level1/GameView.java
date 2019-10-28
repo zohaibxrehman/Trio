@@ -69,7 +69,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
     @Override
     public boolean onTouchEvent(MotionEvent e){
-        this.t.onTouch(this, e);
+        if(t.getTime() >= 100)
+            this.t.onTouch(this, e);
         return true;
     }
 
