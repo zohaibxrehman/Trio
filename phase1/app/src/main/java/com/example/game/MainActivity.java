@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.game.Level1.Activity1;
+import com.example.game.Level1.Level1;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -28,7 +28,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.button3:
-                Intent i = new Intent(this, Activity1.class);
+                Intent i = new Intent(this, Level1.class);
                 startActivity(i);
                 break;
         }
