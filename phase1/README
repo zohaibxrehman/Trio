@@ -30,3 +30,8 @@ Member: Uttkarsh Berwal
 Commit made: Added the README file. Connecting the MainActivity with Level1(Activity), Created
 classes MainThread and Level1view to create the canvas for game1(Level1).
 
+Step 2
+Member: Aditya Goyal
+Commit made: Added the barrier.java, Button.java, ChildBall.java, GameManager.java - These classes
+makes the object entities required in the first game. Also, connected the whole Level1 game
+
