@@ -39,3 +39,12 @@ Step 3
 Member: Uttkarsh Berwal
 Commit made: Added GameStats(activity) to keep the record of the score of the games.
 
+Step 4
+Member 1: Sargunan
+Changes made: Created Ball.java, Level2.java, GameView.java. This handles front end for
+level1. Added some game logic in GameView which will be refactored into a manager class.
+Connected MainActiity to Level3.
+Member 2: Zohaib Rehman
+Commit made: Added Ball.java, Level3.java, GameView.java which were created previously. Created and
+added MainThread. Created and added GameManager.java to handle all backend logic for the game.
+Code previously handling game-logic in GameView has been refactored into the GameManager.java.

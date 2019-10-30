@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".GameStats"></activity>
         <activity android:name=".Level1.Level1"></activity>
+        <activity android:name=".Level3.Level3"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

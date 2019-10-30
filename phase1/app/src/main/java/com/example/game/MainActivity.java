@@ -65,7 +65,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.game.Level1.Level1;
-
+import com.example.game.Level3.Level3;
 
 
 public class MainActivity extends Activity implements View.OnClickListener{
@@ -94,6 +94,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             case R.id.button1:
                 Intent i = new Intent(this, Level1.class);
                 startActivity(i);
+                break;
+            case R.id.button3:
+                Intent i3 = new Intent(this, Level3.class);
+                startActivity(i3);
                 break;
 //            case R.id.button4:
 //                Intent j = new Intent(this, GameStats.class);
