@@ -1,0 +1,32 @@
+Committing errors in the beginning:
+Step1
+Created a folder hierarchy to organize the 3 games and a main activity
+
+Step 2
+Added features to memory game. This is explained more in the members section
+
+Step 3
+Deleted corrupted files which were created by accidentally merging two games. The two games are safe
+and backed up elsewhere
+
+Step 4
+Created game files for game1. More explained in member section below.
+
+Step 5
+Created a main home with buttons that connect to three games
+
+Step 6
+Created a stats page.
+
+Step 7
+Updated main activity to connect to game1 and the stats page
+
+
+
+Started committing the files and added README.txt for keeping the track
+#############
+Step 1
+Member: Uttkarsh Berwal
+Commit made: Added the README file. Connecting the MainActivity with Level1(Activity), Created
+classes MainThread and Level1view to create the canvas for game1(Level1).
+

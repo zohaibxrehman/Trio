@@ -12,13 +12,17 @@
         android:layout_width="180dp"
         android:layout_height="102dp"
         android:background="#FFFFFFFF"
-        android:text="To do Game 1"
+        android:text="Game 1"
         android:textSize="20sp"
         android:textStyle="bold|italic"
+
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.281" />
+    <!--        android:onClick="button1"-->
 
     <Button
         android:id="@+id/button2"
@@ -30,14 +34,15 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473" />
+        app:layout_constraintVertical_bias="0.321" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="158dp"
-        android:layout_height="106dp"
+        android:layout_width="172dp"
+        android:layout_height="119dp"
         android:background="#FFFFFF"
         android:text="To do game 3"
         android:textColor="#030303"
@@ -45,7 +50,27 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.501" />
+        app:layout_constraintVertical_bias="0.150" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="172dp"
+        android:layout_height="111dp"
+        android:text="Score"
+        android:textColor="#030303"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:background="#FFFFFF"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="564dp"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.350"
+        app:layout_constraintHorizontal_bias="0.513"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
