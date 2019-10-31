@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.example.game.Level1.GameManager;
 import com.example.game.Level1.Level1;
 import com.example.game.Level3.Level3;
 
@@ -17,6 +16,7 @@ import com.example.game.Level3.Level3;
 public class MainActivity extends Activity implements View.OnClickListener{
     private Button b1, b2, b3, b4;
     private int saveGame1Count = 0;
+    private int saveGame2Count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +45,20 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 break;
             case R.id.button3:
                 Intent i3 = new Intent(this, Level3.class);
+                saveGame2Count = 0;
                 startActivity(i3);
                 break;
             case R.id.button4:
-                if(saveGame1Count == 0){
-                    saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ GameManager.finalScore),"guest", "total");
+                if (saveGame1Count == 0 && saveGame2Count == 0){
+                    saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level1.GameManager.finalScore+com.example.game.Level3.GameManager.score),"guest", "total");
                     saveGame1Count++;
+                    saveGame2Count++;
+                }else if(saveGame1Count == 0){
+                    saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level1.GameManager.finalScore),"guest", "total");
+                    saveGame1Count++;
+                } else if(saveGame2Count == 0){
+                    saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level3.GameManager.score),"guest", "total");
+                    saveGame2Count++;
                 }
                 Intent j = new Intent(this, GameStats.class);
                 startActivity(j);

@@ -58,3 +58,9 @@ Member 2: Zohaib Rehman
 Commit made: using SharedPreferences, created two methods loadData() and saveData() to be able to
 save any score for any game. made these methods such that it is extensible when more games are added
 or when user account system is implemented.
+
+Step 6
+Member: Zohaib Rehman
+Commit made: added game 3 to be displayed in stats page and will now be used to calculate the total
+score. GameManager.java draw method for game2 now also dynamically changes message to
+show what is to be done next.

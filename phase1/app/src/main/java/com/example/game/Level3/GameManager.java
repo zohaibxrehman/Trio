@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
-class GameManager {
+public class GameManager {
     private ArrayList<Ball> balls;
     private Ball memoryBall;
     private int showCount;
     //    private int hiddenCount;
     private boolean hiddenState;
-    private int score;
+    public static int score;
     private ArrayList<Bitmap> bitmapColours;
     private int tries;
 
@@ -56,18 +56,36 @@ class GameManager {
             if (ball != null)
                 ball.draw(canvas);
         }
+
         memoryBall.draw(canvas);
         Paint scorePaint = new Paint();
         scorePaint.setColor(Color.WHITE);
         scorePaint.setTextSize(150);
+        StringBuilder messageString = new StringBuilder();
+        Paint messagePaint = new Paint();
+        messagePaint.setColor(Color.WHITE);
+        if (score == 0) {
+            messagePaint.setTextSize(80);
+            messageString.replace(0, messageString.length(), "Get three in a row -> ");
+        } else if (score == 1){
+            messagePaint.setTextSize(75);
+            messageString.replace(0, messageString.length(), "Two more to go! ");
+        } else if (score == 2) {
+            messagePaint.setTextSize(120);
+            messageString.replace(0, messageString.length(), "One more!!!");
+        } else if (score == 3) {
+            messagePaint.setTextSize(80);
+            messageString.replace(0, messageString.length(), "Congrats, you won!");
+        }
+
+
+        canvas.drawText(messageString.toString(), 100, 1900, messagePaint);
+
         canvas.drawText(String.valueOf(score), 800, 1900, scorePaint);
 
     }
 
     void update() {
-        if (score == 3) {
-            System.exit(0);
-        }
         if (!hiddenState) {
             if (showCount == 100) {
                 for (Ball b : balls) {

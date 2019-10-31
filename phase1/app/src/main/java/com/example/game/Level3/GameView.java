@@ -81,6 +81,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
+        if (GameManager.score == 3){
+            thread.setRunning(false);
+        }
         level1Manager.update();
 
     }
