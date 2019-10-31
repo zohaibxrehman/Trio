@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static com.example.game.Level1.MainThread.canvas;
 
-class GameManager {
+public class GameManager {
 
     protected static int gridHeight;
     protected static int gridWidth;
@@ -18,6 +18,7 @@ class GameManager {
     protected Button right;
     Paint paintText = new Paint();
     int score;
+    public static int finalScore=0;
 
     ArrayList<Barrier> items = new ArrayList<Barrier>();
 
@@ -120,5 +121,6 @@ class GameManager {
     public void collision()
     {
         Level1view.gameRunning = false;
+        finalScore = score;
     }
 }

@@ -48,3 +48,13 @@ Member 2: Zohaib Rehman
 Commit made: Added Ball.java, Level3.java, GameView.java which were created previously. Created and
 added MainThread. Created and added GameManager.java to handle all backend logic for the game.
 Code previously handling game-logic in GameView has been refactored into the GameManager.java.
+
+Step 5
+Member 1: Uttkarsh Berwal
+Changes made: made a datapath to connect Level1 final score to be accessible in MainActivity and
+GameStats. added game 1 score and total score to displayed on the game stats page. The scores are
+accessed and modified using saveData() and loadData()
+Member 2: Zohaib Rehman
+Commit made: using SharedPreferences, created two methods loadData() and saveData() to be able to
+save any score for any game. made these methods such that it is extensible when more games are added
+or when user account system is implemented.

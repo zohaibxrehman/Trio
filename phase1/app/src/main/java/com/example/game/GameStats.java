@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.game.Level1.GameManager;
+
 public class GameStats extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,10 @@ public class GameStats extends AppCompatActivity {
         TextView Level1 = (TextView)findViewById(R.id.Level1);
         TextView Level2 = (TextView)findViewById(R.id.Level2);
         TextView Level3 = (TextView)findViewById(R.id.Level3);
+
+        Level1.setText(String.valueOf(GameManager.finalScore));
+        TotalScore.setText(loadData("guest", "total"));
+
 
 //        int scoreLevel1 = getIntent().getIntExtra("your output", 0);
 //        int scoreLevel2 = getIntent().getIntExtra("your output", 0);
@@ -34,9 +40,10 @@ public class GameStats extends AppCompatActivity {
 //        editor.putInt("total",total);
 //        editor.apply();/*commit?*/
 
+    }
 
-
-
-
+    public String loadData(String user, String game) {
+        SharedPreferences sharedPreferences = getSharedPreferences(user, MODE_PRIVATE);
+        return sharedPreferences.getString(game, "0");
     }
 }
