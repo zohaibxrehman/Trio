@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 public class Level3 extends Activity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
