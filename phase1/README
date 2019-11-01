@@ -77,3 +77,8 @@ Step 9
 Member: Rutav Shah
 Commit made: added code for , added Ball.java, Level2.java, Level2view.java, Line.java and
 MainThread.java under the level2 package. Connected the game to the main screen.
+
+Step 10
+Member: Sargunan Gurumurthy
+Commit made: added customisation page, created buttons and linked them to Main activity. Also passed
+data from the customisation page to level 3 and corrected the code correspondingly.
