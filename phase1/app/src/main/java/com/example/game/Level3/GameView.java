@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
@@ -15,11 +16,14 @@ import java.util.ArrayList;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private GameManager level1Manager;
+    private String time, color, point;
     ArrayList<Integer> colours;
 
-    public GameView(Context context) {
+    public GameView(Context context, String time, String color, String point) {
         super(context);
-
+        this.point = point;
+        this.time = time;
+        this.color = color;
         getHolder().addCallback(this);
 
         thread = new MainThread(getHolder(), this);
@@ -58,8 +62,20 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Ball.hiddenImage = BitmapFactory.decodeResource(getResources(), R.drawable.greycircle);
-        level1Manager = new GameManager(bmpColours());
-
+        int c = 0;
+        int p =0;
+        if(point.equals("EASY"))
+            p = 3;
+        else
+            p = 5;
+        if(this.color.equals("Black"))
+            c = Color.BLACK;
+        else
+            c = Color.WHITE;
+        if(time.equals("3 seconds"))
+            level1Manager = new GameManager(bmpColours(), 100, c, p);
+        else
+            level1Manager = new GameManager(bmpColours(), 133, c, p);
         thread.setRunning(true);
         thread.start();
 
@@ -81,7 +97,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
-        if (GameManager.score == 3){
+        int p;
+        if(point.equals("EASY"))
+            p = 3;
+        else
+            p = 5;
+        if (GameManager.score == p){
             thread.setRunning(false);
         }
         level1Manager.update();

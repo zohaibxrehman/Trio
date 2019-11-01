@@ -13,15 +13,21 @@ public class GameManager {
     private ArrayList<Ball> balls;
     private Ball memoryBall;
     private int showCount;
+    private int color;
     //    private int hiddenCount;
     private boolean hiddenState;
     public static int score;
+    public int time;
     private ArrayList<Bitmap> bitmapColours;
     private int tries;
+    private int point;
 
-    GameManager(ArrayList<Bitmap> bitmapColours) {
+    GameManager(ArrayList<Bitmap> bitmapColours, int itme, int color, int p) {
         balls = new ArrayList<>();
         hiddenState = false;
+        time = itme;
+        this.color = color;
+        this.point = p;
         showCount = 0;
         score = 0;
         tries = 0;
@@ -52,6 +58,7 @@ public class GameManager {
 //    }
 
     void draw(Canvas canvas) {
+        canvas.drawColor(color);
         for (Ball ball: balls) {
             if (ball != null)
                 ball.draw(canvas);
@@ -66,14 +73,35 @@ public class GameManager {
         messagePaint.setColor(Color.WHITE);
         if (score == 0) {
             messagePaint.setTextSize(80);
-            messageString.replace(0, messageString.length(), "Get three in a row -> ");
+            if(point == 3)
+                messageString.replace(0, messageString.length(), "GET 3 To win");
+            else
+                messageString.replace(0, messageString.length(), "Get 5 to win");
         } else if (score == 1){
             messagePaint.setTextSize(75);
-            messageString.replace(0, messageString.length(), "Two more to go! ");
+            if(point == 3)
+                messageString.replace(0, messageString.length(), "Two more");
+            else
+                messageString.replace(0, messageString.length(), "Four more!!!");
         } else if (score == 2) {
             messagePaint.setTextSize(120);
-            messageString.replace(0, messageString.length(), "One more!!!");
+            if(point == 3)
+                messageString.replace(0, messageString.length(), "One more!");
+            else
+                messageString.replace(0, messageString.length(), "Three more!!!");
         } else if (score == 3) {
+            messagePaint.setTextSize(80);
+            if(point == 3)
+                messageString.replace(0, messageString.length(), "Congrats, you won!");
+            else
+                messageString.replace(0, messageString.length(), "Two more!!!");
+        } else if (score == 4) {
+            messagePaint.setTextSize(80);
+            if(point == 3)
+                messageString.replace(0, messageString.length(), "Congrats, you won!");
+            else
+                messageString.replace(0, messageString.length(), "One more!!!");
+        } else if (score == 5) {
             messagePaint.setTextSize(80);
             messageString.replace(0, messageString.length(), "Congrats, you won!");
         }
@@ -87,13 +115,13 @@ public class GameManager {
 
     void update() {
         if (!hiddenState) {
-            if (showCount == 100) {
+            if (showCount == time) {
                 for (Ball b : balls) {
                     b.hide();
                     memoryBall.show();
                 }
                 hiddenState = true;
-            } else if (showCount < 100) {
+            } else if (showCount < time) {
                 showCount++;
             }
         }
