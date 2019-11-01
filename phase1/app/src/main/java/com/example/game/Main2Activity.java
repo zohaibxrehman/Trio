@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.game.Level1.Level1;
+import com.example.game.Level2.Level2;
 import com.example.game.Level3.Level3;
 
 
@@ -17,6 +18,7 @@ public class Main2Activity extends Activity implements View.OnClickListener{
     private Button b1, b2, b3, b4;
     private int saveGame1Count = 0;
     private int saveGame2Count = 0;
+    private int saveSecondGameCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,11 @@ public class Main2Activity extends Activity implements View.OnClickListener{
                 Intent i = new Intent(this, Level1.class);
                 saveGame1Count = 0;
                 startActivity(i);
+                break;
+            case R.id.button2:
+                Intent i2 = new Intent(this, Level2.class);
+                saveSecondGameCount = 0;
+                startActivity(i2);
                 break;
             case R.id.button3:
                 Intent i3 = new Intent(this, Level3.class);

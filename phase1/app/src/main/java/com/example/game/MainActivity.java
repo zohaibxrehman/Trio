@@ -14,7 +14,7 @@ import com.example.game.Level1.Level1;
 import com.example.game.Level3.Level3;
 
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener {
     EditText name, password;
     Button login;
 
@@ -30,22 +30,14 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.login:
                 String name1 = name.getText().toString();
                 String name2 = name.getText().toString();
                 //do check if data aldready stored
-                if(data is stored){
-                    Intent i = new Intent(this, Main2Activity.class);
-                    startActivity(i);
-                }
-                if(data not stored){
-                    //store data
-                do storing;
                 Intent i = new Intent(this, Main2Activity.class);
                 startActivity(i);
-            }
-                 break;
+                break;
         }
     }
 }
