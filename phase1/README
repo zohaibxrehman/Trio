@@ -72,3 +72,8 @@ Step 8
 Member: Sargunan Gurumurthy
 Commit made: added login page, created buttons and linked them to Main activity. Also made the
 transition from mainActivity to second main activity.
+
+Step 9
+Member: Rutav Shah
+Commit made: added code for , added Ball.java, Level2.java, Level2view.java, Line.java and
+MainThread.java under the level2 package. Connected the game to the main screen.
