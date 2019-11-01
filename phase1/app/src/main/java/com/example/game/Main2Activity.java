@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.example.game.Level1.Level1;
 import com.example.game.Level2.Level2;
 import com.example.game.Level3.Level3;
+import com.example.game.Level3.customise;
 
 
 public class Main2Activity extends Activity implements View.OnClickListener{
@@ -51,7 +52,7 @@ public class Main2Activity extends Activity implements View.OnClickListener{
                 startActivity(i2);
                 break;
             case R.id.button3:
-                Intent i3 = new Intent(this, Level3.class);
+                Intent i3 = new Intent(this, customise.class);
                 saveGame2Count = 0;
                 startActivity(i3);
                 break;
