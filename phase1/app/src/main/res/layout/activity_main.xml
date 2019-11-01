@@ -29,7 +29,7 @@
         android:layout_width="176dp"
         android:layout_height="109dp"
         android:background="#FFFFFFFF"
-        android:text="To do Game 2"
+        android:text="Game 2"
         android:textSize="20sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"

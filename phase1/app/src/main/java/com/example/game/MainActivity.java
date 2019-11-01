@@ -32,8 +32,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.login:
-                String name1 = name.getText().toString();
-                String name2 = name.getText().toString();
+                // String name1 = name.getText().toString();
+                // String name2 = name.getText().toString();
                 //do check if data aldready stored
                 Intent i = new Intent(this, Main2Activity.class);
                 startActivity(i);
