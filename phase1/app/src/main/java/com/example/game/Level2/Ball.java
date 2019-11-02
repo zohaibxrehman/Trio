@@ -72,8 +72,8 @@ public class Ball {
             this.color = Color.GREEN;
             this.pair.color = Color.GREEN;
         } else {
-            this.color = Color.RED;
-            this.pair.color = Color.RED;
+            this.color = Color.DKGRAY;
+            this.pair.color = Color.DKGRAY;
         }
     }
 

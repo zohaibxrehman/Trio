@@ -54,9 +54,9 @@ public class Level2view extends SurfaceView implements SurfaceHolder.Callback {
             }
             coords.add(Pair.create(x1, y1));
             coords.add(Pair.create(x2, y2));
-            Line l1 = new Line(b.getX() + 50, b.getY(), x1, y1, Color.BLUE);
+            Line l1 = new Line(b.getX() + 100, b.getY(), x1, y1, Color.BLUE);
             Line l2 = new Line(x1, y1, x2, y2, Color.BLUE);
-            Line l3 = new Line(x2, y2, b.getPair().getX(), b.getPair().getY(), Color.BLUE);
+            Line l3 = new Line(x2, y2, b.getPair().getX() - 100, b.getPair().getY(), Color.BLUE);
             lines.add(l1);
             lines.add(l2);
             lines.add(l3);
