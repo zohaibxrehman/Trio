@@ -11,7 +11,13 @@ public class Level1 extends Activity {
         super.onCreate(savedInstances);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(new Level1view(this));
+        String color, time, point;
+        color = getIntent().getStringExtra("COLOR");
+        time = getIntent().getStringExtra("TIME");
+        point = getIntent().getStringExtra("POINTS");
+
+
+        setContentView(new Level1view(this,time, color, point));
     }
 
 }

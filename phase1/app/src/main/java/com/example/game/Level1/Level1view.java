@@ -28,17 +28,22 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
     protected static Bitmap rightButtonImage;
     protected static boolean gameRunning ;
     private MainThread thread;
+    private String ballColor, color, point;
     // this canvas is specially to show the "YOU LOSE" message
     public static Canvas can;
 
 
-    public Level1view(Context context)
+    public Level1view(Context context,String ballColor, String color, String point)
     {
         super(context);
+        this.point = point;
+        this.ballColor = ballColor;
+        this.color = color;
         getHolder().addCallback(this);
         this.thread = new MainThread(getHolder(), this);
         setFocusable(true);
         gameRunning = true;
+
     }
 
     /**
@@ -73,7 +78,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
 
         // Use the letter size and screen height to determine the size of the fish tank.
         gameManager = new GameManager(
-                (int) (screenHeight / charHeight), (int) (screenWidth / charWidth));
+                (int) (screenHeight / charHeight), (int) (screenWidth / charWidth), point, ballColor);
         gameManager.createItems();
 
         thread.setRunning(true);
@@ -102,9 +107,11 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
     public void draw(Canvas canvas) {
         super.draw(canvas);
         can = canvas;
-        Bitmap background = BitmapFactory.decodeResource(getResources(), R.drawable.grass);
-        background = Bitmap.createScaledBitmap(background, 1500, 2000, true);
-        canvas.drawBitmap(background, 0, 0, null);
+        if (color.equals("grass")){
+            Bitmap background = BitmapFactory.decodeResource(getResources(), R.drawable.grass);
+            background = Bitmap.createScaledBitmap(background, 1500, 2000, true);
+            canvas.drawBitmap(background, 0, 0, null);
+        }
         if (canvas != null) {
             gameManager.draw(canvas);
         }

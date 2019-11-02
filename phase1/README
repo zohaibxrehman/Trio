@@ -83,7 +83,11 @@ Member: Sargunan Gurumurthy
 Commit made: added customisation page, created buttons and linked them to Main activity. Also passed
 data from the customisation page to level 3 and corrected the code correspondingly.
 
-Step 9
+Step 11
 Member: Zohaib Rehman, Uttkarsh Berwal
 Commit made: Added a register account functionality. Log in now only works if user has first
 registered his/her account. If log in has wrong credentials then a toast message is displayed.
+
+Step 12
+Member: Uttkarsh Berwal, Zohaib Rehman
+Commit made: Added customization page for game 1.

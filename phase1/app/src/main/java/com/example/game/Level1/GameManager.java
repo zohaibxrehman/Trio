@@ -19,15 +19,22 @@ public class GameManager {
     Paint paintText = new Paint();
     int score;
     boolean flag = false;
+    String ballColor;
+    int points;
     public static int finalScore=0;
 
     ArrayList<Barrier> items = new ArrayList<Barrier>();
 
-    public GameManager(int height, int width) {
+    public GameManager(int height, int width, String ballColor, String points) {
         gridHeight = height;
         gridWidth = width;
         paintText.setTextSize(60);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
+        this.ballColor = ballColor;
+        if (points.equals("EASY"))
+            this.points = 10;
+        else
+            this.points = 15;
         paintText.setColor(Color.WHITE);
 
         score = 0;
@@ -43,7 +50,8 @@ public class GameManager {
         items.add(b3);
         Barrier b4 = new Barrier(30);
         items.add(b4);
-        b = new ChildBall(15, 40);
+
+        b = new ChildBall(15, 40, ballColor);
 
         // button
         left = new Button(Level1view.leftButtonImage, 100, 1800);
@@ -78,10 +86,10 @@ public class GameManager {
             canvas.drawText("YOU LOSE", 400, 800, paintText);
             Level1view.gameRunning = false;
         }
-        else if(score < 10) {
+        else if(score < points) {
             canvas.drawText("SCORE:" + this.score, 60, 55, paintText);
         }
-        if(score == 10)
+        if(score == points)
         {
             canvas.drawText("YOU WON", 400, 800, paintText);
             Level1view.gameRunning = false;

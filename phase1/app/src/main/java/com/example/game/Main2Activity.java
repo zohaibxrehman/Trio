@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.game.Level1.Customise1;
 import com.example.game.Level1.Level1;
 import com.example.game.Level2.Level2;
 import com.example.game.Level3.Level3;
@@ -42,7 +43,7 @@ public class Main2Activity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.button1:
-                Intent i = new Intent(this, Level1.class);
+                Intent i = new Intent(this, Customise1.class);
                 saveGame1Count = 0;
                 startActivity(i);
                 break;

@@ -13,16 +13,21 @@ public class ChildBall {
 
     public int x;
     public int y;
+    String ballColor;
     Color color;
 
     Paint paintText = new Paint();
 
-    public ChildBall(int x, int y) {
+    public ChildBall(int x, int y, String ballColor) {
         this.x = x;
         this.y = y;
         paintText.setTextSize(36);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
-        paintText.setColor(Color.RED);
+//        this.ballColor = ballColor;
+        if (ballColor.equals("red"))
+            paintText.setColor(Color.RED);
+        else
+            paintText.setColor(Color.YELLOW);
     }
 
     public void moveRight() {
