@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Level3.customise"></activity>
+        <activity android:name=".Level3.customise" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".GameStats" />
         <activity android:name=".Level1.Level1" />

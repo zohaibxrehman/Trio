@@ -18,6 +18,7 @@ public class GameManager {
     protected Button right;
     Paint paintText = new Paint();
     int score;
+    boolean flag = false;
     public static int finalScore=0;
 
     ArrayList<Barrier> items = new ArrayList<Barrier>();
@@ -28,6 +29,7 @@ public class GameManager {
         paintText.setTextSize(60);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
         paintText.setColor(Color.WHITE);
+
         score = 0;
     }
 
@@ -58,8 +60,11 @@ public class GameManager {
 //            if(temp.height*Level1view.charHeight == 1680)
             if(temp.height == 39)
             {
-                if(!temp.contains(b.x))
+                if(!temp.contains(b.x)) {
+                    this.flag = true;
+                    this.draw(Level1view.can);
                     collision();
+                }
             }
         }
         delete_and_add_barrier();
@@ -67,7 +72,21 @@ public class GameManager {
 
     public void draw(Canvas canvas)
     {
-        canvas.drawText("SCORE:"+this.score, 60, 55, paintText);
+
+        if(flag)
+        {
+            canvas.drawText("YOU LOSE", 400, 800, paintText);
+            Level1view.gameRunning = false;
+        }
+        else if(score < 10) {
+            canvas.drawText("SCORE:" + this.score, 60, 55, paintText);
+        }
+        if(score == 10)
+        {
+            canvas.drawText("YOU WON", 400, 800, paintText);
+            Level1view.gameRunning = false;
+        }
+
         for(int i = 0; i<items.size(); i++)
         {
             items.get(i).draw(canvas);
@@ -75,8 +94,6 @@ public class GameManager {
         b.draw(canvas);
         left.draw(canvas);
         right.draw(canvas);
-
-//        items.get(0).draw(canvas);
     }
 
     public void delete_and_add_barrier()
@@ -88,6 +105,7 @@ public class GameManager {
             {
                 removeBarrier(temp);
                 this.score += 1;
+                finalScore += 1;
                 add_barrier_at_top();
             }
         }
@@ -109,7 +127,6 @@ public class GameManager {
 
     public void buttonPressed(int x, int y)
     {
-        // SWAPPED
         if(left.contains(x, y)) {
             b.moveLeft();
         }
@@ -120,7 +137,7 @@ public class GameManager {
 
     public void collision()
     {
-        Level1view.gameRunning = false;
+//        Level1view.gameRunning = false;
         finalScore = score;
     }
 }

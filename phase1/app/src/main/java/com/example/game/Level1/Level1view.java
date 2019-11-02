@@ -28,6 +28,8 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
     protected static Bitmap rightButtonImage;
     protected static boolean gameRunning ;
     private MainThread thread;
+    // this canvas is specially to show the "YOU LOSE" message
+    public static Canvas can;
 
 
     public Level1view(Context context)
@@ -99,6 +101,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
 
     public void draw(Canvas canvas) {
         super.draw(canvas);
+        can = canvas;
         Bitmap background = BitmapFactory.decodeResource(getResources(), R.drawable.grass);
         background = Bitmap.createScaledBitmap(background, 1500, 2000, true);
         canvas.drawBitmap(background, 0, 0, null);
