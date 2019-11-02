@@ -91,3 +91,11 @@ registered his/her account. If log in has wrong credentials then a toast message
 Step 12
 Member: Uttkarsh Berwal, Zohaib Rehman
 Commit made: Added customization page for game 1.
+
+Step 13
+Member1: Rutav Shah
+Commit made: Made methods in Level2View class to make the code cleaner, implemented randomization
+code from
+Member 2
+Member2: Tony Liu
+Commit made: Tony: made randomization code for the lines

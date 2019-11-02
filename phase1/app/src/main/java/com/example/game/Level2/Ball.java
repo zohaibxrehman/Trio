@@ -33,7 +33,7 @@ public class Ball {
 
     private Ball pair;
 
-    public Ball getPair() {
+    Ball getPair() {
         return this.pair;
     }
 
@@ -55,6 +55,10 @@ public class Ball {
             return y - 100 <= m && m <= y + 100;
         }
         return false;
+    }
+
+    void setRed() {
+        this.color = Color.RED;
     }
 
     public void draw(Canvas c) {
