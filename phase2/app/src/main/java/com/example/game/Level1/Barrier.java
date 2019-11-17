@@ -10,9 +10,9 @@ import android.graphics.Typeface;
  * For having the barrier of the game
  */
 public class Barrier{
-    private int l;
-    Color colour;
-    public int height;
+
+
+    private int height;
     int start;
     int score;
 
@@ -71,6 +71,15 @@ public class Barrier{
         {
             return false;
         }
+    }
+
+    /**
+     * returns the height of this barrier.
+     * @return       returns the height.
+     */
+    protected int getHeight()
+    {
+        return this.height;
     }
 
 }

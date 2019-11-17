@@ -11,8 +11,8 @@ import android.graphics.Typeface;
  */
 public class Ball {
 
-    public int x;
-    public int y;
+    private int x;
+    private int y;
 
     Paint paintText = new Paint();
 
@@ -30,7 +30,7 @@ public class Ball {
     /**
      * moves the ball to the right.
      */
-    public void moveRight() {
+    protected void moveRight() {
         if (this.x*Level1view.charWidth < Level1view.screenWidth) {
             x++;
         }
@@ -39,7 +39,7 @@ public class Ball {
     /**
      * Moves the ball to the left.
      */
-    public void moveLeft() {
+    protected void moveLeft() {
         if(this.y*Level1view.charHeight > 0) {
             x--;
         }
@@ -57,4 +57,12 @@ public class Ball {
 
     }
 
+    /**
+     * returns the x coordinate of the ball.
+     * @return      returns the x coordinate of the ball.
+     */
+    public int getX()
+    {
+        return this.x;
+    }
 }

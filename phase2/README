@@ -109,3 +109,7 @@ Member: Aditya Goyal
 Commit made: - Added javadocs. Removed duplicate code and changed the fault collision method of the
              Level1/GameManager class
              - Added all the files to the phase 2 folder
+
+Step 16
+Member: Aditya Goyal
+Commit made: - Made all the variables as private in Ball, Barrier and Button class.

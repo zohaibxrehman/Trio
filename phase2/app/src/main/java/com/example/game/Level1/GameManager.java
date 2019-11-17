@@ -71,9 +71,9 @@ public class GameManager {
         {
             items.get(i).move();
             Barrier temp = items.get(items.size()-1);
-            if(temp.height == 39)
+            if(temp.getHeight() == 39)
             {
-                if(!temp.contains(b.x)) {
+                if(!temp.contains(b.getX())) {
                     this.flag = true;
                     this.draw(Level1view.can);
                 }
@@ -121,7 +121,7 @@ public class GameManager {
         for(int i=0;i<items.size();i++)
         {
             Barrier temp = items.get(i);
-            if(temp.height > 40)
+            if(temp.getHeight() > 40)
             {
                 removeBarrier(temp);
                 finalScore += 1;
@@ -144,7 +144,7 @@ public class GameManager {
      */
     private void addBarrierAtTop()
     {
-        int newBarrierHeight = items.get(0).height;
+        int newBarrierHeight = items.get(0).getHeight();
         newBarrierHeight -= 10;
         // Adds barrier at the top
         Barrier b = new Barrier(newBarrierHeight);

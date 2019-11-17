@@ -9,7 +9,7 @@ import android.graphics.Canvas;
 public class Button {
 
     private int x,y;
-    Bitmap image;
+    private Bitmap image;
 
 
     public Button(Bitmap bmp, int x, int y)

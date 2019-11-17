@@ -1,27 +1,4 @@
-//package com.example.game.Level1;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//
-//import android.app.Activity;
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.Button;
-//import android.widget.RadioButton;
-//import android.widget.RadioGroup;
-//
-//import com.example.game.Level3.Level3;
-//import com.example.game.R;
-//
-//public class Customise1 extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_customise1);
-//    }
-//}
-package com.example.game.Level1;
+ package com.example.game.Level1;
 
         import android.app.Activity;
         import android.content.Intent;
