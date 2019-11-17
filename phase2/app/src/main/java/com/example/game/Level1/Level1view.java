@@ -29,7 +29,6 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
     protected static boolean gameRunning ;
     private MainThread thread;
     private String ballColor, color, point;
-    // this canvas is specially to show the "YOU LOSE" message
     public static Canvas can;
 
 
@@ -64,8 +63,6 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
      */
     public void surfaceCreated(SurfaceHolder holder)
     {
-//        thread.setRunning(true);
-//        thread.start();
 
         leftButtonImage = BitmapFactory.decodeResource(getResources(), R.drawable.leftarrow);
         rightButtonImage = BitmapFactory.decodeResource(getResources(), R.drawable.rightarrow);
@@ -75,8 +72,6 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
         charWidth = paintText.measureText("W");
         charHeight = (-paintText.ascent() + paintText.descent());
-
-        // Use the letter size and screen height to determine the size of the fish tank.
         gameManager = new GameManager(
                 (int) (screenHeight / charHeight), (int) (screenWidth / charWidth), point, ballColor);
         gameManager.createItems();
@@ -85,9 +80,11 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
         thread.start();
     }
 
+    /**
+     *  to destroy the surface.
+     */
     public void surfaceDestroyed(SurfaceHolder holder)
     {
-        // it might take multiple events to make the thread to stop so we have a while loop
         boolean retry = true;
         while(retry)
         {
@@ -103,7 +100,11 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
         }
     }
 
-
+    /**
+     * draws the bitmap and objects on the canvas.
+     *
+     * @param canvas    where the objects are drawn.
+     */
     public void draw(Canvas canvas) {
         super.draw(canvas);
         can = canvas;
@@ -118,6 +119,9 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
 
     }
 
+    /**
+     * updates the running thread
+     */
     public void update()
     {
         if(gameRunning) {
@@ -125,6 +129,12 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
         }
     }
 
+    /**
+     * Records the touch on the screen.
+     *
+     * @param
+     * @return      returns either touched or not.
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {

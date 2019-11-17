@@ -33,6 +33,9 @@ package com.example.game.Level1;
 
         import com.example.game.R;
 
+/**
+ * Manages the customization of the Level 1 game.
+ */
 public class Customise1 extends Activity {
 
     RadioGroup color, ballColor, points;

@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
-
+/**
+ * For having the barrier of the game
+ */
 public class Barrier{
     private int l;
     Color colour;
@@ -25,19 +27,16 @@ public class Barrier{
         this.score = 0;
     }
 
-
+    /**
+     * To draw the barrier on the canvas.
+     * @param canvas    where to draw the barrier
+     */
     public void draw(Canvas canvas) {
 
 
         canvas.drawRoundRect(0, height*Level1view.charHeight, start*Level1view.charWidth, (height+1)*Level1view.charHeight, 100, 100, paintText);
         int end = start + 10;
         canvas.drawRoundRect(end*Level1view.charWidth, height*Level1view.charHeight, Level1view.screenWidth, (height+1)*Level1view.charHeight, 100, 100, paintText);
-//        for (int i = 0; i < 34; i++) {
-//            if(!(i >= start && i<= end)) {
-//                drawString(canvas, "=", height, i);
-//            }
-//
-//        }
         try
         {
             Thread.sleep(50);
@@ -48,17 +47,22 @@ public class Barrier{
         }
     }
 
-    private void drawString(Canvas canvas, String s, int x, int y) {
-        canvas.drawText(s, y * Level1view.charWidth, x * Level1view.charHeight, paintText);
-    }
-
-    protected void move()
+    /**
+     * Moves the barrier downwards
+     */
+    public void move()
     {
+        // as we go lower on the screen, the height of object increases
         this.height += 1;
     }
 
+    /**
+     * Checks if the ball has passed through the barrier.
+     *
+     * @param x     the x coordinate of the ball.
+     * @return      return if the ball has passed through or not.
+     */
     protected boolean contains(int x) {
-//        return ((this.start*Level1view.charWidth) <= pressedX && pressedX <= ((this.start+10)*Level1view.charWidth));
         if ((this.start) <= x && x <= (this.start + 10)) {
             this.score += 1;
             return true;
