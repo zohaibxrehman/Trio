@@ -14,7 +14,7 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".GameStats" />
         <activity android:name=".Level1.Level1" />
-        <activity android:name=".Level2.Level2" />
+        <activity android:name=".Level2.Level2Activity" />
         <activity android:name=".Level3.Level3" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -23,7 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Level2.Level2Activity" />
     </application>
 
 </manifest>
