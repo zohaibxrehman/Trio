@@ -7,18 +7,17 @@ import android.graphics.Typeface;
 
 import java.util.ArrayList;
 
-/**
- * Manages how the game is run and displayed on the screen
- * */
+import static com.example.game.Level1.MainThread.canvas;
 
 public class GameManager {
 
     protected static int gridHeight;
     protected static int gridWidth;
-    protected Ball b;
+    protected ChildBall b;
     protected Button left;
     protected Button right;
     Paint paintText = new Paint();
+    int score;
     boolean flag = false;
     String ballColor;
     int points;
@@ -38,11 +37,9 @@ public class GameManager {
             this.points = 15;
         paintText.setColor(Color.WHITE);
 
+        score = 0;
     }
 
-    /**
-     * Creates the items displayed on the screen
-     */
     public void createItems()
     {
         Barrier b1 = new Barrier(0);
@@ -54,7 +51,7 @@ public class GameManager {
         Barrier b4 = new Barrier(30);
         items.add(b4);
 
-        b = new Ball(15, 40, ballColor);
+        b = new ChildBall(15, 40, ballColor);
 
         // button
         left = new Button(Level1view.leftButtonImage, 100, 1800);
@@ -62,30 +59,25 @@ public class GameManager {
 
     }
 
-    /**
-     * Updates the state of the game objects.
-     * */
     public void update()
     {
         for(int i = 0; i<items.size();i++)
         {
             items.get(i).move();
             Barrier temp = items.get(items.size()-1);
+//            if(temp.height*Level1view.charHeight == 1680)
             if(temp.height == 39)
             {
                 if(!temp.contains(b.x)) {
                     this.flag = true;
                     this.draw(Level1view.can);
+                    collision();
                 }
             }
         }
-        deleteAndAddBarrier();
+        delete_and_add_barrier();
     }
 
-    /**
-     * Draws out the game objects on the canvas.
-     * @param canvas    where to draw the objects
-     */
     public void draw(Canvas canvas)
     {
 
@@ -94,10 +86,10 @@ public class GameManager {
             canvas.drawText("YOU LOSE", 400, 800, paintText);
             Level1view.gameRunning = false;
         }
-        else if(finalScore < points) {
-            canvas.drawText("SCORE:" + finalScore, 60, 55, paintText);
+        else if(score < points) {
+            canvas.drawText("SCORE:" + this.score, 60, 55, paintText);
         }
-        if(finalScore == points)
+        if(score == points)
         {
             canvas.drawText("YOU WON", 400, 800, paintText);
             Level1view.gameRunning = false;
@@ -112,11 +104,7 @@ public class GameManager {
         right.draw(canvas);
     }
 
-    /**
-     * Helper method to delete and add the barrier when gone from which have gone off the screen
-     */
-
-    private void deleteAndAddBarrier()
+    public void delete_and_add_barrier()
     {
         for(int i=0;i<items.size();i++)
         {
@@ -124,25 +112,19 @@ public class GameManager {
             if(temp.height > 40)
             {
                 removeBarrier(temp);
+                this.score += 1;
                 finalScore += 1;
-                addBarrierAtTop();
+                add_barrier_at_top();
             }
         }
     }
 
-    /**
-     * Helper method to remove the barrier that have gone from the screen.
-     * @param b     barrier which has gone off the screen.
-     */
     private void removeBarrier(Barrier b)
     {
         items.remove(b);
     }
 
-    /**
-     * Helper to add the barrier to the top of the screen
-     */
-    private void addBarrierAtTop()
+    private void add_barrier_at_top()
     {
         int newBarrierHeight = items.get(0).height;
         newBarrierHeight -= 10;
@@ -151,12 +133,6 @@ public class GameManager {
         items.add(0, b);
     }
 
-    /**
-     * Responds to the button either left or right button pressed.
-     *
-     * @param x     the x coordinate of the tap
-     * @param y     the y coordinate of the tap
-     */
     public void buttonPressed(int x, int y)
     {
         if(left.contains(x, y)) {
@@ -165,5 +141,11 @@ public class GameManager {
         else if(right.contains(x, y)) {
             b.moveRight();
         }
+    }
+
+    public void collision()
+    {
+//        Level1view.gameRunning = false;
+        finalScore = score;
     }
 }

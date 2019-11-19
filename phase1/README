@@ -93,19 +93,13 @@ Member: Uttkarsh Berwal, Zohaib Rehman
 Commit made: Added customization page for game 1.
 
 Step 13
-Member: Rutav Shah
+Member1: Rutav Shah
 Commit made: Made methods in Level2View class to make the code cleaner, implemented randomization
 code from
 Member 2
 Member2: Tony Liu
-Commit made: made randomization code for the lines
+Commit made: Tony: made randomization code for the lines
 
 Step 14
 Member: Rutav Shah
 Commit made: fixed coordinates for random lines between two balls
-
-Step 15
-Member: Aditya Goyal
-Commit made: - Added javadocs. Removed duplicate code and changed the fault collision method of the
-             Level1/GameManager class
-             - Added all the files to the phase 2 folder
