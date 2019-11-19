@@ -20,7 +20,9 @@ public class GameStats extends AppCompatActivity {
         TextView Level2 = (TextView)findViewById(R.id.Level2);
         TextView Level3 = (TextView)findViewById(R.id.Level3);
 
+        String Level2percent = Math.round(com.example.game.Level2.GameManager.percent) + "%";
         Level1.setText(String.valueOf(com.example.game.Level1.GameManager.finalScore));
+        Level2.setText(Level2percent);
         Level3.setText(String.valueOf(com.example.game.Level3.GameManager.score));
         TotalScore.setText(loadData("guest", "total"));
 

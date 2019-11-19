@@ -107,3 +107,7 @@ Commit made: fixed coordinates for random lines between two balls
 Step 15
 Member: Zohaib Rehman
 Commit made: Changed the background gradient
+
+Step 16
+Added Score tracking to Game 2 and made it display on the scores page. Fixed overall structure of
+the game to resemble a running game by using OnTouch, Run, update, etc. methods.
