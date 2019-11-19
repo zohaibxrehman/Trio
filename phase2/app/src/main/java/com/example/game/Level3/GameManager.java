@@ -17,15 +17,15 @@ public class GameManager {
     //    private int hiddenCount;
     private boolean hiddenState;
     public static int score;
-    public int time;
+    private int time;
     private ArrayList<Bitmap> bitmapColours;
     private int tries;
     private int point;
 
-    GameManager(ArrayList<Bitmap> bitmapColours, int itme, int color, int p) {
+    GameManager(ArrayList<Bitmap> bitmapColours, int time, int color, int p) {
         balls = new ArrayList<>();
         hiddenState = false;
-        time = itme;
+        this.time = time;
         this.color = color;
         this.point = p;
         showCount = 0;
