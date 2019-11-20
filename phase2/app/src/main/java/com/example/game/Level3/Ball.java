@@ -12,8 +12,7 @@ class Ball {
     private boolean touched;
     private boolean score;
     private boolean win;
-//    private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-//    private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+
 
     Ball (Bitmap bmp, int x, int y) {
         currentImage = bmp;
@@ -39,7 +38,6 @@ class Ball {
         return touched;
     }
 
-
     boolean contains(float touchX, float touchY) {
         return x <= touchX && touchX <= x + image.getWidth()
                 && y <= touchY && touchY <= y + image.getHeight();
@@ -53,9 +51,6 @@ class Ball {
     void setTouched(boolean b){
         touched = b;
     }
-
-
-
 
     boolean equals(Ball that) {
         return this.currentImage.sameAs(that.currentImage);

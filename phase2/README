@@ -109,5 +109,11 @@ Member: Zohaib Rehman
 Commit made: Changed the background gradient
 
 Step 16
-Added Score tracking to Game 2 and made it display on the scores page. Fixed overall structure of
+Member: Rutav Shah
+Commit made: Added Score tracking to Game 2 and made it display on the scores page. Fixed overall structure of
 the game to resemble a running game by using OnTouch, Run, update, etc. methods.
+
+Step 17
+Member: Zohaib Rehman
+Commit made: Added customizable background(forest/city) for game 3. Fixed alignment of buttons on
+log in page.

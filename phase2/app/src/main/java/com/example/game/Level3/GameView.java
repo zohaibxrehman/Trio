@@ -1,10 +1,12 @@
 package com.example.game.Level3;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
@@ -17,6 +19,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private GameManager level1Manager;
     private String time, color, point;
+    Drawable background;
     ArrayList<Integer> colours;
 
     public GameView(Context context, String time, String color, String point) {
@@ -24,7 +27,16 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         this.point = point;
         this.time = time;
         this.color = color;
+
         getHolder().addCallback(this);
+
+        int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+        if(this.color.equals("Forest"))
+            background = getResources().getDrawable(R.drawable.forest, null);
+        else
+            background = getResources().getDrawable(R.drawable.city, null);
+        background.setBounds(0   , 0, screenWidth, screenHeight);
 
         thread = new MainThread(getHolder(), this);
 
@@ -61,6 +73,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+
         Ball.hiddenImage = BitmapFactory.decodeResource(getResources(), R.drawable.greycircle);
         int c = 0;
         int p =0;
@@ -68,14 +81,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             p = 3;
         else
             p = 5;
-        if(this.color.equals("Black"))
-            c = Color.BLACK;
-        else
-            c = Color.WHITE;
+
         if(time.equals("3 seconds"))
-            level1Manager = new GameManager(bmpColours(), 100, c, p);
+            level1Manager = new GameManager(bmpColours(), 100, p);
         else
-            level1Manager = new GameManager(bmpColours(), 133, c, p);
+            level1Manager = new GameManager(bmpColours(), 133, p);
         thread.setRunning(true);
         thread.start();
 
@@ -123,8 +133,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas)
     {
-
         super.draw(canvas);
+
+        background.draw(canvas);
+
         if(canvas!=null) {
             level1Manager.draw(canvas);
         }

@@ -23,13 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Black" />
+            android:text="City" />
 
         <RadioButton
             android:id="@+id/White"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="White" />
+            android:text="Forest" />
     </RadioGroup>
 
     <TextView

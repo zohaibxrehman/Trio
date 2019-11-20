@@ -13,7 +13,6 @@ public class GameManager {
     private ArrayList<Ball> balls;
     private Ball memoryBall;
     private int showCount;
-    private int color;
     //    private int hiddenCount;
     private boolean hiddenState;
     public static int score;
@@ -22,11 +21,10 @@ public class GameManager {
     private int tries;
     private int point;
 
-    GameManager(ArrayList<Bitmap> bitmapColours, int time, int color, int p) {
+    GameManager(ArrayList<Bitmap> bitmapColours, int time, int p) {
         balls = new ArrayList<>();
         hiddenState = false;
         this.time = time;
-        this.color = color;
         this.point = p;
         showCount = 0;
         score = 0;
@@ -49,16 +47,7 @@ public class GameManager {
         memoryBall.hide();
     }
 
-//    boolean isHiddenState() {
-//        return hiddenState;
-//    }
-
-//    int getScore() {
-//        return score;
-//    }
-
     void draw(Canvas canvas) {
-        canvas.drawColor(color);
         for (Ball ball: balls) {
             if (ball != null)
                 ball.draw(canvas);
