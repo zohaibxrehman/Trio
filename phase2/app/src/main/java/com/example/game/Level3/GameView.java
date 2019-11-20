@@ -21,6 +21,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private GameManager level1Manager;
     private String time, color, point;
     Drawable background;
+    Drawable heart;
     ArrayList<Integer> colours;
 
     public GameView(Context context, String time, String color, String point) {
@@ -38,6 +39,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         else
             background = getResources().getDrawable(R.drawable.city, null);
         background.setBounds(0   , 0, screenWidth, screenHeight);
+
+        heart = getResources().getDrawable(R.drawable.heart, null);
 
         thread = new MainThread(getHolder(), this);
 
@@ -84,9 +87,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             p = 5;
 
         if(time.equals("3 seconds"))
-            level1Manager = new GameManager(bmpColours(), 25, p);
+            level1Manager = new GameManager(bmpColours(), heart,25, p);
         else
-            level1Manager = new GameManager(bmpColours(), 50, p);
+            level1Manager = new GameManager(bmpColours(), heart,50, p);
         thread.setRunning(true);
         thread.start();
 

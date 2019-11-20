@@ -123,3 +123,7 @@ Member: Zohaib Rehman
 Commit made: Game 3 now has infinite levels with 7 lives. For every mistake made, number of lives
 decreases by 1.
 
+Step 19
+Member: Zohaib Rehman
+Commit made: Added hearts at the bottom of the game 3 screen to show how many lives are left.
+

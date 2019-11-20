@@ -4,7 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.widget.Toast;
+
+import com.example.game.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,8 +24,9 @@ public class GameManager {
     private ArrayList<Bitmap> bitmapColours;
     private int lives;
     private int point;
+    private Drawable heart;
 
-    GameManager(ArrayList<Bitmap> bitmapColours, int time, int p) {
+    GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p) {
         balls = new ArrayList<>();
         hiddenState = false;
         this.time = time;
@@ -30,6 +34,9 @@ public class GameManager {
         showCount = 0;
         score = 0;
         lives = 7;
+
+        this.heart = heart;
+
         this.bitmapColours = bitmapColours;
         Collections.shuffle(bitmapColours);
         balls.add(new Ball(bitmapColours.get(0), 100,100));
@@ -57,54 +64,21 @@ public class GameManager {
         memoryBall.draw(canvas);
         Paint scorePaint = new Paint();
         scorePaint.setColor(Color.WHITE);
-        scorePaint.setTextSize(150);
-//        StringBuilder messageString = new StringBuilder();
-        Paint messagePaint = new Paint();
-        messagePaint.setColor(Color.WHITE);
-//        if (score == 0) {
-//            messagePaint.setTextSize(80);
-//            if(point == 3)
-//                messageString.replace(0, messageString.length(), "GET 3 To win");
-//            else
-//                messageString.replace(0, messageString.length(), "Get 5 to win");
-//        } else if (score == 1){
-//            messagePaint.setTextSize(75);
-//            if(point == 3)
-//                messageString.replace(0, messageString.length(), "Two more");
-//            else
-//                messageString.replace(0, messageString.length(), "Four more!!!");
-//        } else if (score == 2) {
-//            messagePaint.setTextSize(120);
-//            if(point == 3)
-//                messageString.replace(0, messageString.length(), "One more!");
-//            else
-//                messageString.replace(0, messageString.length(), "Three more!!!");
-//        } else if (score == 3) {
-//            messagePaint.setTextSize(80);
-//            if(point == 3)
-//                messageString.replace(0, messageString.length(), "Congrats, you won!");
-//            else
-//                messageString.replace(0, messageString.length(), "Two more!!!");
-//        } else if (score == 4) {
-//            messagePaint.setTextSize(80);
-//            if(point == 3)
-//                messageString.replace(0, messageString.length(), "Congrats, you won!");
-//            else
-//                messageString.replace(0, messageString.length(), "One more!!!");
-//        } else if (score == 5) {
-//            messagePaint.setTextSize(80);
-//            messageString.replace(0, messageString.length(), "Congrats, you won!");
-//        }
+        scorePaint.setTextSize(100);
 
+        canvas.drawText("Score: " + score, 700, 1800, scorePaint);
+        int startX = 25;
+        int endX = 175;
 
-//        canvas.drawText(messageString.toString(), 100, 1900, messagePaint);
-        canvas.drawText(String.valueOf(lives),800, 1700, scorePaint );
-        canvas.drawText(String.valueOf(score), 800, 1900, scorePaint);
-
+        for (int i = 0; i < lives; i++){
+            heart.setBounds(startX, 1850, endX, 2000);
+            heart.draw(canvas);
+            startX += 150;
+            endX += 150;
+        }
     }
 
     void update() {
-
         if (!hiddenState) {
             if (showCount == time) {
                 for (Ball b : balls) {
@@ -120,28 +94,6 @@ public class GameManager {
         if (lives == 0){
             System.exit(0);
         }
-
-//        if (hiddenState) {
-//            for (Ball ball : balls) {
-//                if (lives == 0) {
-//                    System.exit(0);
-////                    gameOver();
-//                } else if (ball.isTouched() && ball.equals(memoryBall)) {
-//                    score++;
-//                    resetGame();
-//                } else if ()
-////                if (ball.isTouched() && !alreadyTouched.contains(ball)) {
-//////                    score = 0;
-////                    ball.show();
-////                    this.alreadyTouched.add(ball);
-////                    System.out.println("WHY NOT WORKING??");
-////                    lives--;
-//////                    resetGame();
-////                }
-//            }
-
-
-
     }
 
 
