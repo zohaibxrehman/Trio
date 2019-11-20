@@ -14,6 +14,7 @@ import android.view.SurfaceHolder;
 import com.example.game.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
@@ -83,9 +84,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             p = 5;
 
         if(time.equals("3 seconds"))
-            level1Manager = new GameManager(bmpColours(), 100, p);
+            level1Manager = new GameManager(bmpColours(), 25, p);
         else
-            level1Manager = new GameManager(bmpColours(), 133, p);
+            level1Manager = new GameManager(bmpColours(), 50, p);
         thread.setRunning(true);
         thread.start();
 
@@ -107,14 +108,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
-        int p;
-        if(point.equals("EASY"))
-            p = 3;
-        else
-            p = 5;
-        if (GameManager.score == p){
-            thread.setRunning(false);
-        }
+//        int p;
+//        if(point.equals("EASY"))
+//            p = 3;
+//        else
+//            p = 5;
+//        if (GameManager.score == p){
+//            thread.setRunning(false);
+//        }
         level1Manager.update();
 
     }
@@ -122,7 +123,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private ArrayList<Bitmap> bmpColours() {
 
         ArrayList<android.graphics.Bitmap> bitmapColours = new ArrayList<>();
-//        Collections.shuffle(colours);
+        Collections.shuffle(colours);
         for(int i = 0; i < 9; i++){
             bitmapColours.add(BitmapFactory.decodeResource(getResources(), colours.get(i)));
         }

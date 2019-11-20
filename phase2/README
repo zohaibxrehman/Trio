@@ -117,3 +117,9 @@ Step 17
 Member: Zohaib Rehman
 Commit made: Added customizable background(forest/city) for game 3. Fixed alignment of buttons on
 log in page.
+
+Step 18
+Member: Zohaib Rehman
+Commit made: Game 3 now has infinite levels with 7 lives. For every mistake made, number of lives
+decreases by 1.
+
