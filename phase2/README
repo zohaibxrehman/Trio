@@ -127,3 +127,8 @@ Step 19
 Member: Zohaib Rehman
 Commit made: Added hearts at the bottom of the game 3 screen to show how many lives are left.
 
+Step 20
+Member: Zohaib Rehman
+Commit made: Added delay when a correct answer is chosen in game 3 so that the user can see his
+result.
+
