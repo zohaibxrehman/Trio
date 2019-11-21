@@ -28,6 +28,7 @@ public class GameManager {
     private Drawable heart;
     private MediaPlayer success;
     private MediaPlayer failure;
+    private MediaPlayer whooshSound;
 
     GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p) {
         balls = new ArrayList<>();
@@ -66,6 +67,10 @@ public class GameManager {
         this.failure = failure;
     }
 
+    void  addWhooshSound(MediaPlayer whoosh){
+        this.whooshSound = whoosh;
+    }
+
     void draw(Canvas canvas) {
         for (Ball ball: balls) {
             if (ball != null)
@@ -95,6 +100,7 @@ public class GameManager {
                 for (Ball b : balls) {
                     b.hide();
                     memoryBall.show();
+                    whooshSound.start();
                 }
                 hiddenState = true;
             } else if (showCount < time) {
@@ -146,5 +152,6 @@ public class GameManager {
         }
         memoryBall.changeColour(bitmapColours.get(ThreadLocalRandom.current().nextInt(0, 9)));
         memoryBall.hide();
+        whooshSound.start();
     }
 }

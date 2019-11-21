@@ -24,8 +24,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     Drawable background;
     Drawable heart;
     ArrayList<Integer> colours;
-    MediaPlayer success;
+    private MediaPlayer success;
     private MediaPlayer failure;
+    private MediaPlayer whooshSound;
 
     public GameView(Context context, String time, String color, String point) {
         super(context);
@@ -36,6 +37,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
         this.success = MediaPlayer.create(context, R.raw.success);
         this.failure = MediaPlayer.create(context, R.raw.failure);
+        this.whooshSound = MediaPlayer.create(context, R.raw.whoosh);
 
         int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
         int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
@@ -97,6 +99,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             level1Manager = new GameManager(bmpColours(), heart,50, p);
         level1Manager.addSuccessSound(success);
         level1Manager.addFailureSound(failure);
+        level1Manager.addWhooshSound(whooshSound);
         thread.setRunning(true);
         thread.start();
 

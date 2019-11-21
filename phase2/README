@@ -148,3 +148,8 @@ Commit made: Added game sounds in game 3 for feedback on correct and wrong respo
 Step 24
 Member: Zohaib Rehman
 Commit made: Added looping background music to game 3
+
+Step 25
+Member: Zohaib Rehman
+Commit made: Fixed an issue which caused music to continue even when activity was destroyed. Added
+ whoosh sound in game 3 when colors flip.
