@@ -5,4 +5,5 @@
     <string name="level2">level2</string>
     <string name="Level2">Level2</string>
     <string name="Level3">Level3</string>
+    <color name="black">#000000</color>
 </resources>

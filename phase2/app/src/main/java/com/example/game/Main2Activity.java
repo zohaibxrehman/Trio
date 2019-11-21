@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.game.Level1.Customise1;
 import com.example.game.Level1.Level1;
@@ -17,7 +18,7 @@ import com.example.game.Level3.customise;
 
 
 public class Main2Activity extends Activity implements View.OnClickListener{
-    private Button b1, b2, b3, b4;
+    private ImageButton b1, b2, b3, b4;
     private int saveGame1Count = 0;
     private int saveGame2Count = 0;
     private int saveSecondGameCount = 0;
@@ -28,10 +29,10 @@ public class Main2Activity extends Activity implements View.OnClickListener{
         // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        b1 = (Button) findViewById(R.id.button1);
-        b2 = (Button) findViewById(R.id.button2);
-        b3 = (Button) findViewById(R.id.button3);
-        b4 = (Button) findViewById(R.id.button4);
+        b1 = findViewById(R.id.imageButtonGame1);
+        b2 = findViewById(R.id.imageButtonGame2);
+        b3 = findViewById(R.id.imageButtonGame3);
+        b4 = findViewById(R.id.imageButtonScore);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
@@ -42,22 +43,22 @@ public class Main2Activity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.button1:
+            case R.id.imageButtonGame1:
                 Intent i = new Intent(this, Customise1.class);
                 saveGame1Count = 0;
                 startActivity(i);
                 break;
-            case R.id.button2:
+            case R.id.imageButtonGame2:
                 Intent i2 = new Intent(this, Level2Activity.class);
                 saveSecondGameCount = 0;
                 startActivity(i2);
                 break;
-            case R.id.button3:
+            case R.id.imageButtonGame3:
                 Intent i3 = new Intent(this, customise.class);
                 saveGame2Count = 0;
                 startActivity(i3);
                 break;
-            case R.id.button4:
+            case R.id.imageButtonScore:
                 if (saveGame1Count == 0 && saveGame2Count == 0){
                     saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level1.GameManager.finalScore+com.example.game.Level3.GameManager.score),"guest", "total");
                     saveGame1Count++;

@@ -132,3 +132,8 @@ Member: Zohaib Rehman
 Commit made: Added delay when a correct answer is chosen in game 3 so that the user can see his
 result.
 
+Step 21
+Member: Rutav Shah
+Commit made: Made main screen after login include imagebuttons so that user can get a preview of
+what game they are playing before they select it
+
