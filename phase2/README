@@ -153,3 +153,12 @@ Step 25
 Member: Zohaib Rehman
 Commit made: Fixed an issue which caused music to continue even when activity was destroyed. Added
  whoosh sound in game 3 when colors flip.
+
+Step 26
+Member: Aditya Goyal
+Commit made:
+            - Created lives system.
+            - changed the background from grass to forest.
+            - Made the barriers of the game 1 more smooth and accurate.
+            - Added the class Life.java.
+            - Made functionality to pick up lives from the path.

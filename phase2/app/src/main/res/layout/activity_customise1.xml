@@ -19,11 +19,11 @@
         app:layout_constraintVertical_bias="0.146">
 
         <RadioButton
-            android:id="@+id/grass"
+            android:id="@+id/forest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="grass" />
+            android:text="forest" />
 
         <RadioButton
             android:id="@+id/black"
