@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.widget.Toast;
 
 import com.example.game.R;
@@ -25,6 +26,8 @@ public class GameManager {
     private int lives;
     private int point;
     private Drawable heart;
+    private MediaPlayer success;
+    private MediaPlayer failure;
 
     GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p) {
         balls = new ArrayList<>();
@@ -53,6 +56,14 @@ public class GameManager {
 
         memoryBall = new Ball(bitmapColours.get(ThreadLocalRandom.current().nextInt(0, 9)), 450, 1500);
         memoryBall.hide();
+    }
+
+    public void addSuccessSound(MediaPlayer success){
+        this.success = success;
+    }
+
+    void addFailureSound(MediaPlayer failure){
+        this.failure = failure;
     }
 
     void draw(Canvas canvas) {
@@ -106,6 +117,7 @@ public class GameManager {
 
                     if (b.equals(memoryBall)) {
                         score++;
+                        this.success.start();
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException e) {
@@ -114,6 +126,7 @@ public class GameManager {
                         resetGame();
                     } else {
                         lives--;
+                        this.failure.start();
                     }
                 }
             }

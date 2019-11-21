@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
@@ -23,6 +24,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     Drawable background;
     Drawable heart;
     ArrayList<Integer> colours;
+    MediaPlayer success;
+    private MediaPlayer failure;
 
     public GameView(Context context, String time, String color, String point) {
         super(context);
@@ -31,6 +34,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         this.color = color;
 
         getHolder().addCallback(this);
+        this.success = MediaPlayer.create(context, R.raw.success);
+        this.failure = MediaPlayer.create(context, R.raw.failure);
 
         int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
         int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
@@ -90,6 +95,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             level1Manager = new GameManager(bmpColours(), heart,25, p);
         else
             level1Manager = new GameManager(bmpColours(), heart,50, p);
+        level1Manager.addSuccessSound(success);
+        level1Manager.addFailureSound(failure);
         thread.setRunning(true);
         thread.start();
 
