@@ -346,11 +346,13 @@ public class GameManager {
     int livesLeft;
     ArrayList<Life> lives = new ArrayList<Life>();
     public static int finalScore=0;
+    Game1Presenter presenter;
 
     ArrayList<Barrier> items = new ArrayList<Barrier>();
 
-    public GameManager(int height, int width, String ballColor, String points) {
+    public GameManager(int height, int width, String ballColor, String points, Game1Presenter presenter) {
         gridHeight = height;
+        this.presenter = presenter;
         gridWidth = width;
         paintText.setTextSize(60);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
@@ -438,7 +440,13 @@ public class GameManager {
         if(finalScore == points)
         {
             canvas.drawText("YOU WON", 400, 800, paintText);
+
             Level1view.gameRunning = false;
+
+            presenter.moveToNextGame();
+
+
+
         }
 
         for(int i = 0; i<items.size(); i++)

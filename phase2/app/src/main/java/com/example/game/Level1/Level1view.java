@@ -319,11 +319,13 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
     private MainThread thread;
     private String ballColor, color, point;
     public static Canvas can;
+    private Game1Presenter presenter;
 
 
-    public Level1view(Context context,String ballColor, String color, String point)
+    public Level1view(Context context,String ballColor, String color, String point, Game1Presenter presenter)
     {
         super(context);
+        this.presenter = presenter;
         this.point = point;
         this.ballColor = ballColor;
         this.color = color;
@@ -354,16 +356,19 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
 
         leftButtonImage = BitmapFactory.decodeResource(getResources(), R.drawable.leftarrow);
         rightButtonImage = BitmapFactory.decodeResource(getResources(), R.drawable.rightarrow);
+       // presenter = new Game1Presenter(gameManager);
 
         Paint paintText = new Paint();
         paintText.setTextSize(36);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
         charWidth = paintText.measureText("W");
         charHeight = (-paintText.ascent() + paintText.descent());
-        gameManager = new GameManager(
-                (int) (screenHeight / charHeight), (int) (screenWidth / charWidth), point, ballColor);
-        gameManager.createItems();
 
+        gameManager = new GameManager(
+                (int) (screenHeight / charHeight), (int) (screenWidth / charWidth), point, ballColor,presenter);
+        gameManager.createItems();
+        //presenter = new Game1Presenter(gameManager);
+       // presenter = new Game1Presenter();
         thread.setRunning(true);
         thread.start();
     }
@@ -430,7 +435,8 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
         {
             int touchX = (int)event.getX();
             int touchY = (int)event.getY();
-            gameManager.buttonPressed(touchX, touchY);
+            presenter.checkButtonPressed(touchX, touchY,gameManager);
+            //gameManager.buttonPressed(touchX, touchY);
         }
         return true;
     }
