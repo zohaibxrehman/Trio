@@ -407,7 +407,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
             canvas.drawBitmap(background, 0, 0, null);
         }
         if (canvas != null) {
-            gameManager.draw(canvas);
+            presenter.draw(canvas, gameManager);
         }
 
     }
@@ -418,7 +418,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
     public void update()
     {
         if(gameRunning) {
-            gameManager.update();
+            presenter.update(gameManager);
         }
     }
 
