@@ -17,8 +17,8 @@ public class GameManager {
     private static int tries;
     public static double percent;
 
-    private List<Ball> right;
-    private List<Ball> left;
+    private List<RightBall> right;
+    private List<LeftBall> left;
     private List<Line> lines;
     int difficulty;
 
@@ -38,8 +38,8 @@ public class GameManager {
     void makeBalls(int number) {
         int count = 300;
         for (int i = number; i > 0; i--) {
-            Ball b = new Ball(200, count, Color.BLUE);
-            Ball pair = new Ball(900, count, Color.BLUE);
+            LeftBall b = new LeftBall(200, count, Color.BLUE);
+            RightBall pair = new RightBall(900, count, Color.BLUE);
             right.add(pair);
             left.add(b);
             count += 400;
@@ -48,7 +48,7 @@ public class GameManager {
     void makeLines() {
         List<Pair> coords = new ArrayList<>();
         int x1, x2, y1, y2;
-        for (Ball b : left) {
+        for (LeftBall b : left) {
             while (true) {
                 //Randomize again
                 x1 = (int) (Math.random() * (751 - 350)) + 350;
@@ -75,9 +75,8 @@ public class GameManager {
 
     void setTarget() {
         int r = (int) (Math.random() * right.size());
-        Ball b1 = right.get(r);
+        RightBall b1 = right.get(r);
         b1.setTarget();
-        b1.makeTarget();
         b1.getPair().setTarget();
     }
 
@@ -89,9 +88,9 @@ public class GameManager {
         ints.add(2);
         ints.add(3);
         int r;
-        for (Ball b : left) {
+        for (LeftBall b : left) {
             r = (int) (Math.random() * (ints.size()));
-            Ball b1 = right.get(ints.get(r));
+            RightBall b1 = right.get(ints.get(r));
             ints.remove(r);
             b.setPair(b1);
             b1.setPair(b);
@@ -110,10 +109,10 @@ public class GameManager {
         for (Line line: lines){
             line.draw(canvas);
         }
-        for (Ball ball: right) {
+        for (RightBall ball: right) {
             ball.draw(canvas);
         }
-        for (Ball ball: left) {
+        for (LeftBall ball: left) {
             ball.draw(canvas);
         }
         canvas.drawText("Total Correct: " + score, 100, 1950, scorePaint);
@@ -126,12 +125,12 @@ public class GameManager {
     }
 
     void buttonPressed(float x, float y) {
-        for (Ball b: left){
-            if (b.contains(x, y) && !b.beenTouched()) {
+        for (LeftBall b: left){
+            if (b.contains(x, y) && !b.getTouched()) {
                 tries++;
                 b.setTouched();
                 b.setColor();
-                if(b.isTarget() | b.getPair().isTarget()){
+                if(b.getIsTarget() | b.getPair().getIsTarget()){
                     score++;
                     try {
                         Thread.sleep(500);

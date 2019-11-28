@@ -172,3 +172,8 @@ Step 28
 Member: Tony Liu
 Commit made: Added an activity containing 3 buttons that lead into their corresponding modes for
 Level2, as well as instruction buttons.
+
+Step 29
+Member: Rutav Shah
+Commit made: Added in a common Interface for Drawable objects (Line and Balls) and used inheritance
+to separate two sets of balls.
