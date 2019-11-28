@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 
 import com.example.game.Level1.Customise1;
 import com.example.game.Level1.Level1;
+import com.example.game.Level2.Game2Instructions;
 import com.example.game.Level2.Level2Activity;
 import com.example.game.Level3.Level3;
 import com.example.game.Level3.customise;
@@ -49,7 +50,7 @@ public class Main2Activity extends Activity implements View.OnClickListener{
                 startActivity(i);
                 break;
             case R.id.imageButtonGame2:
-                Intent i2 = new Intent(this, Level2Activity.class);
+                Intent i2 = new Intent(this, Game2Instructions.class);
                 saveSecondGameCount = 0;
                 startActivity(i2);
                 break;

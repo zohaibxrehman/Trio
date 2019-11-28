@@ -1,5 +1,5 @@
 Committing errors in the beginning:
-Step1
+Step 1
 Created a folder hierarchy to organize the 3 games and a main activity
 
 Step 2
@@ -25,7 +25,8 @@ Updated main activity to connect to game1 and the stats page
 
 Started committing the files and added README.txt for keeping the track
 #############
-Step 1: Sargunan Gurumurthy
+Step 1
+Member: Sargunan Gurumurthy
 Commit made: Created the main Activity class and added the background and buttons.
 
 Step 2
@@ -43,7 +44,7 @@ Member: Uttkarsh Berwal
 Commit made: Added GameStats(activity) to keep the record of the score of the games.
 
 Step 5
-Member 1: Sargunan
+Member 1: Sargunan Gurumurthy
 Changes made: Created Ball.java, Level2.java, GameView.java. This handles front end for
 level1. Added some game logic in GameView which will be refactored into a manager class.
 Connected MainActiity to Level3.
@@ -166,3 +167,8 @@ Step 27
 Member: Uttkarsh Berwal
 Commit made: Added the files for the implementation of MVP architecture. Also, added the feature
             which takes the user to game2 when they win game1.
+
+Step 28
+Member: Tony Liu
+Commit made: Added an activity containing 3 buttons that lead into their corresponding modes for
+Level2, as well as instruction buttons.
