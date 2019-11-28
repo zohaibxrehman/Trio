@@ -177,3 +177,8 @@ Step 29
 Member: Rutav Shah
 Commit made: Added in a common Interface for Drawable objects (Line and Balls) and used inheritance
 to separate two sets of balls.
+
+Step 30
+Member: Rutav Shah
+Commit made: Added a new class that handles creating objects seen in the game that also reduces
+the work GameManager does.

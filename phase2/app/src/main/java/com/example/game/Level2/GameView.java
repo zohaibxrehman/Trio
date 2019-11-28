@@ -28,10 +28,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
         gameManager = new GameManager(
                 (int) (screenHeight / charHeight), (int) (screenWidth / charWidth));
-        gameManager.makeBalls(gameManager.difficulty);
-        gameManager.makePairs();
-        gameManager.setTarget();
-        gameManager.makeLines();
         thread.setRunning(true);
         thread.start();
 
