@@ -25,8 +25,7 @@
 //        return ((this.x <= pressedX && pressedX <= this.x+image.getWidth())&&(this.y <= pressedY && pressedY <= this.y+image.getHeight()));
 //    }
 //}
-package com.example.game.Level1;
-
+package com.example.game.Level1.Entities;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
@@ -62,8 +61,9 @@ public class Button {
      * @param pressedY      the y coordinate of the press.
      * @return              whether or not the user has pressed the button.
      */
-    protected boolean contains(int pressedX, int pressedY)
+    boolean contains(int pressedX, int pressedY)
     {
-        return ((this.x <= pressedX && pressedX <= this.x+image.getWidth())&&(this.y <= pressedY && pressedY <= this.y+image.getHeight()));
+        return ((this.x <= pressedX && pressedX <= this.x+image.getWidth())&&(this.y <= pressedY
+                && pressedY <= this.y+image.getHeight()));
     }
 }

@@ -2,12 +2,11 @@ package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.game.Level1.GameManager;
+import com.example.game.Level1.Entities.GameManager;
 
 public class GameStats extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class GameStats extends AppCompatActivity {
         TextView Level3 = (TextView)findViewById(R.id.Level3);
 
         String Level2percent = Math.round(com.example.game.Level2.GameManager.percent) + "%";
-        Level1.setText(String.valueOf(com.example.game.Level1.GameManager.finalScore));
+        Level1.setText(String.valueOf(GameManager.finalScore));
         Level2.setText(Level2percent);
         Level3.setText(String.valueOf(com.example.game.Level3.GameManager.score));
         TotalScore.setText(loadData("guest", "total"));

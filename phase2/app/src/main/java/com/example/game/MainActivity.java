@@ -9,10 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.example.game.Level1.Level1;
-import com.example.game.Level3.Level3;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -52,7 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         startActivity(i);
                     }
                     else {
-                        Toast.makeText(this, "Wrong username/password!", Toast.LENGTH_SHORT).show();
+
                     }
                 }
 

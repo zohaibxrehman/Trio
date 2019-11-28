@@ -1,4 +1,4 @@
-package com.example.game.Level1;
+package com.example.game.Level1.Entities;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -8,10 +8,10 @@ import android.graphics.Canvas;
  */
 class Life {
 
-    protected int x, y;
-    protected Bitmap image;
+    private int x, y;
+    private Bitmap image;
 
-    public Life(Bitmap image, int x, int y)
+    Life(Bitmap image, int x, int y)
     {
         this.x = x;
         this.y = y;
@@ -24,6 +24,7 @@ class Life {
      */
     public void draw(Canvas canvas)
     {
+
         canvas.drawBitmap(image, x, y, null);
     }
 

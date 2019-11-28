@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.game.Level1.Customise1;
-import com.example.game.Level1.Level1;
+import com.example.game.Level1.View.Level1;
 import com.example.game.Level2.Game2Instructions;
 import com.example.game.Level2.Level2Activity;
 import com.example.game.Level3.Level3;
@@ -61,11 +61,11 @@ public class Main2Activity extends Activity implements View.OnClickListener{
                 break;
             case R.id.imageButtonScore:
                 if (saveGame1Count == 0 && saveGame2Count == 0){
-                    saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level1.GameManager.finalScore+com.example.game.Level3.GameManager.score),"guest", "total");
+                    saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level1.Entities.GameManager.finalScore+com.example.game.Level3.GameManager.score),"guest", "total");
                     saveGame1Count++;
                     saveGame2Count++;
                 }else if(saveGame1Count == 0){
-                    saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level1.GameManager.finalScore),"guest", "total");
+                    saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level1.Entities.GameManager.finalScore),"guest", "total");
                     saveGame1Count++;
                 } else if(saveGame2Count == 0){
                     saveData(String.valueOf(Integer.valueOf(loadData("guest", "total"))+ com.example.game.Level3.GameManager.score),"guest", "total");

@@ -87,13 +87,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="red" />
+            android:text="@string/red" />
 
         <RadioButton
             android:id="@+id/yellow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="yellow" />
+            android:text="@string/yellow" />
     </RadioGroup>
 
     <TextView
@@ -124,13 +124,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="EASY" />
+            android:text="@string/easy" />
 
         <RadioButton
             android:id="@+id/hard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HARD" />
+            android:text="@string/hard" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -118,12 +118,13 @@
 //    }
 //}
 
-package com.example.game.Level1;
+package com.example.game.Level1.Entities;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
+
+import com.example.game.Level1.View.Level1view;
 
 
 /**
@@ -133,14 +134,13 @@ public class Ball {
 
     private int x;
     private int y;
+    private Paint paintText = new Paint();
 
-    Paint paintText = new Paint();
-
-    public Ball(int x, int y, String ballColor) {
+    Ball(int x, int y, String ballColor) {
         this.x = x;
         this.y = y;
-        paintText.setTextSize(36);
-        paintText.setTypeface(Typeface.DEFAULT_BOLD);
+        //paintText.setTextSize(36);
+       // paintText.setTypeface(Typeface.DEFAULT_BOLD);
         if (ballColor.equals("red"))
             paintText.setColor(Color.RED);
         else
@@ -150,8 +150,8 @@ public class Ball {
     /**
      * moves the ball to the right.
      */
-    protected void moveRight() {
-        if (this.x*Level1view.charWidth < Level1view.screenWidth) {
+    void moveRight() {
+        if (this.x* Level1view.charWidth < Level1view.screenWidth) {
             x++;
         }
     }
@@ -159,8 +159,8 @@ public class Ball {
     /**
      * Moves the ball to the left.
      */
-    protected void moveLeft() {
-        if(this.y*Level1view.charHeight > 0) {
+    void moveLeft() {
+        if(this.x*Level1view.charHeight > 0) {
             x--;
         }
     }
@@ -181,7 +181,7 @@ public class Ball {
      * returns the x coordinate of the ball.
      * @return      returns the x coordinate of the ball.
      */
-    public int getX()
+    int getX()
     {
         return this.x;
     }

@@ -65,19 +65,19 @@
 //        }
 //    }
 //}
-package com.example.game.Level1;
+package com.example.game.Level1.View;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 public class MainThread extends Thread
 {
 
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private Level1view gameView;
     private boolean isRunning;
     public static Canvas canvas;
 
-    public MainThread(SurfaceHolder surfaceHolder, Level1view gameView)
+    MainThread(SurfaceHolder surfaceHolder, Level1view gameView)
     {
         super();
         this.surfaceHolder = surfaceHolder;
@@ -85,7 +85,7 @@ public class MainThread extends Thread
 
     }
 
-    public void setRunning(boolean isRunning)
+    void setRunning(boolean isRunning)
     {
         this.isRunning = isRunning;
 
@@ -105,7 +105,7 @@ public class MainThread extends Thread
 
                 }
             }
-            catch(Exception e)
+            catch(Exception ignored)
             {
             }
 

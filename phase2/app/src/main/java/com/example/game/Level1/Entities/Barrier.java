@@ -153,11 +153,13 @@
 //    }
 //
 //}
-package com.example.game.Level1;
+package com.example.game.Level1.Entities;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Typeface;
+
+import com.example.game.Level1.View.Level1view;
+//import android.graphics.Typeface;
 
 /**
  * For having the barrier of the game
@@ -168,14 +170,13 @@ public class Barrier{
     private int height;
     // this is for the pickable life in the game
 //    public boolean pickableLife;
-    int start;
-    int score;
+    private int start;
+    private int score;
+    private Paint paintText = new Paint();
 
-    Paint paintText = new Paint();
-
-    public Barrier(int height) {
-        paintText.setTextSize(36);
-        paintText.setTypeface(Typeface.DEFAULT_BOLD);
+    Barrier(int height) {
+        //paintText.setTextSize(36);
+        //paintText.setTypeface(Typeface.DEFAULT_BOLD);
         this.height = height;
         paintText.setColor(-16041008);
         start = 5 + (int)(Math.random() * 15);
@@ -190,9 +191,13 @@ public class Barrier{
     public void draw(Canvas canvas) {
 
 
-        canvas.drawRoundRect(-10, height*Level1view.charHeight, start*Level1view.charWidth, (height+1)*Level1view.charHeight, 100, 100, paintText);
+        canvas.drawRoundRect(-10, height* Level1view.charHeight,
+                start*Level1view.charWidth, (height+1)*Level1view.charHeight,
+                100, 100, paintText);
         int end = start + 10;
-        canvas.drawRoundRect(end*Level1view.charWidth, height*Level1view.charHeight, Level1view.screenWidth+10, (height+1)*Level1view.charHeight, 100, 100, paintText);
+        canvas.drawRoundRect(end*Level1view.charWidth, height*Level1view.charHeight,
+                Level1view.screenWidth+10, (height+1)*Level1view.charHeight, 100,
+                100, paintText);
 //        if(this.pickableLife)
 //        {
 //            Life l = new Life(Level1view.heart, (int)(start*Level1view.charWidth + 5 *Level1view.charWidth), this.height);
@@ -204,14 +209,14 @@ public class Barrier{
         }
         catch(InterruptedException e)
         {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
     /**
      * Moves the barrier downwards
      */
-    public void move()
+    void move()
     {
         // as we go lower on the screen, the height of object increases
         this.height += 1;
@@ -223,7 +228,7 @@ public class Barrier{
      * @param x     the x coordinate of the ball.
      * @return      return if the ball has passed through or not.
      */
-    protected boolean contains(int x) {
+    boolean contains(int x) {
         if ((this.start) <= x && x <= (this.start + 10)) {
             this.score += 1;
             return true;
@@ -238,7 +243,7 @@ public class Barrier{
      * returns the height of this barrier.
      * @return       returns the height.
      */
-    protected int getHeight()
+    int getHeight()
     {
         return this.height;
     }

@@ -7,7 +7,7 @@
 ////
 ////import java.util.ArrayList;
 ////
-////import static com.example.game.Level1.MainThread.canvas;
+////import static com.example.game.Level1.View.MainThread.canvas;
 ////
 ////public class GameManager {
 ////
@@ -318,13 +318,14 @@
 //        }
 //    }
 //}
-package com.example.game.Level1;
+package com.example.game.Level1.Entities;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+
+import com.example.game.Level1.View.Level1view;
 
 import java.util.ArrayList;
 
@@ -336,23 +337,22 @@ public class GameManager {
 
     protected static int gridHeight;
     protected static int gridWidth;
-    protected Ball b;
-    protected Button left;
-    protected Button right;
-    Paint paintText = new Paint();
-    boolean flag = false;
-    String ballColor;
-    int points;
-    int livesLeft;
-    ArrayList<Life> lives = new ArrayList<Life>();
+    private Ball b;
+    private Button left;
+    private Button right;
+    private Paint paintText = new Paint();
+    private boolean flag = false;
+    private String ballColor;
+    private int points;
+    private int livesLeft;
+    private ArrayList<Life> lives = new ArrayList<>();
     public static int finalScore=0;
-    Game1Presenter presenter;
+   // private Game1Presenter presenter;
+    private ArrayList<Barrier> items = new ArrayList<>();
 
-    ArrayList<Barrier> items = new ArrayList<Barrier>();
-
-    public GameManager(int height, int width, String ballColor, String points, Game1Presenter presenter) {
+    public GameManager(int height, int width, String points, String ballColor){//, Game1Presenter presenter) {
         gridHeight = height;
-        this.presenter = presenter;
+       // this.presenter = presenter;
         gridWidth = width;
         paintText.setTextSize(60);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
@@ -374,7 +374,7 @@ public class GameManager {
     /**
      * Creates the items displayed on the screen
      */
-    public void createItems()
+   public void createItems()
     {
         Barrier b1 = new Barrier(0);
         items.add(b1);
@@ -427,7 +427,7 @@ public class GameManager {
      * Draws out the game objects on the canvas.
      * @param canvas    where to draw the objects
      */
-    public void draw(Canvas canvas)
+    public boolean draw(Canvas canvas)
     {
         if(flag)
         {
@@ -442,8 +442,10 @@ public class GameManager {
             canvas.drawText("YOU WON", 400, 800, paintText);
 
             Level1view.gameRunning = false;
+            return true;
 
-            presenter.moveToNextGame();
+           // presenter.moveToNextGame();
+
 
 
 
@@ -467,6 +469,7 @@ public class GameManager {
         {
             l.draw(canvas);
         }
+        return false;
     }
 
     /**
