@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.game.Level1.Entities.GameManager;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class GameStats extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_stats);
+        // setContentView(R.layout.activity_game_stats);
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Level1");
         TextView TotalScore = (TextView)findViewById(R.id.TotalScore);
         TextView Level1 = (TextView)findViewById(R.id.Level1);
         TextView Level2 = (TextView)findViewById(R.id.Level2);
