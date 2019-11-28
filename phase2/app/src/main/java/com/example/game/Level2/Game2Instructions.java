@@ -1,15 +1,14 @@
 package com.example.game.Level2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.game.R;
 
-public class Game2Instructions extends AppCompatActivity {
+public class Game2Instructions extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
