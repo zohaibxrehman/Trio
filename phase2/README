@@ -183,7 +183,7 @@ Member: Rutav Shah
 Commit made: Added a new class that handles creating objects seen in the game that also reduces
 the work GameManager does.
 
-Step 30:
+Step 31:
 Member: Uttkarsh Berwal
 Commit made: Cleaned the architecture and removed some extra dependencies in Level1. Also, grouped
 them into different packages.
