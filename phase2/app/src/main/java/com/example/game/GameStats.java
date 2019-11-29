@@ -50,9 +50,5 @@ public class GameStats extends AppCompatActivity {
 //        TotalScore.setText(loadData("guest", "total"));
 
     }
-
-    public String loadData(String user, String game) {
-        SharedPreferences sharedPreferences = getSharedPreferences(user, MODE_PRIVATE);
-        return sharedPreferences.getString(game, "0");
-    }
+    
 }
