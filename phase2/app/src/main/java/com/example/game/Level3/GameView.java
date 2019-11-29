@@ -21,6 +21,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private GameManager level1Manager;
     private String time, color, point;
+    public String username;
     Drawable background;
     Drawable heart;
     ArrayList<Integer> colours;
@@ -28,9 +29,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MediaPlayer failure;
     private MediaPlayer whooshSound;
 
-    public GameView(Context context, String time, String color, String point) {
+    public GameView(Context context, String time, String color, String point, String name) {
         super(context);
         this.point = point;
+        this.username = name;
         this.time = time;
         this.color = color;
 
@@ -121,14 +123,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
-//        int p;
-//        if(point.equals("EASY"))
-//            p = 3;
-//        else
-//            p = 5;
-//        if (GameManager.score == p){
-//            thread.setRunning(false);
-//        }
         level1Manager.update();
 
     }

@@ -23,7 +23,8 @@ public class Level3 extends Activity {
         color = getIntent().getStringExtra("COLOR");
         time = getIntent().getStringExtra("TIME");
         point = getIntent().getStringExtra("POINTS");
-        setContentView(new GameView(this, time, color, point));
+        String username = getIntent().getStringExtra("name");
+        setContentView(new GameView(this, time, color, point, username));
     }
 
     @Override

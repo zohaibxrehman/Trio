@@ -41,14 +41,6 @@ public class GameStats extends AppCompatActivity {
 
             }
         });
-
-
-//        String Level2percent = Math.round(com.example.game.Level2.GameManager.percent) + "%";
-//        Level1.setText(String.valueOf(GameManager.finalScore));
-//        Level2.setText(Level2percent);
-//        Level3.setText(String.valueOf(com.example.game.Level3.GameManager.score));
-//        TotalScore.setText(loadData("guest", "total"));
-
     }
-    
+
 }
