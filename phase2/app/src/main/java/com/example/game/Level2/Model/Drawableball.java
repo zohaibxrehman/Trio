@@ -1,11 +1,11 @@
-package com.example.game.Level2;
+package com.example.game.Level2.Model;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
 public class Drawableball implements Drawable {
-    float x, y;
+    private float x, y;
     Drawableball pair;
     int color;
     boolean isTarget;
@@ -17,11 +17,11 @@ public class Drawableball implements Drawable {
         this.isTarget = false;
     }
 
-    boolean getIsTarget() {
+    public boolean getIsTarget() {
         return this.isTarget;
     }
 
-    void setTarget() {
+    public void setTarget() {
         this.isTarget = true;
     }
 
@@ -33,11 +33,11 @@ public class Drawableball implements Drawable {
         return y;
     }
 
-    Drawableball getPair(){
+    public Drawableball getPair(){
         return this.pair;
     }
 
-    boolean contains(float l, float m) {
+    public boolean contains(float l, float m) {
         if (x - 100 <= l && l <= x + 100) {
             return y - 100 <= m && m <= y + 100;
         }

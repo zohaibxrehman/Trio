@@ -1,4 +1,4 @@
-package com.example.game.Level2;
+package com.example.game.Level2.Model;
 
 import android.graphics.Color;
 
@@ -10,15 +10,15 @@ public class LeftBall extends Drawableball {
         this.touched = false;
     }
 
-    boolean getTouched() {
+    public boolean getTouched() {
         return touched;
     }
 
-    void setTouched() {
+    public void setTouched() {
         this.touched = true;
     }
 
-    void setColor() {
+    public void setColor() {
         if (this.pair.getIsTarget()) {
             this.color = Color.GREEN;
             this.pair.color = Color.GREEN;

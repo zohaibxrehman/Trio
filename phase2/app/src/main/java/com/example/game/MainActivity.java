@@ -48,6 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             Toast.makeText(MainActivity.this, "Incomplete info:))", Toast.LENGTH_SHORT).show();
             return;
         }
+
         switch (v.getId()) {
             case R.id.login:
                 reference.addValueEventListener(new ValueEventListener() {

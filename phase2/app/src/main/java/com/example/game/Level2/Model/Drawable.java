@@ -1,4 +1,4 @@
-package com.example.game.Level2;
+package com.example.game.Level2.Model;
 
 import android.graphics.Canvas;
 

@@ -1,4 +1,4 @@
-package com.example.game.Level2;
+package com.example.game.Level2.View;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.example.game.R;
 
 public class Game2Instructions extends Activity {
+    public String gameMode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class Game2Instructions extends Activity {
 
     public void Mode1Game(View view) {
         Intent intent = new Intent(this, Level2Activity.class);
+        intent.putExtra(gameMode, 1);
         startActivity(intent);
     }
 

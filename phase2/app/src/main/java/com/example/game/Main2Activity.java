@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.game.Level1.Customise1;
-import com.example.game.Level2.Game2Instructions;
+import com.example.game.Level2.View.Game2Instructions;
 import com.example.game.Level3.customise;
 
 

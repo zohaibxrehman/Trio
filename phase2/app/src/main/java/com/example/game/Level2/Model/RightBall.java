@@ -1,4 +1,4 @@
-package com.example.game.Level2;
+package com.example.game.Level2.Model;
 
 import android.graphics.Color;
 
@@ -9,7 +9,7 @@ public class RightBall extends Drawableball {
     }
 
     @Override
-    void setTarget(){
+    public void setTarget(){
         this.isTarget = true;
         this.color = Color.YELLOW;
     }

@@ -1,4 +1,4 @@
-package com.example.game.Level2;
+package com.example.game.Level2.Model;
 
 import android.graphics.Color;
 import android.util.Pair;
@@ -15,7 +15,7 @@ public class MakeObjects {
     private List<Line> lines;
     private int difficulty;
 
-    MakeObjects(int difficulty){
+    public MakeObjects(int difficulty){
         this.difficulty = difficulty;
         right = new ArrayList<>();
         left = new ArrayList<>();

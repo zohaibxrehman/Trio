@@ -187,3 +187,7 @@ Step 31:
 Member: Uttkarsh Berwal
 Commit made: Cleaned the architecture and removed some extra dependencies in Level1. Also, grouped
 them into different packages.
+
+Step 32:
+Member: Rutav Shah
+Commit made: Added files for MVP architecture. Implemented Strategy design Pattern for game modes.

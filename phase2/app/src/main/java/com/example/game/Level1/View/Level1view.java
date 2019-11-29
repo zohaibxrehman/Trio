@@ -305,7 +305,7 @@ import android.view.SurfaceView;
 import com.example.game.Level1.Entities.GameManager;
 import com.example.game.Level1.Logic.Game1Presenter;
 import com.example.game.Level1.Logic.Game1View;
-import com.example.game.Level2.Level2Activity;
+import com.example.game.Level2.View.Game2Instructions;
 import com.example.game.R;
 
 /**
@@ -458,7 +458,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
 
     @Override
     public void moveToNextGame() {
-        context.startActivity(new Intent(this.context, Level2Activity.class));
+        context.startActivity(new Intent(this.context, Game2Instructions.class));
     }
 }
 
