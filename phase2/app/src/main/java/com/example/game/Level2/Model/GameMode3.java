@@ -6,12 +6,14 @@ public class GameMode3 implements Algorithms {
     private int tries;
     private int score;
     private double percent;
+    private boolean gameOver;
 
     public GameMode3(MakeObjects objects){
         this.objects = objects;
         this.tries = 0;
         this.score = 0;
         this.percent = 0.0;
+        this.gameOver = false;
     }
 
     @Override
@@ -20,22 +22,27 @@ public class GameMode3 implements Algorithms {
     }
 
     @Override
-    public void resetGame() {
-
+    public int getTries() {
+        return this.tries;
     }
 
     @Override
     public int getScore() {
-        return getScore();
-    }
-
-    @Override
-    public int getTries() {
-        return getTries();
+        return score;
     }
 
     @Override
     public double getPercent() {
-        return getPercent();
+        return this.percent;
+    }
+
+    @Override
+    public boolean getGameOver() {
+        return this.gameOver;
+    }
+
+    @Override
+    public void resetGame() {
+        objects.resetGame();
     }
 }

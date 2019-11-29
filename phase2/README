@@ -199,3 +199,7 @@ Commit made: Converted all reading and writing in main code to use firebase data
 Step 34:
 Member: Rutav Shah
 Commit made: Fixed android manifest.
+
+Step 35:
+Member: Rutav Shah
+Commit made: Added other game modes, followed MVP structure.

@@ -10,4 +10,6 @@ public interface Algorithms{
     int getTries();
 
     double getPercent();
+
+    boolean getGameOver();
 }

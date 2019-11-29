@@ -3,7 +3,9 @@ package com.example.game.Level2.Model;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public class Line {
+import com.example.game.Level2.Presenter.DrawObjects;
+
+public class Line implements Drawable {
 
     private float x, y, z, a;
     private int color;

@@ -1,6 +1,7 @@
 package com.example.game.Level2.Model;
 
 import android.graphics.Color;
+import android.media.CamcorderProfile;
 
 public class LeftBall extends Drawableball {
     private boolean touched;
@@ -26,5 +27,15 @@ public class LeftBall extends Drawableball {
             this.color = Color.RED;
             this.pair.color = Color.RED;
         }
+    }
+
+    public void setGreen(){
+        this.color = Color.GREEN;
+        this.pair.color = Color.GREEN;
+    }
+
+    public void setRed(){
+        this.color = Color.RED;
+        this.pair.color = Color.RED;
     }
 }
