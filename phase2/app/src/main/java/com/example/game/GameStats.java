@@ -31,9 +31,9 @@ public class GameStats extends AppCompatActivity {
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Level1.setText(dataSnapshot.child("level1").getValue().toString());
-                Level2.setText(dataSnapshot.child("level2").getValue().toString());
-                Level3.setText(dataSnapshot.child("level3").getValue().toString());
+                Level1.setText(Long.toString((Long)dataSnapshot.child("level1").getValue()));
+                Level2.setText(Long.toString((Long)dataSnapshot.child("level2").getValue()));
+                Level3.setText(Long.toString((Long)dataSnapshot.child("level3").getValue()));
             }
 
             @Override

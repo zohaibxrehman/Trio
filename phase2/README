@@ -191,3 +191,7 @@ them into different packages.
 Step 32:
 Member: Rutav Shah
 Commit made: Added files for MVP architecture. Implemented Strategy design Pattern for game modes.
+
+Step 33:
+Member: Sargunan Gurumurthy
+Commit made: Converted all reading and writing in main code to use firebase database.
