@@ -9,10 +9,7 @@ import com.example.game.Level2.Model.Algorithms;
 import com.example.game.Level2.Model.GameMode1;
 import com.example.game.Level2.Model.GameMode2;
 import com.example.game.Level2.Model.GameMode3;
-import com.example.game.Level2.Model.LeftBall;
-import com.example.game.Level2.Model.Line;
 import com.example.game.Level2.Model.MakeObjects;
-import com.example.game.Level2.Model.RightBall;
 
 public class GameManager {
     private static int gridHeight;
@@ -37,6 +34,7 @@ public class GameManager {
     }
 
     private void setGameMode(int gameMode){
+        System.out.println("hi");
         if (gameMode == 1){
             this.algorithm = new GameMode1(this.makeObjects);
         } else if (gameMode == 2){
@@ -53,16 +51,9 @@ public class GameManager {
         scorePaint.setTextSize(50);
         Paint messagePaint = new Paint();
         messagePaint.setColor(Color.WHITE);
+        DrawObjects drawObjects = new DrawObjects();
         canvas.drawColor(Color.BLACK);
-        for (Line line: makeObjects.getLines()){
-            line.draw(canvas);
-        }
-        for (RightBall ball: makeObjects.getRight()) {
-            ball.draw(canvas);
-        }
-        for (LeftBall ball: makeObjects.getLeft()) {
-            ball.draw(canvas);
-        }
+        drawObjects.draw(canvas, makeObjects);
         score = algorithm.getScore();
         canvas.drawText("Total Correct: " + score, 100, 1950, scorePaint);
         percent = algorithm.getPercent();
@@ -70,8 +61,8 @@ public class GameManager {
     }
 
     public void buttonPressed(float x, float y) {
+
         algorithm.buttonPressed(x, y);
     }
-
 
 }

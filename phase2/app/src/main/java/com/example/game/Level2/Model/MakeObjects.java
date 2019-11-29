@@ -3,6 +3,8 @@ package com.example.game.Level2.Model;
 import android.graphics.Color;
 import android.util.Pair;
 
+import com.example.game.Level2.Presenter.DrawObjects;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class MakeObjects {
     private List<RightBall> right;
 
     private List<LeftBall> left;
-
+    private List<Drawable> allObjects;
     private List<Line> lines;
     private int difficulty;
 
@@ -20,6 +22,7 @@ public class MakeObjects {
         right = new ArrayList<>();
         left = new ArrayList<>();
         lines = new ArrayList<>();
+        allObjects = new ArrayList<>();
         makeBalls(difficulty);
         makePairs();
         setTarget();
@@ -33,6 +36,8 @@ public class MakeObjects {
             RightBall pair = new RightBall(900, count, Color.BLUE);
             right.add(pair);
             left.add(b);
+            allObjects.add(pair);
+            allObjects.add(b);
             count += 400;
         }
     }
@@ -62,6 +67,10 @@ public class MakeObjects {
             lines.add(l1);
             lines.add(l2);
             lines.add(l3);
+            allObjects.add(l1);
+            allObjects.add(l2);
+            allObjects.add(l3);
+
         }
     }
     private void setTarget() {
@@ -100,10 +109,13 @@ public class MakeObjects {
         return lines;
     }
 
+    public List<Drawable> getAllObjects(){return allObjects;}
+
     public void resetGame(){
         left = new ArrayList<>();
         right = new ArrayList<>();
         lines = new ArrayList<>();
+        allObjects = new ArrayList<>();
         makeBalls(difficulty);
         makePairs();
         setTarget();

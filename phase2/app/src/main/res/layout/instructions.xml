@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:onClick="Mode2Game"
             android:text="Mode 2" />
 
         <Button
@@ -68,6 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:onClick="Mode3Game"
             android:text="Mode 3" />
 
         <Button

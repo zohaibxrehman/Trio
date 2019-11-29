@@ -35,4 +35,16 @@ public class Game2Instructions extends Activity {
         startActivity(intent);
     }
 
+    public void Mode2Game(View view){
+        Intent intent = new Intent(this, Level2Activity.class);
+        intent.putExtra(gameMode, 2);
+        startActivity(intent);
+    }
+
+    public void Mode3Game(View view){
+        Intent intent = new Intent(this, Level2Activity.class);
+        intent.putExtra(gameMode, 3);
+        startActivity(intent);
+    }
+
 }
