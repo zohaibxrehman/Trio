@@ -91,6 +91,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
                            reference.child(username).child("level1").setValue(0);
                            reference.child(username).child("level2").setValue(0);
                            reference.child(username).child("level3").setValue(0);
+                           Intent gotogames = new Intent(MainActivity.this, Main2Activity.class);
+                           gotogames.putExtra("name", username);
+                           startActivity(gotogames);
                        }
                    }
 
