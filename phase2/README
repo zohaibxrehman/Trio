@@ -195,3 +195,7 @@ Commit made: Added files for MVP architecture. Implemented Strategy design Patte
 Step 33:
 Member: Sargunan Gurumurthy
 Commit made: Converted all reading and writing in main code to use firebase database.
+
+Step 34:
+Member: Rutav Shah
+Commit made: Fixed android manifest.
