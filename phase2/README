@@ -203,3 +203,7 @@ Commit made: Fixed android manifest.
 Step 35:
 Member: Rutav Shah
 Commit made: Added other game modes, followed MVP structure.
+
+Step 36:
+Member: Sargunan Gurumurthy
+Commit Made: Modified code to use firebase to calculate highscore for game 3.
