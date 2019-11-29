@@ -199,3 +199,7 @@ Commit made: Converted all reading and writing in main code to use firebase data
 Step 34:
 Member: Rutav Shah
 Commit made: Fixed android manifest.
+
+Step 35:
+Member: Sargunan Gurumurthy
+Commit made: Modified code to use firebase to calculate highscore for game 3.

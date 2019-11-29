@@ -96,9 +96,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             p = 5;
 
         if(time.equals("3 seconds"))
-            level1Manager = new GameManager(bmpColours(), heart,25, p);
+            level1Manager = new GameManager(bmpColours(), heart,25, p, username);
         else
-            level1Manager = new GameManager(bmpColours(), heart,50, p);
+            level1Manager = new GameManager(bmpColours(), heart,50, p, username);
         level1Manager.addSuccessSound(success);
         level1Manager.addFailureSound(failure);
         level1Manager.addWhooshSound(whooshSound);
