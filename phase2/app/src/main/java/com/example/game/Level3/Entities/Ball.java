@@ -1,20 +1,17 @@
-package com.example.game.Level3;
+package com.example.game.Level3.Entities;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-class Ball {
+public class Ball {
 
     private Bitmap currentImage;
     private Bitmap image;
-    static Bitmap hiddenImage;
+    public static Bitmap hiddenImage;
     private int x, y;
     private boolean touched;
-    private boolean score;
-    private boolean win;
 
-
-    Ball (Bitmap bmp, int x, int y) {
+    public Ball(Bitmap bmp, int x, int y) {
         currentImage = bmp;
         image = bmp;
         this.x = x;
@@ -22,37 +19,37 @@ class Ball {
         touched = false;
     }
 
-    void draw(Canvas canvas) {
+    public void draw(Canvas canvas) {
         canvas.drawBitmap(currentImage, x, y, null);
     }
 
-    void hide() {
-        currentImage = hiddenImage;
+    public void hide() {
+        this.currentImage = hiddenImage;
     }
 
-    void show() {
-        currentImage = image;
+    public void show() {
+        this.currentImage = image;
     }
 
-    boolean isTouched() {
+    public boolean isTouched() {
         return touched;
     }
 
-    boolean contains(float touchX, float touchY) {
+    public boolean contains(float touchX, float touchY) {
         return x <= touchX && touchX <= x + image.getWidth()
                 && y <= touchY && touchY <= y + image.getHeight();
     }
 
 
-    void changeColour(Bitmap newBmp) {
+    public void changeColour(Bitmap newBmp) {
         this.image = newBmp;
     }
 
-    void setTouched(boolean b){
+    public void setTouched(boolean b){
         touched = b;
     }
 
-    boolean equals(Ball that) {
+    public boolean equals(Ball that) {
         return this.currentImage.sameAs(that.currentImage);
     }
 }

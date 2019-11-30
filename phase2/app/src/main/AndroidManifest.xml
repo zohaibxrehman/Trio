@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Level1.Customise1"></activity>
-        <activity android:name=".Level3.customise" />
+        <activity android:name=".Level3.UserInterface.Customise" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".GameStats" />
         <activity android:name=".Level1.View.Level1" />
         <activity android:name=".Level2.View.Level2Activity" />
-        <activity android:name=".Level3.Level3" />
+        <activity android:name=".Level3.UserInterface.Level3" />
         <activity android:name=".Level2.View.Game2Instructions" />
         <activity android:name=".MainActivity">
             <intent-filter>

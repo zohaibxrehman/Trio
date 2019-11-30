@@ -1,11 +1,10 @@
-package com.example.game.Level3;
+package com.example.game.Level3.UserInterface;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
 
 import com.example.game.R;
 

@@ -1,16 +1,16 @@
-package com.example.game.Level3;
+package com.example.game.Level3.GameElements;
 
 public class GameEngineer {
     private GameBuilder gameBuilder;
-    GameEngineer(GameBuilder gameBuilder){
+    public GameEngineer(GameBuilder gameBuilder){
         this.gameBuilder = gameBuilder;  // Dependency Injection
     }
 
-    GameElements getGameElements(){
+    public GameElements getGameElements(){
         return this.gameBuilder.getGameElements();
     }
 
-    void constructGame(){
+    public void constructGame(){
         this.gameBuilder.buildBalls();
         this.gameBuilder.buildMemoryBall();
         this.gameBuilder.buildBitmapColours();

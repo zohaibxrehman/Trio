@@ -1,23 +1,24 @@
-package com.example.game.Level3;
+package com.example.game.Level3.GameElements;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+
+import com.example.game.Level3.Entities.Ball;
+import com.example.game.Level3.Sound.SoundFacade;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameBuilder {
     private GameElements gameElements;
-    private  SoundFacade soundFacade;
-    ArrayList<Bitmap> bitmapColours;
-    Drawable heart;
+    private ArrayList<Bitmap> bitmapColours;
+    private Drawable heart;
     int time;
     int point;
 
 
-    GameBuilder(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p){
+    public GameBuilder(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p){
         this.gameElements = new GameElements();
-        this.soundFacade = new SoundFacade();
         this.bitmapColours = bitmapColours;
         this.heart = heart;
         this.time = time;
@@ -40,42 +41,43 @@ public class GameBuilder {
         gameElements.setBalls(balls);
     }
 
-    public void buildMemoryBall() {
+    void buildMemoryBall() {
         gameElements.setMemoryBall(new Ball(this.bitmapColours.get(ThreadLocalRandom.current().nextInt(0, 9)), 450, 1500));
+        this.gameElements.memoryBall.hide();
     }
 
-    public void buildBitmapColours() {
+    void buildBitmapColours() {
         gameElements.setBitmapColours(this.bitmapColours);
     }
 
-    public void buildGameRefreshElements() {
+    void buildGameRefreshElements() {
         gameElements.setShowCount(0);
         gameElements.setNumberOfRefreshes(0);
         gameElements.setHiddenState(false);
     }
 
 
-    public void buildScore() {
+    void buildScore() {
         gameElements.setScore(0);
     }
 
-    public void buildLives() {
+    void buildLives() {
         gameElements.setLives(7);
     }
 
-    public void buildHeart() {
+    void buildHeart() {
         gameElements.setHeart(this.heart);
     }
 
-    public void buildLevel() {
+    void buildLevel() {
         gameElements.setLevel(1);
     }
 
-    public void buildTime() {
+    void buildTime() {
         gameElements.setTime(this.time);
     }
 
-    public void buildPoint() {
+    void buildPoint() {
         gameElements.setPoint(point);
     }
 

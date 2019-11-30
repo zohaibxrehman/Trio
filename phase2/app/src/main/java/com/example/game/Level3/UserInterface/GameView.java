@@ -1,17 +1,18 @@
-package com.example.game.Level3;
+package com.example.game.Level3.UserInterface;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 
+import com.example.game.Level3.Entities.Ball;
+import com.example.game.Level3.GameLogic.GameManager;
 import com.example.game.R;
 
 import java.util.ArrayList;

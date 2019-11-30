@@ -1,4 +1,4 @@
-package com.example.game.Level3;
+package com.example.game.Level3.UserInterface;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
@@ -12,7 +12,7 @@ public class MainThread extends Thread {
     private double averageFPS;
 
 
-    public MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
+    MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
 
 
         super();
@@ -75,7 +75,7 @@ public class MainThread extends Thread {
 
     }
 
-    public void setRunning(boolean isRunning) {
+    void setRunning(boolean isRunning) {
         running = isRunning;
     }
 }

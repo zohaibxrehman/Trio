@@ -1,6 +1,4 @@
-package com.example.game.Level3;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.game.Level3.UserInterface;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +10,7 @@ import android.widget.RadioGroup;
 
 import com.example.game.R;
 
-public class customise extends Activity {
+public class Customise extends Activity {
 
     RadioGroup color, time, points;
     RadioButton col, tim, point;
@@ -32,7 +30,7 @@ public class customise extends Activity {
                 col = findViewById(color.getCheckedRadioButtonId());
                 tim = findViewById(time.getCheckedRadioButtonId());
                 point = findViewById(points.getCheckedRadioButtonId());
-                Intent i = new Intent(customise.this, Level3.class);
+                Intent i = new Intent(Customise.this, Level3.class);
                 i.putExtra("COLOR", col.getText().toString());
                 i.putExtra("TIME", tim.getText().toString());
                 i.putExtra("POINTS", point.getText().toString());

@@ -215,3 +215,8 @@ Commit made: Implemented Builder Design Pattern in Game 3 for building game elem
 Step 38:
 Member: Zohaib Rehman
 Commit made: Implemented Builder Design Pattern in Game 3 for building a facade for sounds
+
+Step 39:
+Member: Zohaib Rehman
+Commit made: Added packaging to game 3 and changed some access modifiers to package-private for
+data protection and others to public to support packaging

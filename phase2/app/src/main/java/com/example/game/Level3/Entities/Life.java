@@ -1,4 +1,4 @@
-package com.example.game.Level3;
+package com.example.game.Level3.Entities;
 
 
 import android.graphics.Bitmap;

@@ -1,4 +1,4 @@
-package com.example.game.Level3;
+package com.example.game.Level3.GameLogic;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -7,6 +7,14 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import androidx.annotation.NonNull;
+
+import com.example.game.Level3.Entities.Ball;
+import com.example.game.Level3.GameElements.GameBuilder;
+import com.example.game.Level3.GameElements.GameElements;
+import com.example.game.Level3.GameElements.GameEngineer;
+import com.example.game.Level3.Sound.SoundBuilder;
+import com.example.game.Level3.Sound.SoundEngineer;
+import com.example.game.Level3.Sound.SoundFacade;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +30,7 @@ public class GameManager implements ValueEventListener{
     private GameElements gameElements;
     private SoundFacade soundFacade;
 
-    GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p, MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh, String name) {
+    public GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p, MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh, String name) {
         GameBuilder gameBuilder = new GameBuilder(bitmapColours, heart, time, p);
         GameEngineer gameEngineer = new GameEngineer(gameBuilder);
         gameEngineer.constructGame();
@@ -39,7 +47,7 @@ public class GameManager implements ValueEventListener{
         Collections.shuffle(gameElements.bitmapColours);
     }
 
-    void draw(Canvas canvas) {
+    public void draw(Canvas canvas) {
         for (Ball ball: this.gameElements.balls) {
             if (ball != null)
                 ball.draw(canvas);
@@ -70,7 +78,7 @@ public class GameManager implements ValueEventListener{
 
 
 
-    void update() {
+    public void update() {
         if (!this.gameElements.hiddenState) {
             if (this.gameElements.showCount == this.gameElements.time) {
                 for (Ball b : this.gameElements.balls) {
@@ -91,9 +99,9 @@ public class GameManager implements ValueEventListener{
     }
 
 
-    void select(float touchX, float touchY) {
+    public void select(float touchX, float touchY) {
         if (this.gameElements.hiddenState) {
-            for (Ball b: gameElements.balls){
+            for (Ball b: this.gameElements.balls){
                 if (b.contains(touchX, touchY) && !b.isTouched()) {
                     b.show();
                     b.setTouched(true);
@@ -104,6 +112,7 @@ public class GameManager implements ValueEventListener{
                         if (this.gameElements.numberOfRefreshes % 3 == 0){
                             this.gameElements.level++;
                         }
+                        System.out.println("Success!");
                         this.soundFacade.success.start();
                         try {
                             Thread.sleep(1000);

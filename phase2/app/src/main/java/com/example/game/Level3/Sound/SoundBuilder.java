@@ -1,4 +1,4 @@
-package com.example.game.Level3;
+package com.example.game.Level3.Sound;
 
 import android.media.MediaPlayer;
 
@@ -8,7 +8,7 @@ public class SoundBuilder {
     private MediaPlayer failure;
     private MediaPlayer whooshSound;
 
-    SoundBuilder(MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh) {
+    public SoundBuilder(MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh) {
         this.success = success;
         this.failure = failure;
         this.whooshSound = whoosh;
@@ -27,7 +27,7 @@ public class SoundBuilder {
         soundFacade.setSuccess(this.success);
     }
 
-    public SoundFacade getSoundFacade() {
+    SoundFacade getSoundFacade() {
         return this.soundFacade;
     }
 }

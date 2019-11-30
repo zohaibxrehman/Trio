@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import com.example.game.Level1.Customise1;
 import com.example.game.Level2.View.Game2Instructions;
-import com.example.game.Level3.customise;
+import com.example.game.Level3.UserInterface.Customise;
 
 
 public class Main2Activity extends Activity implements View.OnClickListener{
@@ -45,7 +45,7 @@ public class Main2Activity extends Activity implements View.OnClickListener{
                 startActivity(i2);
                 break;
             case R.id.imageButtonGame3:
-                Intent i3 = new Intent(this, customise.class);
+                Intent i3 = new Intent(this, Customise.class);
                 i3.putExtra("name", username);
                 startActivity(i3);
                 break;
