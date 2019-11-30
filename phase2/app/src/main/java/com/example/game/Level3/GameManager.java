@@ -17,52 +17,72 @@ import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameManager implements ValueEventListener{
-    private ArrayList<Ball> balls;
-    private Ball memoryBall;
-    private int showCount;
-    private boolean hiddenState;
-    public int score;
-    private int time;
-    private ArrayList<Bitmap> bitmapColours;
-    private int lives;
-    private int point;
-    private Drawable heart;
+//    private ArrayList<Ball> balls;
+//    private Ball memoryBall;
+//    private int showTime;
+//    private boolean hiddenState;
+//    public int score;
+//    private int time;
+//    private ArrayList<Bitmap> bitmapColours;
+//    private int lives;
+//    private int point;
+//    private int level;
+//    private int numberOfRefreshes;
+//    private Drawable heart;
     private MediaPlayer success;
     private MediaPlayer failure;
     private MediaPlayer whooshSound;
     public String name;
     private DatabaseReference reference;
+    private GameElements gameElements;
 
     GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p, String name) {
-        balls = new ArrayList<>();
-        hiddenState = false;
-        this.time = time;
-        this.point = p;
-        showCount = 0;
-        score = 0;
-        lives = 7;
+        GameBuilder gameBuilder = new GameBuilder(bitmapColours, heart, time, p);
+        GameEngineer gameEngineer = new GameEngineer(gameBuilder);
+        gameEngineer.constructGame();
+        this.gameElements = gameEngineer.getGameElements();
+//        SoundFacade soundFacade = gameEngineer.getSoundFacade();
+
+//        memoryBall = new Ball(bitmapColours.get(ThreadLocalRandom.current().nextInt(0, 9)), 450, 1500);
+//        memoryBall.hide();
+//
+//        balls = new ArrayList<>();
+//        balls.add(new Ball(bitmapColours.get(0), 100,100));
+//        balls.add(new Ball(bitmapColours.get(1), 450, 100));
+//        balls.add(new Ball(bitmapColours.get(2),  800, 100));
+//
+//        balls.add(new Ball(bitmapColours.get(3), 100,550));
+//        balls.add(new Ball(bitmapColours.get(4), 450, 550));
+//        balls.add(new Ball(bitmapColours.get(5), 800, 550));
+//
+//        balls.add(new Ball(bitmapColours.get(6), 100,1000));
+//        balls.add(new Ball(bitmapColours.get(7), 450, 1000));
+//        balls.add(new Ball(bitmapColours.get(8), 800, 1000));
+//
+//        this.bitmapColours = bitmapColours;
+//
+//
+//        hiddenState = false;
+//        showTime = 0;
+//        this.numberOfRefreshes = 0;
+//
+//
+//        this.heart = heart;
+//        score = 0;
+//        lives = 7;
+//        this.level = 1;
+//
+//
+//        this.time = time;
+//        this.point = p;
+//
         this.name = name;
-        this.heart = heart;
+//
         this.reference = FirebaseDatabase.getInstance().getReference().child(name);
-        this.bitmapColours = bitmapColours;
-        Collections.shuffle(bitmapColours);
-        balls.add(new Ball(bitmapColours.get(0), 100,100));
-        balls.add(new Ball(bitmapColours.get(1), 450, 100));
-        balls.add(new Ball(bitmapColours.get(2),  800, 100));
-
-        balls.add(new Ball(bitmapColours.get(3), 100,550));
-        balls.add(new Ball(bitmapColours.get(4), 450, 550));
-        balls.add(new Ball(bitmapColours.get(5), 800, 550));
-
-        balls.add(new Ball(bitmapColours.get(6), 100,1000));
-        balls.add(new Ball(bitmapColours.get(7), 450, 1000));
-        balls.add(new Ball(bitmapColours.get(8), 800, 1000));
-
-        memoryBall = new Ball(bitmapColours.get(ThreadLocalRandom.current().nextInt(0, 9)), 450, 1500);
-        memoryBall.hide();
+        Collections.shuffle(gameElements.bitmapColours);
     }
 
-    public void addSuccessSound(MediaPlayer success){
+    void addSuccessSound(MediaPlayer success){
         this.success = success;
     }
 
@@ -75,58 +95,69 @@ public class GameManager implements ValueEventListener{
     }
 
     void draw(Canvas canvas) {
-        for (Ball ball: balls) {
+        for (Ball ball: gameElements.balls) {
             if (ball != null)
                 ball.draw(canvas);
         }
 
-        memoryBall.draw(canvas);
+        gameElements.memoryBall.draw(canvas);
         Paint scorePaint = new Paint();
         scorePaint.setColor(Color.WHITE);
         scorePaint.setTextSize(100);
+        canvas.drawText("Score: " + gameElements.score, 700, 1800, scorePaint);
 
-        canvas.drawText("Score: " + score, 700, 1800, scorePaint);
+        Paint levelPaint = new Paint();
+        levelPaint.setColor(Color.WHITE);
+        levelPaint.setTextSize(100);
+        canvas.drawText("Level: " + gameElements.level, 700, 1600, levelPaint);
+
+
         int startX = 25;
         int endX = 175;
-
-        for (int i = 0; i < lives; i++){
-            heart.setBounds(startX, 1850, endX, 2000);
-            heart.draw(canvas);
+        for (int i = 0; i < gameElements.lives; i++){
+            gameElements.heart.setBounds(startX, 1850, endX, 2000);
+            gameElements.heart.draw(canvas);
             startX += 150;
             endX += 150;
         }
     }
 
+
+
     void update() {
-        if (!hiddenState) {
-            if (showCount == time) {
-                for (Ball b : balls) {
+        if (!gameElements.hiddenState) {
+            if (gameElements.showCount == gameElements.time) {
+                for (Ball b : gameElements.balls) {
                     b.hide();
-                    memoryBall.show();
+                    gameElements.memoryBall.show();
                     whooshSound.start();
                 }
-                hiddenState = true;
-            } else if (showCount < time) {
-                showCount++;
+                gameElements.hiddenState = true;
+            } else if (gameElements.showCount < gameElements.time) {
+                gameElements.showCount++;
             }
         }
 
-        if (lives == 0){
-//            System.exit(0);
+        if (gameElements.lives == 0){
+            System.exit(0);
             reference.addListenerForSingleValueEvent(this);
         }
     }
 
 
     void select(float touchX, float touchY) {
-        if (hiddenState) {
-            for (Ball b: balls){
+        if (gameElements.hiddenState) {
+            for (Ball b: gameElements.balls){
                 if (b.contains(touchX, touchY) && !b.isTouched()) {
                     b.show();
                     b.setTouched(true);
 
-                    if (b.equals(memoryBall)) {
-                        score++;
+                    if (b.equals(gameElements.memoryBall)) {
+                        gameElements.score++;
+                        gameElements.numberOfRefreshes = this.gameElements.numberOfRefreshes + 1;
+                        if (gameElements.numberOfRefreshes % 3 == 0){
+                            gameElements.level++;
+                        }
                         this.success.start();
                         try {
                             Thread.sleep(1000);
@@ -135,7 +166,7 @@ public class GameManager implements ValueEventListener{
                         }
                         resetGame();
                     } else {
-                        lives--;
+                        gameElements.lives--;
                         this.failure.start();
                     }
                 }
@@ -144,25 +175,25 @@ public class GameManager implements ValueEventListener{
     }
 
     private void resetGame(){
-        showCount = 0;
-        hiddenState = false;
+        gameElements.showCount = 0;
+        gameElements.hiddenState = false;
 
-        Collections.shuffle(bitmapColours);
+        Collections.shuffle(gameElements.bitmapColours);
         for(int i = 0; i < 9; i++) {
-            balls.get(i).changeColour(bitmapColours.get(i));
-            balls.get(i).show();
-            balls.get(i).setTouched(false);
+            gameElements.balls.get(i).changeColour(gameElements.bitmapColours.get(i));
+            gameElements.balls.get(i).show();
+            gameElements.balls.get(i).setTouched(false);
         }
-        memoryBall.changeColour(bitmapColours.get(ThreadLocalRandom.current().nextInt(0, 9)));
-        memoryBall.hide();
+        gameElements.memoryBall.changeColour(gameElements.bitmapColours.get(ThreadLocalRandom.current().nextInt(0, 9)));
+        gameElements.memoryBall.hide();
         whooshSound.start();
     }
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         Long oldScore = (Long) dataSnapshot.child("level3").getValue();
-        if(oldScore < this.score)
-            this.reference.child("level3").setValue(score);
+        if(oldScore < gameElements.score)
+            this.reference.child("level3").setValue(gameElements.score);
     }
 
     @Override

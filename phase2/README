@@ -206,4 +206,8 @@ Commit made: Added other game modes, followed MVP structure.
 
 Step 36:
 Member: Sargunan Gurumurthy
-Commit Made: Modified code to use firebase to calculate highscore for game 3.
+Commit made: Modified code to use firebase to calculate highscore for game 3.
+
+Step 37:
+Member: Zohaib Rehman
+Commit made: Implemented Builder Design Pattern in Game 3 for building game elements.
