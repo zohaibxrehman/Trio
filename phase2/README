@@ -220,3 +220,8 @@ Step 39:
 Member: Zohaib Rehman
 Commit made: Added packaging to game 3 and changed some access modifiers to package-private for
 data protection and others to public to support packaging
+
+Step 40:
+Member: Uttkarsh Berwal
+Commit made: Removed the left and right move buttons from Level1 and added a touch & slide control.
+Also removed some unwanted dependencies in the code.

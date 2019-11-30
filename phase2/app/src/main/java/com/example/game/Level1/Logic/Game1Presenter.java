@@ -22,9 +22,9 @@ public class Game1Presenter implements Game1Interactor.Buttons {
 //    }
 
 
-    public void checkButtonPressed(int touchX, int touchY, GameManager manager) {
+    public void ballMove(float touchX, GameManager manager) {
 
-        game1Interactor.buttonPressed(touchX,touchY,manager);
+        game1Interactor.ballMove(touchX, manager);
 
 
     }

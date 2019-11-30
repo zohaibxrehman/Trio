@@ -338,8 +338,8 @@ public class GameManager {
     protected static int gridHeight;
     protected static int gridWidth;
     private Ball b;
-    private Button left;
-    private Button right;
+    //private Button left;
+   // private Button right;
     private Paint paintText = new Paint();
     private boolean flag = false;
     private String ballColor;
@@ -349,8 +349,12 @@ public class GameManager {
     public static int finalScore=0;
    // private Game1Presenter presenter;
     private ArrayList<Barrier> items = new ArrayList<>();
+    float x, y;
+
 
     public GameManager(int height, int width, String points, String ballColor){//, Game1Presenter presenter) {
+         this.x = 500;
+//        this.y = 1600;
         gridHeight = height;
        // this.presenter = presenter;
         gridWidth = width;
@@ -385,11 +389,11 @@ public class GameManager {
         Barrier b4 = new Barrier(30);
         items.add(b4);
 
-        b = new Ball(15, 40, ballColor);
+        b = new Ball(100, 1700, ballColor);
 
         // button
-        left = new Button(Level1view.leftButtonImage, 100, 1800);
-        right = new Button(Level1view.rightButtonImage, 800, 1800);
+       // left = new Button(Level1view.leftButtonImage, 100, 1800);
+        //right = new Button(Level1view.rightButtonImage, 800, 1800);
 
     }
 
@@ -406,7 +410,8 @@ public class GameManager {
             {
                 // checks if the ball collides
 
-                if(!temp.contains(b.getX())) {
+                if(!temp.contains((int)this.x)) {
+                    System.out.println((int)this.x);
                     if(this.livesLeft == 1) {
                         this.flag = true;
                         this.draw(Level1view.can);
@@ -461,9 +466,9 @@ public class GameManager {
         //
         //
 
-        b.draw(canvas);
-        left.draw(canvas);
-        right.draw(canvas);
+        b.draw(canvas, x);
+        //left.draw(canvas);
+        //right.draw(canvas);
         lives.get(0).draw(canvas);
         for(Life l:lives)
         {
@@ -504,7 +509,7 @@ public class GameManager {
      */
     private void addBarrierAtTop()
     {
-        int newBarrierHeight = items.get(0).getHeight();
+        float newBarrierHeight = items.get(0).getHeight();
         newBarrierHeight -= 10;
         // Adds barrier at the top
         Barrier b = new Barrier(newBarrierHeight);
@@ -515,15 +520,24 @@ public class GameManager {
      * Responds to the button either left or right button pressed.
      *
      * @param x     the x coordinate of the tap
-     * @param y     the y coordinate of the tap
+     //* @param y     the y coordinate of the tap
+     *
      */
-    public void buttonPressed(int x, int y)
+
+    public void ballMove(float x)
     {
-        if(left.contains(x, y)) {
-            b.moveLeft();
-        }
-        else if(right.contains(x, y)) {
-            b.moveRight();
-        }
+        setX(x);
+       // this.y = y;
+
+//        if(left.contains(x, y)) {
+//            b.moveLeft();
+//        }
+//        else if(right.contains(x, y)) {
+//            b.moveRight();
+//        }
+    }
+
+    private void setX(float x) {
+        this.x = x;
     }
 }

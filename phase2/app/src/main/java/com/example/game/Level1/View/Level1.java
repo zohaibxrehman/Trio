@@ -26,11 +26,14 @@ package com.example.game.Level1.View;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 public class Level1 extends Activity {// Game1View{
    // Game1Presenter presenter;
+    float x,y;
     @Override
     protected void onCreate(Bundle savedInstances) {
         super.onCreate(savedInstances);
@@ -49,6 +52,8 @@ public class Level1 extends Activity {// Game1View{
 
 
     }
+
+
 
 //    @Override
 //    public void moveToNextGame() {

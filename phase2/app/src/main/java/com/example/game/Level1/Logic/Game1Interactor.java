@@ -7,9 +7,9 @@ import com.example.game.Level1.Entities.GameManager;
 public class Game1Interactor {
 
 
-    public void buttonPressed(int touchX, int touchY, GameManager manager) {
+    public void ballMove(float touchX, GameManager manager) {
 
-        manager.buttonPressed(touchX, touchY);
+        manager.ballMove(touchX);
     }
 
     public void update(GameManager manager) {

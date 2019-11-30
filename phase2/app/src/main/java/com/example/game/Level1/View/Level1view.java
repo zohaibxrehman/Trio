@@ -330,7 +330,8 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
     private Context context;
 
 
-    public Level1view(Context context,String background, String ballcolor, String difficulty)
+
+    public Level1view(Context context, String background, String ballcolor, String difficulty)
                      // Game1Presenter presenter)
     {
 
@@ -375,6 +376,9 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
         charWidth = paintText.measureText("W");
         charHeight = (-paintText.ascent() + paintText.descent());
+        System.out.println("this height");
+        System.out.println(charHeight);
+        System.out.println(charWidth);
 
         gameManager = new GameManager((int) (screenHeight / charHeight),
                 (int) (screenWidth / charWidth), difficulty, ballcolor);//, presenter);
@@ -446,12 +450,27 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
-        if(event.getAction() == MotionEvent.ACTION_DOWN)
-        {
-            int touchX = (int)event.getX();
-            int touchY = (int)event.getY();
-            presenter.checkButtonPressed(touchX, touchY,gameManager);
+        //if(event.getAction() == MotionEvent.ACTION_DOWN)
+        if(event.getAction() == MotionEvent.ACTION_MOVE) {
+//            case MotionEvent.ACTION_DOWN:
+//                int touchX = (int) event.getX();
+//                int touchY = (int) event.getY();
+//                presenter.checkButtonPressed(touchX, touchY, gameManager);
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                int touchX = (int) event.getX();
+//                int touchY = (int) event.getY();
+//                presenter.checkButtonPressed(touchX, touchY, gameManager);
+//                break;
+            //case MotionEvent.ACTION_MOVE:
+                int touchX = (int) event.getX();
+
+                presenter.ballMove(touchX, gameManager);
+
+
             //gameManager.buttonPressed(touchX, touchY);
+
+
         }
         return true;
     }

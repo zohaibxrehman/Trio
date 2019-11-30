@@ -120,9 +120,12 @@
 
 package com.example.game.Level1.Entities;
 
+import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.game.Level1.View.Level1view;
 
@@ -132,8 +135,8 @@ import com.example.game.Level1.View.Level1view;
  */
 public class Ball {
 
-    private int x;
-    private int y;
+    private float x;
+    private float y;
     private Paint paintText = new Paint();
 
     Ball(int x, int y, String ballColor) {
@@ -147,32 +150,33 @@ public class Ball {
             paintText.setColor(Color.YELLOW);
     }
 
-    /**
-     * moves the ball to the right.
-     */
-    void moveRight() {
-        if (this.x* Level1view.charWidth < Level1view.screenWidth) {
-            x++;
-        }
-    }
-
-    /**
-     * Moves the ball to the left.
-     */
-    void moveLeft() {
-        if(this.x*Level1view.charHeight > 0) {
-            x--;
-        }
-    }
+//    /**
+//     * moves the ball to the right.
+//     */
+//    void moveRight() {
+//        if (this.x* Level1view.charWidth < Level1view.screenWidth) {
+//            x++;
+//        }
+//    }
+//
+//    /**
+//     * Moves the ball to the left.
+//     */
+//    void moveLeft() {
+//        if(this.x*Level1view.charHeight > 0) {
+//            x--;
+//        }
+//    }
 
     /**
      *
      * draws the ball on the canvas.
      * @param canvas    where the ball is drawn.
      */
-    public void draw(Canvas canvas) {
+    public void draw(Canvas canvas, float x) {
 
-        canvas.drawCircle(this.x*Level1view.charWidth, this.y*Level1view.charHeight,
+
+        canvas.drawCircle(x, this.y,//this.x*Level1view.charWidth, this.y*Level1view.charHeight,
                 50, paintText);
 
     }
@@ -181,8 +185,21 @@ public class Ball {
      * returns the x coordinate of the ball.
      * @return      returns the x coordinate of the ball.
      */
-    int getX()
+    float getX()
     {
         return this.x;
     }
+//    void move(float x, float y){
+//        this.x = x;
+//        this.y = y;
+//    }
+
+//    @SuppressLint("ClickableViewAccessibility")
+//    @Override
+//    public boolean onTouch(View v, MotionEvent event) {
+//        this.x = event.getX();
+//        this.y = event.getY();
+//
+//        return true;
+//    }
 }

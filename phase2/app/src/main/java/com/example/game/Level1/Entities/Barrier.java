@@ -165,22 +165,22 @@ import com.example.game.Level1.View.Level1view;
  * For having the barrier of the game
  */
 public class Barrier{
+    private int end;
 
-
-    private int height;
+    private float height;
     // this is for the pickable life in the game
 //    public boolean pickableLife;
     private int start;
-    private int score;
+    //private int score;
     private Paint paintText = new Paint();
 
-    Barrier(int height) {
+    Barrier(float height) {
         //paintText.setTextSize(36);
         //paintText.setTypeface(Typeface.DEFAULT_BOLD);
         this.height = height;
         paintText.setColor(-16041008);
-        start = 5 + (int)(Math.random() * 15);
-        this.score = 0;
+        start = 350 + (int)(Math.random() * 400);
+        //this.score = 0;
 //        this.pickableLife = true;
     }
 
@@ -191,12 +191,11 @@ public class Barrier{
     public void draw(Canvas canvas) {
 
 
-        canvas.drawRoundRect(-10, height* Level1view.charHeight,
-                start*Level1view.charWidth, (height+1)*Level1view.charHeight,
+        canvas.drawRoundRect(-10, height* 42,
+                start, (height+1)*42,
                 100, 100, paintText);
-        int end = start + 10;
-        canvas.drawRoundRect(end*Level1view.charWidth, height*Level1view.charHeight,
-                Level1view.screenWidth+10, (height+1)*Level1view.charHeight, 100,
+        end = start + 250;
+        canvas.drawRoundRect(end, height*42, end+600, (height+1)*42, 100,
                 100, paintText);
 //        if(this.pickableLife)
 //        {
@@ -205,7 +204,7 @@ public class Barrier{
 //        }
         try
         {
-            Thread.sleep(50);
+            Thread.sleep(15);
         }
         catch(InterruptedException e)
         {
@@ -229,21 +228,15 @@ public class Barrier{
      * @return      return if the ball has passed through or not.
      */
     boolean contains(int x) {
-        if ((this.start) <= x && x <= (this.start + 10)) {
-            this.score += 1;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        // this.score += 1;
+        return (this.start) <= x && x <= ((this.end));
     }
 
     /**
      * returns the height of this barrier.
      * @return       returns the height.
      */
-    int getHeight()
+    float getHeight()
     {
         return this.height;
     }
