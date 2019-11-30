@@ -54,8 +54,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         thread = new MainThread(getHolder(), this);
 
         setFocusable(true);
-        colours = new ArrayList<>();
 
+        colours = new ArrayList<>();
         colours.add(R.drawable.bluecircle);
         colours.add(R.drawable.greencircle);
         colours.add(R.drawable.pinkcircle);
@@ -96,12 +96,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             p = 5;
 
         if(time.equals("3 seconds"))
-            level1Manager = new GameManager(bmpColours(), heart,25, p, username);
+            level1Manager = new GameManager(bmpColours(), heart,50, p, success,failure,whooshSound, username);
         else
-            level1Manager = new GameManager(bmpColours(), heart,50, p, username);
-        level1Manager.addSuccessSound(success);
-        level1Manager.addFailureSound(failure);
-        level1Manager.addWhooshSound(whooshSound);
+            level1Manager = new GameManager(bmpColours(), heart,80, p,success,failure,whooshSound, username);
+
         thread.setRunning(true);
         thread.start();
 

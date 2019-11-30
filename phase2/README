@@ -211,3 +211,7 @@ Commit made: Modified code to use firebase to calculate highscore for game 3.
 Step 37:
 Member: Zohaib Rehman
 Commit made: Implemented Builder Design Pattern in Game 3 for building game elements.
+
+Step 38:
+Member: Zohaib Rehman
+Commit made: Implemented Builder Design Pattern in Game 3 for building a facade for sounds
