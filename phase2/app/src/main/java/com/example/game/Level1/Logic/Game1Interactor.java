@@ -20,6 +20,7 @@ public class Game1Interactor {
     public boolean draw(Canvas canvas, GameManager gameManager) {
         checker = gameManager.stopGame();
 
+
         return gameManager.draw(canvas);
     }
 

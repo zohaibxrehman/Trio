@@ -46,9 +46,9 @@ public class Game1Presenter implements Game1Interactor.Buttons {
 
     public boolean draw(Canvas canvas, GameManager gameManager) {
        boolean nextGame = game1Interactor.draw(canvas, gameManager);
-       if (nextGame){
-           moveToNextGame();
-       }
+       //if (nextGame){
+         //  moveToNextGame();
+       //}
         return game1Interactor.checker;
     }
 

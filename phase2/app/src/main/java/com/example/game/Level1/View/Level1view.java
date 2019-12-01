@@ -116,7 +116,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         if (canvas != null) {
             boolean checker = presenter.draw(canvas, gameManager);
             if (!checker) {
-                gameRunning = false;
+                System.exit(0);
             }
 
 
