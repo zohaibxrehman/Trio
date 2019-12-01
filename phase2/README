@@ -276,3 +276,9 @@ Step 51:
 Members: Rutav Shah
 Commit made: Added in support for all three game modes, modes end when a certain score is reached
 added in a "hard" mode option.
+
+Step 52:
+Member: Aditya Goyla
+Commit made:- Trimmed the repeated code
+            - Removed code redundancies
+            - Corrected the behaviour of level_selection_activity
