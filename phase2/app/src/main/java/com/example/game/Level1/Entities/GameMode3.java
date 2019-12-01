@@ -17,7 +17,7 @@ public class GameMode3 implements Algorithms {
 
     @Override
     public Barrier addBarrierAtTop(Barrier b, float newBarrierHeight) {
-        b = new Barrier(newBarrierHeight, "YB");
+        b = new Barrier(newBarrierHeight, "BB");
         return b;
     }
 }

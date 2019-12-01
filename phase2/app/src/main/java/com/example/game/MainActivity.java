@@ -51,16 +51,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         switch (v.getId()) {
             case R.id.login:
+                Intent gotogames = new Intent(MainActivity.this, Main2Activity.class);
+                gotogames.putExtra("name", username);
+                startActivity(gotogames);
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if(dataSnapshot.hasChild(username)){
                             String passwordmade = dataSnapshot.child(username).child("password").getValue().toString();
                             if(passwordmade.equals(temppassword)){
-                                Intent gotogames = new Intent(MainActivity.this, Main2Activity.class);
-                                gotogames.putExtra("name", username);
 
-                                startActivity(gotogames);
                             }
                             else{
                                 Toast.makeText(MainActivity.this, "Incorrect Password :))", Toast.LENGTH_SHORT).show();
