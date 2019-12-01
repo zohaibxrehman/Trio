@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import androidx.annotation.NonNull;
 
+import com.example.game.GameStats;
 import com.example.game.Level3.Entities.Ball;
 import com.example.game.Level3.GameElements.GameBuilder;
 import com.example.game.Level3.GameElements.GameElements;
@@ -29,6 +30,7 @@ public class GameManager implements ValueEventListener{
     private DatabaseReference reference;
     private GameElements gameElements;
     private SoundFacade soundFacade;
+    private GameStates gameStates;
 
     public GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh, MediaPlayer boost, String name) {
         GameBuilder gameBuilder = new GameBuilder(bitmapColours, heart, time);
@@ -41,6 +43,8 @@ public class GameManager implements ValueEventListener{
         SoundEngineer soundEngineer = new SoundEngineer(soundBuilder);
         soundEngineer.constructSound();
         this.soundFacade = soundEngineer.getSoundFacade();
+
+        gameStates = new GameStates();
 
         this.name = name;
         this.reference = FirebaseDatabase.getInstance().getReference().child(name);
@@ -74,21 +78,16 @@ public class GameManager implements ValueEventListener{
     }
 
 
-
     public void update() {
-        if (!this.gameElements.hiddenState) {
-            if (this.gameElements.showCount == this.gameElements.time) {
-                for (Ball b : this.gameElements.balls) {
-                    b.hide();
-                    this.gameElements.memoryBall.show();
-                    this.soundFacade.whooshSound.start();
-                }
-                this.gameElements.hiddenState = true;
-            } else if (this.gameElements.showCount < this.gameElements.time) {
-                this.gameElements.showCount++;
-            }
-        }
+        this.gameStates.memoriseState(gameElements, soundFacade);
+        this.gameOver();
+    }
 
+    public void select(float touchX, float touchY) {
+        gameStates.rememberState(touchX, touchY, gameElements, soundFacade);
+    }
+
+    private void gameOver(){
         if (this.gameElements.lives == 0){
             this.soundFacade.boost.start();
 
@@ -105,71 +104,6 @@ public class GameManager implements ValueEventListener{
         }
     }
 
-
-    public void select(float touchX, float touchY) {
-        if (this.gameElements.hiddenState) {
-            for (Ball b: this.gameElements.balls){
-                if (b.contains(touchX, touchY) && !b.isTouched()) {
-                    b.show();
-                    b.setTouched(true);
-
-                    if (b.equals(this.gameElements.memoryBall)) {
-                        this.gameElements.score++;
-                        this.gameElements.numberOfRefreshes = this.gameElements.numberOfRefreshes + 1;
-                        this.levelUp();
-                        System.out.println("Success!");
-                        this.soundFacade.success.start();
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        resetGame();
-                    } else {
-                        this.gameElements.lives--;
-                        this.soundFacade.failure.start();
-                    }
-                }
-            }
-        }
-    }
-
-    private void levelUp(){
-        if (this.gameElements.numberOfRefreshes % 3 == 0) {
-            this.gameElements.level++;
-            this.gameElements.score++;
-            if (this.gameElements.lives == 6) {
-                this.gameElements.lives = this.gameElements.lives + 1;
-                this.soundFacade.boost.start();
-            } else if (this.gameElements.lives == 5) {
-                this.gameElements.lives = this.gameElements.lives + 2;
-                this.soundFacade.boost.start();
-            } else if (this.gameElements.lives <= 4) {
-                this.gameElements.lives = this.gameElements.lives + 3;
-                this.soundFacade.boost.start();
-            }
-        }
-        if (this.gameElements.numberOfRefreshes % 6 == 0){
-            this.gameElements.score++;
-            this.gameElements.lives = 7;
-            this.soundFacade.boost.start();
-        }
-    }
-
-    private void resetGame(){
-        this.gameElements.showCount = 0;
-        this.gameElements.hiddenState = false;
-
-        Collections.shuffle(this.gameElements.bitmapColours);
-        for(int i = 0; i < 9; i++) {
-            this.gameElements.balls.get(i).changeColour(this.gameElements.bitmapColours.get(i));
-            this.gameElements.balls.get(i).show();
-            this.gameElements.balls.get(i).setTouched(false);
-        }
-        this.gameElements.memoryBall.changeColour(this.gameElements.bitmapColours.get(ThreadLocalRandom.current().nextInt(0, 9)));
-        this.gameElements.memoryBall.hide();
-        this.soundFacade.whooshSound.start();
-    }
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

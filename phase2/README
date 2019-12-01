@@ -240,3 +240,8 @@ Member: Zohaib Rehman
 Commit made: Added new point and lives system that rewards levelling up.
     Added correct radio fields and instructions in the customise page.
     Added new sound when user gains lives.
+
+Step 44:
+Member: Zohaib Rehman
+Commit made: Added class GameStates to be used by GameManager. This reduces the responsibility of
+the GamaManager and is closer to Single Responsibility Principle.
