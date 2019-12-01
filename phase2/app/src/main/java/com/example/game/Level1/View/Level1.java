@@ -44,11 +44,12 @@ public class Level1 extends Activity {// Game1View{
        // System.out.println(color);
         ballcolor = getIntent().getStringExtra("TIME");
         difficulty = getIntent().getStringExtra("POINTS");
+        String username = getIntent().getStringExtra("name");
       //  presenter = new Game1Presenter(this);
 
         //System.out.println(time);
        // System.out.println(point);
-        setContentView(new Level1view(this, background, ballcolor, difficulty));//, presenter));
+        setContentView(new Level1view(this, background, ballcolor, difficulty, username));//, presenter));
 
 
     }

@@ -58,6 +58,8 @@ public class Customise1 extends Activity {
                 i.putExtra("COLOR", col.getText().toString());
                 i.putExtra("TIME", tim.getText().toString());
                 i.putExtra("POINTS", point.getText().toString());
+                String username = getIntent().getStringExtra("name");
+                i.putExtra("name", username);
                 startActivity(i);
             }
         });

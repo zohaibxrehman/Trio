@@ -325,7 +325,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
+import androidx.annotation.NonNull;
+
 import com.example.game.Level1.View.Level1view;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -333,7 +340,7 @@ import java.util.ArrayList;
  * Manages how the game is run and displayed on the screen
  * */
 
-public class GameManager {
+public class GameManager implements ValueEventListener {
 
     protected static int gridHeight;
     protected static int gridWidth;
@@ -350,13 +357,15 @@ public class GameManager {
    // private Game1Presenter presenter;
     private ArrayList<Barrier> items = new ArrayList<>();
     float x, y;
+    private DatabaseReference reference;
 
 
-    public GameManager(int height, int width, String points, String ballColor){//, Game1Presenter presenter) {
+    public GameManager(int height, int width, String points, String ballColor, String username){//, Game1Presenter presenter) {
          this.x = 500;
 //        this.y = 1600;
         gridHeight = height;
        // this.presenter = presenter;
+        this.reference = FirebaseDatabase.getInstance().getReference().child(username);
         gridWidth = width;
         paintText.setTextSize(60);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
@@ -437,6 +446,7 @@ public class GameManager {
         if(flag)
         {
             canvas.drawText("YOU LOSE", 400, 800, paintText);
+            this.reference.addValueEventListener(this);
             Level1view.gameRunning = false;
         }
         else if(finalScore < points) {
@@ -445,7 +455,7 @@ public class GameManager {
         if(finalScore == points)
         {
             canvas.drawText("YOU WON", 400, 800, paintText);
-
+            this.reference.addValueEventListener(this);
             Level1view.gameRunning = false;
             return true;
 
@@ -461,11 +471,6 @@ public class GameManager {
             items.get(i).draw(canvas);
         }
 
-        // Adding pickable life
-        // will change later
-        //
-        //
-
         b.draw(canvas, x);
         //left.draw(canvas);
         //right.draw(canvas);
@@ -480,6 +485,22 @@ public class GameManager {
     /**
      * Helper method to delete and add the barrier when gone from which have gone off the screen
      */
+
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        Long oldScore = (Long) dataSnapshot.child("level1").getValue();
+        try {
+            if (oldScore < this.finalScore)
+                this.reference.child("level1").setValue(this.finalScore);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }
 
     private void deleteAndAddBarrier()
     {

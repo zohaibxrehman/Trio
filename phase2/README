@@ -229,4 +229,8 @@ Also removed some unwanted dependencies in the code.
 Step 41:
 Member: Sargunan Gurumurthy
 Commit made: Cleaned up code to catch errors and added an easter egg where player gets an extra life
- after 5 correct entries..
+after 5 correct entries.
+
+Step 42:
+Member: Sargunan Gurumurthy
+Commit made: Updated game 1 to use firebase to keep track of highscore.

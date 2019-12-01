@@ -328,14 +328,15 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
     public static Canvas can;
     private Game1Presenter presenter;
     private Context context;
+    private String username;
 
 
 
-    public Level1view(Context context, String background, String ballcolor, String difficulty)
+    public Level1view(Context context, String background, String ballcolor, String difficulty, String username)
                      // Game1Presenter presenter)
     {
-
         super(context);
+        this.username = username;
         this.context = context;
         //this.presenter = presenter;
         presenter = new Game1Presenter(this);
@@ -381,7 +382,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         System.out.println(charWidth);
 
         gameManager = new GameManager((int) (screenHeight / charHeight),
-                (int) (screenWidth / charWidth), difficulty, ballcolor);//, presenter);
+                (int) (screenWidth / charWidth), difficulty, ballcolor, username);//, presenter);
         gameManager.createItems();
         //presenter = new Game1Presenter(gameManager);
        // presenter = new Game1Presenter();
