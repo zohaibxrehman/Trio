@@ -329,15 +329,17 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
     private Game1Presenter presenter;
     private Context context;
     private String username;
+    int gameMode;
 
 
 
-    public Level1view(Context context, String background, String ballcolor, String difficulty, String username)
+    public Level1view(Context context, String background, String ballcolor, String difficulty, String username, int gameMode)
                      // Game1Presenter presenter)
     {
         super(context);
         this.username = username;
         this.context = context;
+        this.gameMode = gameMode;
         //this.presenter = presenter;
         presenter = new Game1Presenter(this);
         this.background = background;
@@ -380,9 +382,10 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         System.out.println("this height");
         System.out.println(charHeight);
         System.out.println(charWidth);
+        System.out.println(difficulty+"achbshcbhscbhsb");
 
         gameManager = new GameManager((int) (screenHeight / charHeight),
-                (int) (screenWidth / charWidth), difficulty, ballcolor,username);//, presenter);
+                (int) (screenWidth / charWidth), difficulty, ballcolor,username, gameMode);//, presenter);
         gameManager.createItems();
         //presenter = new Game1Presenter(gameManager);
        // presenter = new Game1Presenter();

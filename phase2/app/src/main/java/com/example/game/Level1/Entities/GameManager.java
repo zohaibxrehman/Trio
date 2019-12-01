@@ -363,12 +363,18 @@ public class GameManager implements ValueEventListener {
     private ArrayList<Integer> hiddenChecker = new ArrayList<>();
     private Canvas canvas;
     int totalBarriersAdded;
+    int gameMode;
+    Algorithms algorithm;
+    String username;
 
 
-    public GameManager(int height, int width, String points, String ballColor, String username){//, Game1Presenter presenter) {
+    public GameManager(int height, int width, String points, String ballColor, String username, int gameMode){//, Game1Presenter presenter) {
          this.x = 500;
 //        this.y = 1600;
         checker = true;
+        this.gameMode =gameMode;
+        this.username = username;
+        setGameMode(gameMode);
         hidden.add(1);
         hidden.add(2);
         hidden.add(4);
@@ -381,6 +387,7 @@ public class GameManager implements ValueEventListener {
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
         this.livesLeft = 3;
         this.ballColor = ballColor;
+        System.out.print(points+"abbcjsbcjscjbsjbcjbjcs");
         if (points.equals("EASY"))
             this.points = 15;
         else
@@ -394,48 +401,58 @@ public class GameManager implements ValueEventListener {
         lives.add(heart3);
         this.totalBarriersAdded = 0;
     }
-
+    private void setGameMode(int gameMode){
+        System.out.println("hi");
+        System.out.println("hi");
+        if (gameMode == 1){
+            algorithm = new GameMode1();
+        } else if (gameMode == 2){
+            algorithm = new GameMode2();
+        } else if (gameMode == 3){
+            algorithm = new GameMode3();
+        }
+    }
     /**
      * Creates the items displayed on the screen
      */
    public void createItems()
-    {
-        if(this.totalBarriersAdded < 5)
-        {
-            Barrier b1 = new Barrier(0, "WB");
-            items.add(b1);
-            Barrier b2 = new Barrier(10, "WB");
-            items.add(b2);
-            Barrier b3 = new Barrier(20, "WB");
-            items.add(b3);
-            Barrier b4 = new Barrier(30, "WB");
-            items.add(b4);
-            this.totalBarriersAdded += 4;
-        }
-        else if(this.totalBarriersAdded >= 10)
-        {
-            Barrier b1 = new Barrier(0, "YB");
-            items.add(b1);
-            Barrier b2 = new Barrier(10, "YB");
-            items.add(b2);
-            Barrier b3 = new Barrier(20, "YB");
-            items.add(b3);
-            Barrier b4 = new Barrier(30, "YB");
-            items.add(b4);
-            this.totalBarriersAdded += 4;
-        }
-        else if(this.totalBarriersAdded >= 5)
-        {
-            Barrier b1 = new Barrier(0, "BB");
-            items.add(b1);
-            Barrier b2 = new Barrier(10, "BB");
-            items.add(b2);
-            Barrier b3 = new Barrier(20, "BB");
-            items.add(b3);
-            Barrier b4 = new Barrier(30, "BB");
-            items.add(b4);
-            this.totalBarriersAdded += 4;
-        }
+    {   algorithm.createBarriers(items);
+//        if(this.totalBarriersAdded < 5)
+//        {
+//            Barrier b1 = new Barrier(0, "WB");
+//            items.add(b1);
+//            Barrier b2 = new Barrier(10, "WB");
+//            items.add(b2);
+//            Barrier b3 = new Barrier(20, "WB");
+//            items.add(b3);
+//            Barrier b4 = new Barrier(30, "WB");
+//            items.add(b4);
+//            this.totalBarriersAdded += 4;
+//        }
+//        else if(this.totalBarriersAdded >= 10)
+//        {
+//            Barrier b1 = new Barrier(0, "YB");
+//            items.add(b1);
+//            Barrier b2 = new Barrier(10, "YB");
+//            items.add(b2);
+//            Barrier b3 = new Barrier(20, "YB");
+//            items.add(b3);
+//            Barrier b4 = new Barrier(30, "YB");
+//            items.add(b4);
+//            this.totalBarriersAdded += 4;
+//        }
+//        else if(this.totalBarriersAdded >= 5)
+//        {
+//            Barrier b1 = new Barrier(0, "BB");
+//            items.add(b1);
+//            Barrier b2 = new Barrier(10, "BB");
+//            items.add(b2);
+//            Barrier b3 = new Barrier(20, "BB");
+//            items.add(b3);
+//            Barrier b4 = new Barrier(30, "BB");
+//            items.add(b4);
+//            this.totalBarriersAdded += 4;
+//        }
 
 
         b = new Ball(100, 1700, ballColor);
@@ -598,23 +615,28 @@ public class GameManager implements ValueEventListener {
      * Helper to add the barrier to the top of the screen
      */
     private void addBarrierAtTop()
-    {
-        float newBarrierHeight = items.get(0).getHeight();
+    {   float newBarrierHeight = items.get(0).getHeight();
         newBarrierHeight -= 10;
         // Adds barrier at the top
         Barrier b = null;
-        if(this.totalBarriersAdded < 5)
-        {
-            b = new Barrier(newBarrierHeight,"WB");
-        }
-        else if(this.totalBarriersAdded >= 10){
-            b = new Barrier(newBarrierHeight, "YB");
-        }
-        else if(this.totalBarriersAdded >= 5)
-        {
-            b = new Barrier(newBarrierHeight, "BB");
-        }
-        items.add(0, b);
+        Barrier c = algorithm.addBarrierAtTop(b, newBarrierHeight);
+
+//        float newBarrierHeight = items.get(0).getHeight();
+//        newBarrierHeight -= 10;
+//        // Adds barrier at the top
+//        Barrier b = null;
+//        if(this.totalBarriersAdded < 5)
+//        {
+//            b = new Barrier(newBarrierHeight,"WB");
+//        }
+//        else if(this.totalBarriersAdded >= 10){
+//            b = new Barrier(newBarrierHeight, "YB");
+//        }
+//        else if(this.totalBarriersAdded >= 5)
+//        {
+//            b = new Barrier(newBarrierHeight, "BB");
+//        }
+        items.add(0, c);
     }
 
     /**

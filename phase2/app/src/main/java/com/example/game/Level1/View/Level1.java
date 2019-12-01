@@ -45,11 +45,14 @@ public class Level1 extends Activity {// Game1View{
         ballcolor = getIntent().getStringExtra("TIME");
         difficulty = getIntent().getStringExtra("POINTS");
         String username = getIntent().getStringExtra("name");
-      //  presenter = new Game1Presenter(this);
 
+      //  presenter = new Game1Presenter(this);
+        int gameMode = getIntent().getIntExtra("gameMode",1);
+        System.out.print(gameMode+"ABCDEFHGJ");
         //System.out.println(time);
        // System.out.println(point);
-        setContentView(new Level1view(this, background, ballcolor, difficulty, username));//, presenter));
+        System.out.println(difficulty + "XXXXXXXXXXXXXXXXXXXXxx");
+        setContentView(new Level1view(this, background, ballcolor, difficulty, username, gameMode));//, presenter));
 
 
     }

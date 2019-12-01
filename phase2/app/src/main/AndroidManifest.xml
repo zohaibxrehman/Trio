@@ -17,6 +17,7 @@
         <activity android:name=".Level2.View.Level2Activity" />
         <activity android:name=".Level3.UserInterface.Level3" />
         <activity android:name=".Level2.View.Game2Instructions" />
+        <activity android:name=".Level1.View.LevelSelection"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

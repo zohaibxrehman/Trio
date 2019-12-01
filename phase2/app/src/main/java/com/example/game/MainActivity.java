@@ -59,6 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                             if(passwordmade.equals(temppassword)){
                                 Intent gotogames = new Intent(MainActivity.this, Main2Activity.class);
                                 gotogames.putExtra("name", username);
+
                                 startActivity(gotogames);
                             }
                             else{
