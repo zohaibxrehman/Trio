@@ -41,12 +41,15 @@ public class Game1Presenter implements Game1Interactor.Buttons {
 
     public void update(GameManager manager) {
         game1Interactor.update(manager);
+
     }
 
-    public void draw(Canvas canvas, GameManager gameManager) {
+    public boolean draw(Canvas canvas, GameManager gameManager) {
        boolean nextGame = game1Interactor.draw(canvas, gameManager);
        if (nextGame){
            moveToNextGame();
        }
+        return game1Interactor.checker;
     }
+
 }

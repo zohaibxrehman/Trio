@@ -358,11 +358,21 @@ public class GameManager implements ValueEventListener {
     private ArrayList<Barrier> items = new ArrayList<>();
     float x, y;
     private DatabaseReference reference;
+    boolean checker;
+    private ArrayList <Integer> hidden = new ArrayList<>();
+    private ArrayList<Integer> hiddenChecker = new ArrayList<>();
+    private Canvas canvas;
+    int totalBarriersAdded;
 
 
     public GameManager(int height, int width, String points, String ballColor, String username){//, Game1Presenter presenter) {
          this.x = 500;
 //        this.y = 1600;
+        checker = true;
+        hidden.add(1);
+        hidden.add(2);
+        hidden.add(4);
+
         gridHeight = height;
        // this.presenter = presenter;
         this.reference = FirebaseDatabase.getInstance().getReference().child(username);
@@ -372,9 +382,9 @@ public class GameManager implements ValueEventListener {
         this.livesLeft = 3;
         this.ballColor = ballColor;
         if (points.equals("EASY"))
-            this.points = 10;
-        else
             this.points = 15;
+        else
+            this.points = 20;
         paintText.setColor(Color.WHITE);
         Life heart1 = new Life(Level1view.heart, 800, 0);
         lives.add(heart1);
@@ -382,6 +392,7 @@ public class GameManager implements ValueEventListener {
         lives.add(heart2);
         Life heart3 = new Life(Level1view.heart, 940, 0);
         lives.add(heart3);
+        this.totalBarriersAdded = 0;
     }
 
     /**
@@ -389,17 +400,45 @@ public class GameManager implements ValueEventListener {
      */
    public void createItems()
     {
-        Barrier b1 = new Barrier(0);
-        items.add(b1);
-        Barrier b2 = new Barrier(10);
-        items.add(b2);
-        Barrier b3 = new Barrier(20);
-        items.add(b3);
-        Barrier b4 = new Barrier(30);
-        items.add(b4);
+        if(this.totalBarriersAdded < 5)
+        {
+            Barrier b1 = new Barrier(0, "WB");
+            items.add(b1);
+            Barrier b2 = new Barrier(10, "WB");
+            items.add(b2);
+            Barrier b3 = new Barrier(20, "WB");
+            items.add(b3);
+            Barrier b4 = new Barrier(30, "WB");
+            items.add(b4);
+            this.totalBarriersAdded += 4;
+        }
+        else if(this.totalBarriersAdded >= 10)
+        {
+            Barrier b1 = new Barrier(0, "YB");
+            items.add(b1);
+            Barrier b2 = new Barrier(10, "YB");
+            items.add(b2);
+            Barrier b3 = new Barrier(20, "YB");
+            items.add(b3);
+            Barrier b4 = new Barrier(30, "YB");
+            items.add(b4);
+            this.totalBarriersAdded += 4;
+        }
+        else if(this.totalBarriersAdded >= 5)
+        {
+            Barrier b1 = new Barrier(0, "BB");
+            items.add(b1);
+            Barrier b2 = new Barrier(10, "BB");
+            items.add(b2);
+            Barrier b3 = new Barrier(20, "BB");
+            items.add(b3);
+            Barrier b4 = new Barrier(30, "BB");
+            items.add(b4);
+            this.totalBarriersAdded += 4;
+        }
+
 
         b = new Ball(100, 1700, ballColor);
-
         // button
        // left = new Button(Level1view.leftButtonImage, 100, 1800);
         //right = new Button(Level1view.rightButtonImage, 800, 1800);
@@ -423,10 +462,33 @@ public class GameManager implements ValueEventListener {
                     System.out.println((int)this.x);
                     if(this.livesLeft == 1) {
                         this.flag = true;
-                        this.draw(Level1view.can);
+                        int lastScore = hiddenChecker.get(hiddenChecker.size() -1);
+                        hiddenChecker.add(finalScore - lastScore);
+                        System.out.println(hiddenChecker);
+                        System.out.println(hidden);
+                        if (hiddenChecker.equals(hidden)){
+
+                            this.flag = false;
+                            finalScore = points;
+
+                        }
+                        System.out.println(flag);
+
+                        this.draw(canvas);
                     }
                     else{
                         this.livesLeft -= 1;
+                        if (hiddenChecker.size()== 0){
+                            hiddenChecker.add(finalScore);
+                            System.out.println(hiddenChecker);
+                        }
+                        else{
+                            int lastScore = hiddenChecker.get(hiddenChecker.size() -1);
+                            hiddenChecker.add(finalScore - lastScore);
+                            System.out.println(hiddenChecker);
+
+                        }
+
                         lives.remove(0);
                         this.items.clear();
                         createItems();
@@ -436,18 +498,23 @@ public class GameManager implements ValueEventListener {
         }
         deleteAndAddBarrier();
     }
+    public boolean stopGame(){
+        return checker;
+    }
 
     /**
      * Draws out the game objects on the canvas.
      * @param canvas    where to draw the objects
      */
     public boolean draw(Canvas canvas)
-    {
+
+    {   this.canvas = canvas;
         if(flag)
         {
             canvas.drawText("YOU LOSE", 400, 800, paintText);
+            checker = false;
             this.reference.addValueEventListener(this);
-            Level1view.gameRunning = false;
+           // Level1view.gameRunning = false;
         }
         else if(finalScore < points) {
             canvas.drawText("SCORE:" + finalScore, 60, 55, paintText);
@@ -456,7 +523,8 @@ public class GameManager implements ValueEventListener {
         {
             canvas.drawText("YOU WON", 400, 800, paintText);
             this.reference.addValueEventListener(this);
-            Level1view.gameRunning = false;
+            checker = false;
+            //Level1view.gameRunning = false;
             return true;
 
            // presenter.moveToNextGame();
@@ -512,6 +580,7 @@ public class GameManager implements ValueEventListener {
                 removeBarrier(temp);
                 finalScore += 1;
                 addBarrierAtTop();
+                this.totalBarriersAdded +=1;
             }
         }
     }
@@ -533,7 +602,18 @@ public class GameManager implements ValueEventListener {
         float newBarrierHeight = items.get(0).getHeight();
         newBarrierHeight -= 10;
         // Adds barrier at the top
-        Barrier b = new Barrier(newBarrierHeight);
+        Barrier b = null;
+        if(this.totalBarriersAdded < 5)
+        {
+            b = new Barrier(newBarrierHeight,"WB");
+        }
+        else if(this.totalBarriersAdded >= 10){
+            b = new Barrier(newBarrierHeight, "YB");
+        }
+        else if(this.totalBarriersAdded >= 5)
+        {
+            b = new Barrier(newBarrierHeight, "BB");
+        }
         items.add(0, b);
     }
 

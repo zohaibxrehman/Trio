@@ -382,7 +382,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         System.out.println(charWidth);
 
         gameManager = new GameManager((int) (screenHeight / charHeight),
-                (int) (screenWidth / charWidth), difficulty, ballcolor, username);//, presenter);
+                (int) (screenWidth / charWidth), difficulty, ballcolor,username);//, presenter);
         gameManager.createItems();
         //presenter = new Game1Presenter(gameManager);
        // presenter = new Game1Presenter();
@@ -427,7 +427,12 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
             canvas.drawBitmap(background, 0, 0, null);
         }
         if (canvas != null) {
-            presenter.draw(canvas, gameManager);
+            boolean checker = presenter.draw(canvas, gameManager);
+            if (!checker) {
+                gameRunning = false;
+            }
+
+
         }
 
     }

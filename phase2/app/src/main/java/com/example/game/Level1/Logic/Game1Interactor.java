@@ -6,7 +6,7 @@ import com.example.game.Level1.Entities.GameManager;
 
 public class Game1Interactor {
 
-
+    boolean checker ;
     public void ballMove(float touchX, GameManager manager) {
 
         manager.ballMove(touchX);
@@ -18,6 +18,8 @@ public class Game1Interactor {
     }
 
     public boolean draw(Canvas canvas, GameManager gameManager) {
+        checker = gameManager.stopGame();
+
         return gameManager.draw(canvas);
     }
 

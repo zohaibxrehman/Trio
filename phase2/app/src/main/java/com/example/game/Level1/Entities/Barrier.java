@@ -156,6 +156,7 @@
 package com.example.game.Level1.Entities;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.example.game.Level1.View.Level1view;
@@ -173,12 +174,26 @@ public class Barrier{
     private int start;
     //private int score;
     private Paint paintText = new Paint();
+    String type;
 
-    Barrier(float height) {
+    Barrier(float height, String type) {
         //paintText.setTextSize(36);
         //paintText.setTypeface(Typeface.DEFAULT_BOLD);
         this.height = height;
-        paintText.setColor(-16041008);
+        this.type = type;
+        if(this.type.equals("BB"))
+        {
+            paintText.setColor(Color.rgb(0, 0, 225));
+        }
+        else if(this.type.equals("WB"))
+        {
+            paintText.setColor(Color.rgb(255, 255, 255));
+        }
+        else if(this.type.equals("YB"))
+        {
+            paintText.setColor(Color.rgb(255, 255, 0));
+        }
+        //paintText.setColor(-16041008);
         start = 350 + (int)(Math.random() * 400);
         //this.score = 0;
 //        this.pickableLife = true;
@@ -191,17 +206,23 @@ public class Barrier{
     public void draw(Canvas canvas) {
 
 
-        canvas.drawRoundRect(-10, height* 42,
-                start, (height+1)*42,
-                100, 100, paintText);
+
         end = start + 250;
-        canvas.drawRoundRect(end, height*42, end+600, (height+1)*42, 100,
-                100, paintText);
-//        if(this.pickableLife)
-//        {
-//            Life l = new Life(Level1view.heart, (int)(start*Level1view.charWidth + 5 *Level1view.charWidth), this.height);
-//            l.draw(canvas);
-//        }
+        if(this.type.equals("BB")) {
+            canvas.drawRoundRect(-10, height * 42, start, (height + 1) * 42, 100, 100, paintText);
+
+            canvas.drawRoundRect(end, height * 42, end + 600, (height + 1) * 42, 100,
+                    100, paintText);
+        }
+        else if(this.type.equals("WB"))
+        {
+            canvas.drawRoundRect(this.start, height * 42, end, (height + 1) * 42, 100, 100, paintText);
+        }
+        else if(this.type.equals("YB"))
+        {
+            canvas.drawRoundRect(start, height * 42, end, (height + 1) * 42, 100,
+                    100, paintText);
+        }
         try
         {
             Thread.sleep(15);
@@ -229,8 +250,23 @@ public class Barrier{
      */
     boolean contains(int x) {
         // this.score += 1;
-        return (this.start) <= x && x <= ((this.end));
+        if(this.type.equals("BB")) {
+            return (this.start) <= x && x <= ((this.end));
+        }
+        else if(this.type.equals("WB"))
+        {
+            return !((this.start) <= x && x <= ((this.end)));
+        }
+        else if(this.type.equals("YB"))
+        {
+            return ((this.start) <= x && x <= ((this.end)));
+        }
+        else
+        {
+            return false;
+        }
     }
+
 
     /**
      * returns the height of this barrier.
