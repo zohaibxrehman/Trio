@@ -18,12 +18,11 @@ public class Level3 extends Activity {
         backgroundMusic.start();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        String color, time, point;
-        color = getIntent().getStringExtra("COLOR");
-        time = getIntent().getStringExtra("TIME");
-        point = getIntent().getStringExtra("POINTS");
+        String background, difficulty;
+        background = getIntent().getStringExtra("BACKGROUND");
+        difficulty = getIntent().getStringExtra("DIFFICULTY");
         String username = getIntent().getStringExtra("name");
-        setContentView(new GameView(this, time, color, point, username));
+        setContentView(new GameView(this, background, difficulty, username));
     }
 
     @Override

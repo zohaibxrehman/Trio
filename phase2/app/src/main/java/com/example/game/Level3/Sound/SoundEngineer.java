@@ -10,6 +10,7 @@ public class SoundEngineer {
         soundBuilder.buildSuccessSound();
         soundBuilder.buildFailureSound();
         soundBuilder.buildWhooshSound();
+        soundBuilder.buildBoostSound();
     }
 
     public SoundFacade getSoundFacade() {

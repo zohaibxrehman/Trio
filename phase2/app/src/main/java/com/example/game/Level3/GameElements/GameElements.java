@@ -2,7 +2,9 @@ package com.example.game.Level3.GameElements;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+
 import com.example.game.Level3.Entities.Ball;
+
 import java.util.ArrayList;
 
 public class GameElements {
@@ -14,7 +16,7 @@ public class GameElements {
     public int time;
     public ArrayList<Bitmap> bitmapColours;
     public int lives;
-    public int point;
+    int point;
     public int level;
     public int numberOfRefreshes;
     public Drawable heart;

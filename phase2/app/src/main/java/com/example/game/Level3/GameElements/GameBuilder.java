@@ -17,12 +17,12 @@ public class GameBuilder {
     int point;
 
 
-    public GameBuilder(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p){
+    public GameBuilder(ArrayList<Bitmap> bitmapColours, Drawable heart, int time){
         this.gameElements = new GameElements();
         this.bitmapColours = bitmapColours;
         this.heart = heart;
         this.time = time;
-        this.point = p;
+
     }
 
     void buildBalls(){
@@ -75,10 +75,6 @@ public class GameBuilder {
 
     void buildTime() {
         gameElements.setTime(this.time);
-    }
-
-    void buildPoint() {
-        gameElements.setPoint(point);
     }
 
     GameElements getGameElements(){

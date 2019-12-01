@@ -22,7 +22,6 @@ public class GameEngineer {
         this.gameBuilder.buildHeart();
         this.gameBuilder.buildLevel();
 
-        this.gameBuilder.buildPoint();
         this.gameBuilder.buildTime();
     }
 }

@@ -7,11 +7,13 @@ public class SoundBuilder {
     private MediaPlayer success;
     private MediaPlayer failure;
     private MediaPlayer whooshSound;
+    private MediaPlayer boost;
 
-    public SoundBuilder(MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh) {
+    public SoundBuilder(MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh, MediaPlayer boost) {
         this.success = success;
         this.failure = failure;
         this.whooshSound = whoosh;
+        this.boost = boost;
         this.soundFacade = new SoundFacade();
     }
 
@@ -25,6 +27,10 @@ public class SoundBuilder {
 
     void buildSuccessSound() {
         soundFacade.setSuccess(this.success);
+    }
+
+    void buildBoostSound(){
+        soundFacade.setBoostSound(this.boost);
     }
 
     SoundFacade getSoundFacade() {

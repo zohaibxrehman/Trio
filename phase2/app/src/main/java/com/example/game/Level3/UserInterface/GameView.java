@@ -21,7 +21,7 @@ import java.util.Collections;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private GameManager level1Manager;
-    private String time, color, point;
+    private String difficulty;
     public String username;
     Drawable background;
     Drawable heart;
@@ -29,26 +29,27 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MediaPlayer success;
     private MediaPlayer failure;
     private MediaPlayer whooshSound;
+    private MediaPlayer boost;
 
-    public GameView(Context context, String time, String color, String point, String name) {
+    public GameView(Context context, String background, String difficulty, String name) {
         super(context);
-        this.point = point;
+        this.difficulty = difficulty;
         this.username = name;
-        this.time = time;
-        this.color = color;
 
         getHolder().addCallback(this);
         this.success = MediaPlayer.create(context, R.raw.success);
         this.failure = MediaPlayer.create(context, R.raw.failure);
         this.whooshSound = MediaPlayer.create(context, R.raw.whoosh);
+        this.boost = MediaPlayer.create(context, R.raw.boost);
 
         int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
         int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
-        if(this.color.equals("Forest"))
-            background = getResources().getDrawable(R.drawable.forest, null);
+
+        if(background.equals("Forest"))
+            this.background = getResources().getDrawable(R.drawable.forest, null);
         else
-            background = getResources().getDrawable(R.drawable.city, null);
-        background.setBounds(0   , 0, screenWidth, screenHeight);
+            this.background = getResources().getDrawable(R.drawable.city, null);
+        this.background.setBounds(0   , 0, screenWidth, screenHeight);
 
         heart = getResources().getDrawable(R.drawable.heart, null);
 
@@ -89,17 +90,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
 
         Ball.hiddenImage = BitmapFactory.decodeResource(getResources(), R.drawable.greycircle);
-        int c = 0;
-        int p =0;
-        if(point.equals("EASY"))
-            p = 3;
+        if(difficulty.equals("EASY"))
+            level1Manager = new GameManager(bmpColours(), heart,90, success,failure,whooshSound, boost, username);
         else
-            p = 5;
-
-        if(time.equals("3 seconds"))
-            level1Manager = new GameManager(bmpColours(), heart,50, p, success,failure,whooshSound, username);
-        else
-            level1Manager = new GameManager(bmpColours(), heart,80, p,success,failure,whooshSound, username);
+            level1Manager = new GameManager(bmpColours(), heart,50, success,failure,whooshSound, boost, username);
 
         thread.setRunning(true);
         thread.start();
@@ -123,6 +117,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public void update() {
         level1Manager.update();
+
     }
 
     private ArrayList<Bitmap> bmpColours() {
@@ -141,7 +136,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     {
         super.draw(canvas);
 
-        background.draw(canvas);
+        this.background.draw(canvas);
 
         if(canvas!=null) {
             level1Manager.draw(canvas);

@@ -6,6 +6,7 @@ public class SoundFacade {
     public MediaPlayer success;
     public MediaPlayer failure;
     public MediaPlayer whooshSound;
+    public MediaPlayer boost;
 
     void setFailure(MediaPlayer failure) {
         this.failure = failure;
@@ -17,5 +18,9 @@ public class SoundFacade {
 
     void setSuccess(MediaPlayer success) {
         this.success = success;
+    }
+
+    void setBoostSound(MediaPlayer boost) {
+        this.boost = boost;
     }
 }

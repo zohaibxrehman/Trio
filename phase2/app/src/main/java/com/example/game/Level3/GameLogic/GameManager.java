@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import androidx.annotation.NonNull;
+
 import com.example.game.Level3.Entities.Ball;
 import com.example.game.Level3.GameElements.GameBuilder;
 import com.example.game.Level3.GameElements.GameElements;
@@ -29,14 +30,14 @@ public class GameManager implements ValueEventListener{
     private GameElements gameElements;
     private SoundFacade soundFacade;
 
-    public GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, int p, MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh, String name) {
-        GameBuilder gameBuilder = new GameBuilder(bitmapColours, heart, time, p);
+    public GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh, MediaPlayer boost, String name) {
+        GameBuilder gameBuilder = new GameBuilder(bitmapColours, heart, time);
         GameEngineer gameEngineer = new GameEngineer(gameBuilder);
         gameEngineer.constructGame();
         this.gameElements = gameEngineer.getGameElements();
 
 
-        SoundBuilder soundBuilder = new SoundBuilder(success, failure, whoosh);
+        SoundBuilder soundBuilder = new SoundBuilder(success, failure, whoosh, boost);
         SoundEngineer soundEngineer = new SoundEngineer(soundBuilder);
         soundEngineer.constructSound();
         this.soundFacade = soundEngineer.getSoundFacade();
@@ -54,15 +55,12 @@ public class GameManager implements ValueEventListener{
 
         this.gameElements.memoryBall.draw(canvas);
 
-        Paint scorePaint = new Paint();
-        scorePaint.setColor(Color.WHITE);
-        scorePaint.setTextSize(100);
-        canvas.drawText("Score: " + this.gameElements.score, 700, 1800, scorePaint);
+        Paint style = new Paint();
+        style.setColor(Color.WHITE);
+        style.setTextSize(100);
 
-        Paint levelPaint = new Paint();
-        levelPaint.setColor(Color.WHITE);
-        levelPaint.setTextSize(100);
-        canvas.drawText("Level: " + this.gameElements.level, 700, 1600, levelPaint);
+        canvas.drawText("Score: " + this.gameElements.score, 700, 1800, style);
+        canvas.drawText("Level: " + this.gameElements.level, 700, 1700, style);
 
 
         int startX = 25;
@@ -75,6 +73,8 @@ public class GameManager implements ValueEventListener{
         }
     }
 
+
+
     public void update() {
         if (!this.gameElements.hiddenState) {
             if (this.gameElements.showCount == this.gameElements.time) {
@@ -84,14 +84,24 @@ public class GameManager implements ValueEventListener{
                     this.soundFacade.whooshSound.start();
                 }
                 this.gameElements.hiddenState = true;
-            }
-            else if (this.gameElements.showCount < this.gameElements.time) {
+            } else if (this.gameElements.showCount < this.gameElements.time) {
                 this.gameElements.showCount++;
             }
         }
+
         if (this.gameElements.lives == 0){
-            System.exit(0);
+            this.soundFacade.boost.start();
+
             reference.addListenerForSingleValueEvent(this);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            this.soundFacade.whooshSound.start();
+
+            System.exit(0);
         }
     }
 
@@ -105,13 +115,8 @@ public class GameManager implements ValueEventListener{
 
                     if (b.equals(this.gameElements.memoryBall)) {
                         this.gameElements.score++;
-                        if(this.gameElements.score%5 == 0) {
-                            this.gameElements.lives ++;
-                        }
                         this.gameElements.numberOfRefreshes = this.gameElements.numberOfRefreshes + 1;
-                        if (this.gameElements.numberOfRefreshes % 3 == 0){
-                            this.gameElements.level++;
-                        }
+                        this.levelUp();
                         System.out.println("Success!");
                         this.soundFacade.success.start();
                         try {
@@ -126,6 +131,28 @@ public class GameManager implements ValueEventListener{
                     }
                 }
             }
+        }
+    }
+
+    private void levelUp(){
+        if (this.gameElements.numberOfRefreshes % 3 == 0) {
+            this.gameElements.level++;
+            this.gameElements.score++;
+            if (this.gameElements.lives == 6) {
+                this.gameElements.lives = this.gameElements.lives + 1;
+                this.soundFacade.boost.start();
+            } else if (this.gameElements.lives == 5) {
+                this.gameElements.lives = this.gameElements.lives + 2;
+                this.soundFacade.boost.start();
+            } else if (this.gameElements.lives <= 4) {
+                this.gameElements.lives = this.gameElements.lives + 3;
+                this.soundFacade.boost.start();
+            }
+        }
+        if (this.gameElements.numberOfRefreshes % 6 == 0){
+            this.gameElements.score++;
+            this.gameElements.lives = 7;
+            this.soundFacade.boost.start();
         }
     }
 
@@ -147,12 +174,8 @@ public class GameManager implements ValueEventListener{
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         Long oldScore = (Long) dataSnapshot.child("level3").getValue();
-        try {
-            if (oldScore < this.gameElements.score)
-                this.reference.child("level3").setValue(this.gameElements.score);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+        if(oldScore < this.gameElements.score)
+            this.reference.child("level3").setValue(this.gameElements.score);
     }
 
     @Override

@@ -234,3 +234,9 @@ after 5 correct entries.
 Step 42:
 Member: Sargunan Gurumurthy
 Commit made: Updated game 1 to use firebase to keep track of highscore.
+
+Step 43:
+Member: Zohaib Rehman
+Commit made: Added new point and lives system that rewards levelling up.
+    Added correct radio fields and instructions in the customise page.
+    Added new sound when user gains lives.

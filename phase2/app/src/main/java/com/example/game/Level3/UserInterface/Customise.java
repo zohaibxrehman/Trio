@@ -12,8 +12,8 @@ import com.example.game.R;
 
 public class Customise extends Activity {
 
-    RadioGroup color, time, points;
-    RadioButton col, tim, point;
+    RadioGroup color, difficultyGroup;
+    RadioButton background, difficulty;
     Button apply;
 
     @Override
@@ -22,18 +22,15 @@ public class Customise extends Activity {
         setContentView(R.layout.activity_customise);
         apply = findViewById(R.id.apply);
         color = findViewById(R.id.radioGroup);
-        time = findViewById(R.id.radioGroup2);
-        points = findViewById(R.id.radioGroup3);
+        difficultyGroup = findViewById(R.id.radioGroup3);
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                col = findViewById(color.getCheckedRadioButtonId());
-                tim = findViewById(time.getCheckedRadioButtonId());
-                point = findViewById(points.getCheckedRadioButtonId());
+                background = findViewById(color.getCheckedRadioButtonId());
+                difficulty = findViewById(difficultyGroup.getCheckedRadioButtonId());
                 Intent i = new Intent(Customise.this, Level3.class);
-                i.putExtra("COLOR", col.getText().toString());
-                i.putExtra("TIME", tim.getText().toString());
-                i.putExtra("POINTS", point.getText().toString());
+                i.putExtra("BACKGROUND", background.getText().toString());
+                i.putExtra("DIFFICULTY", difficulty.getText().toString());
                 String username = getIntent().getStringExtra("name");
                 i.putExtra("name", username);
                 startActivity(i);
