@@ -29,6 +29,12 @@ public class LeftBall extends Drawableball {
         }
     }
 
+    public void undo(){
+        this.color = Color.BLUE;
+        this.touched = false;
+        this.pair.color = Color.BLUE;
+    }
+
     public void setGreen(){
         this.color = Color.GREEN;
         this.pair.color = Color.GREEN;

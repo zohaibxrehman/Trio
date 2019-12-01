@@ -5,11 +5,7 @@ public interface Algorithms{
 
     void resetGame();
 
-    int getScore();
-
-    int getTries();
-
-    double getPercent();
+    String getScore();
 
     boolean getGameOver();
 }

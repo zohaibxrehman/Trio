@@ -4,34 +4,42 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.game.R;
 
 public class Game2Instructions extends Activity {
-    public String gameMode;
+    private boolean hard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instructions);
+        Switch simpleSwitch = findViewById(R.id.switch1);
+        if (simpleSwitch.isChecked()){
+            this.hard = true;
+        }
     }
 
-    public void Mode1Game(View view) {
+    public void mode1Game(View view) {
         Intent intent = new Intent(this, Level2Activity.class);
-        intent.putExtra(gameMode, 1);
+        intent.putExtra("gameMode", "1");
+        intent.putExtra("difficulty", this.hard);
         startActivity(intent);
     }
 
-    public void Mode2Game(View view){
+    public void mode2Game(View view){
         Intent intent = new Intent(this, Level2Activity.class);
-        intent.putExtra(gameMode, 2);
+        intent.putExtra("gameMode", "2");
+        intent.putExtra("difficulty", this.hard);
         startActivity(intent);
     }
 
-    public void Mode3Game(View view){
+    public void mode3Game(View view){
         Intent intent = new Intent(this, Level2Activity.class);
-        intent.putExtra(gameMode, 3);
+        intent.putExtra("gameMode", "3");
+        intent.putExtra("difficulty", this.hard);
         startActivity(intent);
     }
 

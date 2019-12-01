@@ -3,19 +3,17 @@ package com.example.game.Level2.Model;
 public class GameMode2 implements Algorithms {
 
     MakeObjects objects;
-    private int tries;
     private int score;
-    private double percent;
     private boolean gameOver;
     private int targets;
+    private int tries;
 
-    public GameMode2(MakeObjects objects){
+    public GameMode2(MakeObjects objects, int tries){
         this.objects = objects;
-        this.tries = 0;
         this.score = 0;
-        this.percent = 0.0;
         this.gameOver = false;
-        int targets = this.objects.getLeft().size();
+        int targets = 0;
+        this.tries = tries;
     }
 
     @Override
@@ -23,10 +21,9 @@ public class GameMode2 implements Algorithms {
         if (!this.gameOver){
             for (LeftBall b: objects.getLeft()){
                 if (b.contains(x, y) && !b.getTouched()) {
-                    tries++;
                     b.setTouched();
                     if (!b.getIsTarget()){
-                        targets--;
+                        targets++;
                         score++;
                         b.setGreen();
                     }
@@ -45,29 +42,30 @@ public class GameMode2 implements Algorithms {
                         this.gameOver = true;
                     }
                 }
+                if (targets == 3){
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    resetGame();
+                }
             }
-            percent = (score * 1.0) / (tries * 1.0) * 100;
         }
     }
 
-    @Override
-    public void resetGame() {
-
-    }
-
-    @Override
-    public int getScore() {
-        return this.score;
-    }
-
-    @Override
-    public int getTries() {
+    public int getTries(){
         return this.tries;
     }
 
     @Override
-    public double getPercent() {
-        return this.percent;
+    public void resetGame() {
+        targets = 0;
+        objects.resetGame();}
+
+    @Override
+    public String getScore() {
+        return Integer.toString(score);
     }
 
     @Override

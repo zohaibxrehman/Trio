@@ -271,3 +271,8 @@ Commit made: Three sublevels for game1 Completed.
 Step 50:
 Member: Aditya Goyal
 Commit made: Three sublevels for game 1 are distinctly shown and activity_level_selection.xml made uniform.
+
+Step 51:
+Members: Rutav Shah
+Commit made: Added in support for all three game modes, modes end when a certain score is reached
+added in a "hard" mode option.
