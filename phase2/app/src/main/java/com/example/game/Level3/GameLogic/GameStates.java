@@ -55,6 +55,9 @@ class GameStates {
         if (gameElements.numberOfRefreshes % 3 == 0) {
             gameElements.level++;
             gameElements.score++;
+            if (gameElements.time > 25) {
+                gameElements.time -= 10;
+            }
             if (gameElements.lives == 6) {
                 gameElements.lives = gameElements.lives + 1;
                 soundFacade.boost.start();
