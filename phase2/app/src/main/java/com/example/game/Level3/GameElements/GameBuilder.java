@@ -27,17 +27,17 @@ public class GameBuilder {
 
     void buildBalls(){
         ArrayList<Ball> balls = new ArrayList<>();
-        balls.add(new Ball(bitmapColours.get(0), 100,100));
-        balls.add(new Ball(bitmapColours.get(1), 450, 100));
-        balls.add(new Ball(bitmapColours.get(2),  800, 100));
+        balls.add(new Ball(bitmapColours.get(0), 100,200));
+        balls.add(new Ball(bitmapColours.get(1), 450, 200));
+        balls.add(new Ball(bitmapColours.get(2),  800, 200));
 
-        balls.add(new Ball(bitmapColours.get(3), 100,550));
-        balls.add(new Ball(bitmapColours.get(4), 450, 550));
-        balls.add(new Ball(bitmapColours.get(5), 800, 550));
+        balls.add(new Ball(bitmapColours.get(3), 100,650));
+        balls.add(new Ball(bitmapColours.get(4), 450, 650));
+        balls.add(new Ball(bitmapColours.get(5), 800, 650));
 
-        balls.add(new Ball(bitmapColours.get(6), 100,1000));
-        balls.add(new Ball(bitmapColours.get(7), 450, 1000));
-        balls.add(new Ball(bitmapColours.get(8), 800, 1000));
+        balls.add(new Ball(bitmapColours.get(6), 100,1100));
+        balls.add(new Ball(bitmapColours.get(7), 450, 1100));
+        balls.add(new Ball(bitmapColours.get(8), 800, 1100));
         gameElements.setBalls(balls);
     }
 

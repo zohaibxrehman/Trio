@@ -52,4 +52,12 @@ public class Ball {
     public boolean equals(Ball that) {
         return this.currentImage.sameAs(that.currentImage);
     }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
 }

@@ -31,6 +31,7 @@ public class GameManager implements ValueEventListener{
     private GameElements gameElements;
     private SoundFacade soundFacade;
     private GameStates gameStates;
+    private EasterEgg easterEgg;
 
     public GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh, MediaPlayer boost, String name) {
         GameBuilder gameBuilder = new GameBuilder(bitmapColours, heart, time);
@@ -38,13 +39,14 @@ public class GameManager implements ValueEventListener{
         gameEngineer.constructGame();
         this.gameElements = gameEngineer.getGameElements();
 
-
         SoundBuilder soundBuilder = new SoundBuilder(success, failure, whoosh, boost);
         SoundEngineer soundEngineer = new SoundEngineer(soundBuilder);
         soundEngineer.constructSound();
         this.soundFacade = soundEngineer.getSoundFacade();
 
         gameStates = new GameStates();
+
+        easterEgg = new EasterEgg();
 
         this.name = name;
         this.reference = FirebaseDatabase.getInstance().getReference().child(name);
@@ -57,14 +59,17 @@ public class GameManager implements ValueEventListener{
                 ball.draw(canvas);
         }
 
+//        Paint memory = new Paint();
+//        memory.setColor(Color.WHITE);
+//        canvas.drawCircle(this.gameElements.memoryBall.getX()+55, this.gameElements.memoryBall.getY(), 110, memory);
         this.gameElements.memoryBall.draw(canvas);
 
         Paint style = new Paint();
         style.setColor(Color.WHITE);
         style.setTextSize(100);
 
-        canvas.drawText("Score: " + this.gameElements.score, 700, 1800, style);
-        canvas.drawText("Level: " + this.gameElements.level, 700, 1700, style);
+        canvas.drawText("Score: " + this.gameElements.score, 600, 100, style);
+        canvas.drawText("Level: " + this.gameElements.level, 75, 100, style);
 
 
         int startX = 25;
@@ -80,6 +85,7 @@ public class GameManager implements ValueEventListener{
 
     public void update() {
         this.gameStates.memoriseState(gameElements, soundFacade);
+        this.easterEgg.executeEasterEgg(gameElements);
         this.gameOver();
     }
 

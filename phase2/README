@@ -245,3 +245,7 @@ Step 44:
 Member: Zohaib Rehman
 Commit made: Added class GameStates to be used by GameManager. This reduces the responsibility of
 the GamaManager and is closer to Single Responsibility Principle.
+
+Step 45:
+Member: Zohaib Rehman
+Commit made: Added an easter egg to game 3.
