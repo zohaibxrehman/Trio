@@ -286,3 +286,7 @@ Commit made:- Trimmed the repeated code
 Step 53:
 Member: Zohaib Rehman
 Commit made: Added javadoc and removed unused import statements and variables.
+
+Step 54:
+Member: Zohaib Rehman
+Commit made: Fixed issues with the .gitignore file.
