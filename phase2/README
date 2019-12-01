@@ -282,3 +282,7 @@ Member: Aditya Goyla
 Commit made:- Trimmed the repeated code
             - Removed code redundancies
             - Corrected the behaviour of level_selection_activity
+
+Step 53:
+Member: Zohaib Rehman
+Commit made: Added javadoc and removed unused import statements and variables.
