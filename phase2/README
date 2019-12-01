@@ -260,5 +260,6 @@ Commit made: Three sublevels introduce in the first game(Level1 package) and add
 win the entire Level.
 
 Step 48:
-Members: Uttkarsh Berwal and Aditya Goyal
-Commit made: Three sublevels completely implemented.
+Member: Tony Liu
+Commit made: Re-positioned buttons, changed background, and changed layout to constraint layout in
+instructions.xml
