@@ -123,7 +123,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public void update() {
         level1Manager.update();
-
     }
 
     private ArrayList<Bitmap> bmpColours() {

@@ -225,3 +225,8 @@ Step 40:
 Member: Uttkarsh Berwal
 Commit made: Removed the left and right move buttons from Level1 and added a touch & slide control.
 Also removed some unwanted dependencies in the code.
+
+Step 41:
+Member: Sargunan Gurumurthy
+Commit made: Cleaned up code to catch errors and added an easter egg where player gets an extra life
+ after 5 correct entries..

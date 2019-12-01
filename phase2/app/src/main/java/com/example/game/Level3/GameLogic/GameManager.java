@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import androidx.annotation.NonNull;
-
 import com.example.game.Level3.Entities.Ball;
 import com.example.game.Level3.GameElements.GameBuilder;
 import com.example.game.Level3.GameElements.GameElements;
@@ -76,8 +75,6 @@ public class GameManager implements ValueEventListener{
         }
     }
 
-
-
     public void update() {
         if (!this.gameElements.hiddenState) {
             if (this.gameElements.showCount == this.gameElements.time) {
@@ -87,11 +84,11 @@ public class GameManager implements ValueEventListener{
                     this.soundFacade.whooshSound.start();
                 }
                 this.gameElements.hiddenState = true;
-            } else if (this.gameElements.showCount < this.gameElements.time) {
+            }
+            else if (this.gameElements.showCount < this.gameElements.time) {
                 this.gameElements.showCount++;
             }
         }
-
         if (this.gameElements.lives == 0){
             System.exit(0);
             reference.addListenerForSingleValueEvent(this);
@@ -108,6 +105,9 @@ public class GameManager implements ValueEventListener{
 
                     if (b.equals(this.gameElements.memoryBall)) {
                         this.gameElements.score++;
+                        if(this.gameElements.score%5 == 0) {
+                            this.gameElements.lives ++;
+                        }
                         this.gameElements.numberOfRefreshes = this.gameElements.numberOfRefreshes + 1;
                         if (this.gameElements.numberOfRefreshes % 3 == 0){
                             this.gameElements.level++;
@@ -147,8 +147,12 @@ public class GameManager implements ValueEventListener{
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         Long oldScore = (Long) dataSnapshot.child("level3").getValue();
-        if(oldScore < this.gameElements.score)
-            this.reference.child("level3").setValue(this.gameElements.score);
+        try {
+            if (oldScore < this.gameElements.score)
+                this.reference.child("level3").setValue(this.gameElements.score);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

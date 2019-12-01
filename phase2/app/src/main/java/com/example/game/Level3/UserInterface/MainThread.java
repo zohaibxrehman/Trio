@@ -13,8 +13,6 @@ public class MainThread extends Thread {
 
 
     MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
-
-
         super();
         this.surfaceHolder = surfaceHolder;
         this.gameView = gameView;
@@ -36,7 +34,6 @@ public class MainThread extends Thread {
         while(running) {
             startTime = System.nanoTime();
             canvas = null;
-
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
@@ -60,7 +57,10 @@ public class MainThread extends Thread {
 
             try{
                 this.sleep(waitTime);
-            }catch(Exception e){}
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
 
             totalTime += System.nanoTime()-startTime;
             frameCount++;
@@ -72,7 +72,6 @@ public class MainThread extends Thread {
                 System.out.println(averageFPS);
             }
         }
-
     }
 
     void setRunning(boolean isRunning) {
