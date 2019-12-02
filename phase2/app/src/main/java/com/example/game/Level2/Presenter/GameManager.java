@@ -31,7 +31,7 @@ public class GameManager implements ValueEventListener {
     private DrawObjects drawObjects;
     private DatabaseReference reference;
     private String username;
-    private static int finalScore;
+    private int finalScore;
 
     /**
      * Instantiates a new Game manager.
@@ -92,7 +92,7 @@ public class GameManager implements ValueEventListener {
             winPaint.setColor(Color.GREEN);
             winPaint.setTextSize(100);
             canvas.drawText("YOU WIN", 300, 1000, winPaint);
-            finalScore += algorithm.getGameScore();
+            finalScore = algorithm.getGameScore();
             reference.addListenerForSingleValueEvent(this);
         } else if (lives <= 0) {
             Paint losePaint = new Paint();
