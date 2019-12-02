@@ -10,8 +10,14 @@ import com.example.game.Level2.Presenter.GameView;
 
 import java.util.Objects;
 
+/**
+ * The type Level 2 activity.
+ */
 public class Level2Activity extends Activity {
 
+    /**
+     * The Username.
+     */
     String username;
 
     @Override

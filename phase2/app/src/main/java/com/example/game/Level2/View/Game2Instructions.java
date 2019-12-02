@@ -8,8 +8,14 @@ import android.widget.Switch;
 
 import com.example.game.R;
 
+/**
+ * The type Game 2 instructions.
+ */
 public class Game2Instructions extends Activity {
     private boolean hard;
+    /**
+     * The Username.
+     */
     String username;
 
     @Override
@@ -22,6 +28,11 @@ public class Game2Instructions extends Activity {
         }
     }
 
+    /**
+     * Mode 1 game.
+     *
+     * @param view the view
+     */
     public void mode1Game(View view) {
         Intent intent = new Intent(this, Level2Activity.class);
         intent.putExtra("gameMode", "1");
@@ -31,6 +42,11 @@ public class Game2Instructions extends Activity {
         startActivity(intent);
     }
 
+    /**
+     * Mode 2 game.
+     *
+     * @param view the view
+     */
     public void mode2Game(View view) {
         Intent intent = new Intent(this, Level2Activity.class);
         intent.putExtra("gameMode", "2");
@@ -40,6 +56,11 @@ public class Game2Instructions extends Activity {
         startActivity(intent);
     }
 
+    /**
+     * Mode 3 game.
+     *
+     * @param view the view
+     */
     public void mode3Game(View view) {
         Intent intent = new Intent(this, Level2Activity.class);
         intent.putExtra("gameMode", "3");

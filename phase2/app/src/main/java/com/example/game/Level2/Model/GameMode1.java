@@ -5,6 +5,9 @@ import android.graphics.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Normal Game mode
+ */
 public class GameMode1 implements Algorithms {
 
     private MakeObjects objects;
@@ -14,6 +17,12 @@ public class GameMode1 implements Algorithms {
     private List<LeftBall> pressed;
     private boolean undo;
 
+    /**
+     * Instantiates a new Game mode 1.
+     *
+     * @param objects the objects that interact
+     * @param lives   the lives
+     */
     public GameMode1(MakeObjects objects, int lives) {
         this.objects = objects;
         this.score = 0;
@@ -24,6 +33,12 @@ public class GameMode1 implements Algorithms {
 
     }
 
+    /**
+     * loops over the list of left balls to see if they were clicked, and then performs actions
+     * accordingly
+     * @param x the x variable of the click
+     * @param y the y variable of the click
+     */
     @Override
     public void buttonPressed(float x, float y) {
         if (!this.gameOver && lives > 0) {
@@ -50,10 +65,15 @@ public class GameMode1 implements Algorithms {
             UndoButton undoButton = objects.getUndoObject().get(0);
             if (undoButton.contains(x, y)) {
                 undo();
+            } else{
+                undo = true;
             }
         }
     }
 
+    /**
+     * Adds 200 ms delay
+     */
     private void addDelay() {
         try {
             Thread.sleep(200);
@@ -62,6 +82,9 @@ public class GameMode1 implements Algorithms {
         }
     }
 
+    /**
+     * The game ignores the last click thus an "undo"
+     */
     @Override
     public void undo() {
         this.gameOver = false;
@@ -81,6 +104,9 @@ public class GameMode1 implements Algorithms {
         return this.lives;
     }
 
+    /**
+     * resets the round
+     */
     @Override
     public void resetGame() {
         objects.resetGame();

@@ -5,6 +5,9 @@ import android.graphics.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Game mode 3.
+ */
 public class GameMode3 implements Algorithms {
 
     private MakeObjects objects;
@@ -16,6 +19,12 @@ public class GameMode3 implements Algorithms {
     private List<LeftBall> pressed;
     private boolean undo;
 
+    /**
+     * Instantiates a new Game mode 3.
+     *
+     * @param objects the objects
+     * @param lives   the lives
+     */
     public GameMode3(MakeObjects objects, int lives) {
         this.objects = objects;
         this.tries = 0;
@@ -57,10 +66,15 @@ public class GameMode3 implements Algorithms {
             UndoButton undoButton = objects.getUndoObject().get(0);
             if (undoButton.contains(x, y)) {
                 undo();
+            }else{
+                undo = true;
             }
         }
     }
 
+    /**
+     * adds 200 ms delay
+     */
     private void addDelay() {
         try {
             Thread.sleep(200);
@@ -80,10 +94,18 @@ public class GameMode3 implements Algorithms {
         this.undo = true;
     }
 
+    /**
+     * calculates the percent score for this game
+     */
     private void calculatePercent() {
         percent = Math.round(((score * 1.0) / (tries * 1.0)) * 10000.0) / 100.0;
     }
 
+
+    /**
+     *
+     * @return string representing a percent
+     */
     @Override
     public String getScore() {
         calculatePercent();

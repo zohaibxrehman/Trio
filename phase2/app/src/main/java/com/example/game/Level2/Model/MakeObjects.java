@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The type Make objects creates all the objects in the canvas and then stores them to a list
+ */
 public class MakeObjects {
 
     private List<RightBall> right;
@@ -18,6 +21,11 @@ public class MakeObjects {
     private List<UndoButton> undoObject;
     private int difficulty;
 
+    /**
+     * Instantiates a new Make objects.
+     *
+     * @param difficulty the difficulty
+     */
     public MakeObjects(int difficulty) {
         this.difficulty = difficulty;
         right = new ArrayList<>();
@@ -32,6 +40,10 @@ public class MakeObjects {
         createUndo();
     }
 
+    /**
+     * makes four balls on each side
+     * @param number of balls to draw
+     */
     private void makeBalls(int number) {
         int count = 300;
         for (int i = number; i > 0; i--) {
@@ -45,10 +57,18 @@ public class MakeObjects {
         }
     }
 
+    /**
+     * randomizes the bounds for one of the two points for the lines
+     * @param bounds the min x values
+     * @return integer value for x
+     */
     private int randomizeBounds(int bounds) {
         return (int) (Math.random() * (bounds - 350)) + 350;
     }
 
+    /**
+     * randomizes two points in the middle of two sets of balls then draws lines between them
+     */
     private void makeLines() {
         List<Pair> coords = new ArrayList<>();
         int x1, x2, y1, y2;
@@ -77,6 +97,9 @@ public class MakeObjects {
         }
     }
 
+    /**
+     * sets the 1 target
+     */
     private void setTarget() {
         int r = (int) (Math.random() * right.size());
         RightBall b1 = right.get(r);
@@ -84,6 +107,9 @@ public class MakeObjects {
         b1.getPair().setTarget();
     }
 
+    /**
+     * makes pairs
+     */
     private void makePairs() {
 
         ArrayList<Integer> ints = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
@@ -97,32 +123,45 @@ public class MakeObjects {
         }
     }
 
-    public List<RightBall> getRight() {
-        return right;
-    }
-
-    public List<LeftBall> getLeft() {
+    /**
+     * Gets left.
+     *
+     * @return the left
+     */
+    List<LeftBall> getLeft() {
         return left;
     }
 
-    public List<Line> getLines() {
-        return lines;
-    }
-
+    /**
+     * Gets all objects.
+     *
+     * @return the all objects
+     */
     public List<Drawable> getAllObjects() {
         return allObjects;
     }
 
+    /**
+     * Gets undo object.
+     *
+     * @return the undo object
+     */
     public List<UndoButton> getUndoObject() {
         return undoObject;
     }
 
-    public void createUndo() {
+    /**
+     * Create undo.
+     */
+    private void createUndo() {
         UndoButton undo = new UndoButton();
         undoObject.add(undo);
     }
 
-    public void resetGame() {
+    /**
+     * Reset game.
+     */
+    void resetGame() {
         left = new ArrayList<>();
         right = new ArrayList<>();
         lines = new ArrayList<>();

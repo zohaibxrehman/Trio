@@ -5,6 +5,9 @@ import android.graphics.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Game mode 2.
+ */
 public class GameMode2 implements Algorithms {
 
     private MakeObjects objects;
@@ -15,6 +18,12 @@ public class GameMode2 implements Algorithms {
     private List<LeftBall> pressed;
     private boolean undo;
 
+    /**
+     * Instantiates a new Game mode 2.
+     *
+     * @param objects the objects
+     * @param lives   the lives
+     */
     public GameMode2(MakeObjects objects, int lives) {
         this.objects = objects;
         this.score = 0;
@@ -25,6 +34,13 @@ public class GameMode2 implements Algorithms {
         this.undo = false;
     }
 
+
+    /**
+     * Loops over the left balls to see if the coordinates match and then perform actions
+     * accordingly
+     * @param x the x variable of the click
+     * @param y the y variable of the click
+     */
     @Override
     public void buttonPressed(float x, float y) {
         if (!this.gameOver && lives > 0) {
@@ -54,9 +70,21 @@ public class GameMode2 implements Algorithms {
                     resetGame();
                 }
             }
+        } else if (lives == 0) {
+            // perform undo first time lives goes to 0 and user clicks button
+            UndoButton undoButton = objects.getUndoObject().get(0);
+            if (undoButton.contains(x, y)) {
+                undo();
+            }
+            else{
+                undo = true;
+            }
         }
     }
 
+    /**
+     * adding 200ms
+     */
     private void addDelay() {
         try {
             Thread.sleep(200);

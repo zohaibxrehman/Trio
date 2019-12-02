@@ -6,18 +6,32 @@ import android.view.SurfaceHolder;
 
 import com.example.game.Level2.Presenter.GameView;
 
+/**
+ * The type Main thread.
+ */
 public class MainThread extends Thread {
     private SurfaceHolder surfaceHolder;
     private GameView gameView;
     private boolean running;
 
 
+    /**
+     * Instantiates a new Main thread.
+     *
+     * @param surfaceHolder the surface holder
+     * @param gameView      the game view
+     */
     public MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
         super();
         this.surfaceHolder = surfaceHolder;
         this.gameView = gameView;
     }
 
+    /**
+     * Sets running.
+     *
+     * @param running the running
+     */
     public void setRunning(boolean running) {
         this.running = running;
     }

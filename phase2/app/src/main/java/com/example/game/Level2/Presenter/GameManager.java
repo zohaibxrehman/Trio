@@ -19,6 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 
+/**
+ * The type Game manager.
+ */
 public class GameManager implements ValueEventListener {
     private String score;
     private MakeObjects makeObjects;
@@ -28,8 +31,15 @@ public class GameManager implements ValueEventListener {
     private DrawObjects drawObjects;
     private DatabaseReference reference;
     private String username;
-    private int finalScore;
+    private static int finalScore;
 
+    /**
+     * Instantiates a new Game manager.
+     *
+     * @param gameMode the game mode
+     * @param hard     the hard
+     * @param username the username
+     */
     GameManager(int gameMode, boolean hard, String username) {
         int difficulty = 4;
         this.makeObjects = new MakeObjects(difficulty);
@@ -40,9 +50,13 @@ public class GameManager implements ValueEventListener {
         drawObjects = new DrawObjects();
         this.username = username;
         this.reference = FirebaseDatabase.getInstance().getReference().child(username);
-        this.finalScore = 0;
+        finalScore = 0;
     }
 
+    /**
+     * sets the number of tries
+     * @param hard boolean that represents the value of the switch on instructions screen
+     */
     private void setTries(boolean hard) {
         if (hard) {
             this.tries = 5;
@@ -51,6 +65,9 @@ public class GameManager implements ValueEventListener {
         }
     }
 
+    /**
+     * selects gamemode based on what the user chose
+     */
     private void setGameMode() {
         if (gameMode == 1) {
             this.algorithm = new GameMode1(this.makeObjects, tries);
@@ -61,6 +78,11 @@ public class GameManager implements ValueEventListener {
         }
     }
 
+    /**
+     * runs the game loop and checks to see if game should be finished
+     *
+     * @param canvas the canvas
+     */
     @SuppressLint("DefaultLocale")
     public void draw(Canvas canvas) {
         int lives = algorithm.getLives();
@@ -70,6 +92,7 @@ public class GameManager implements ValueEventListener {
             winPaint.setColor(Color.GREEN);
             winPaint.setTextSize(100);
             canvas.drawText("YOU WIN", 300, 1000, winPaint);
+            finalScore += algorithm.getGameScore();
             reference.addListenerForSingleValueEvent(this);
         } else if (lives <= 0) {
             Paint losePaint = new Paint();
@@ -91,9 +114,14 @@ public class GameManager implements ValueEventListener {
             score = algorithm.getScore();
             canvas.drawText("Score: " + score, 100, 1950, scorePaint);
         }
-        finalScore = algorithm.getGameScore();
     }
 
+    /**
+     * Button pressed.
+     *
+     * @param x the x
+     * @param y the y
+     */
     void buttonPressed(float x, float y) {
         algorithm.buttonPressed(x, y);
     }
@@ -102,6 +130,10 @@ public class GameManager implements ValueEventListener {
     public void onCancelled(@NonNull DatabaseError databaseError) {
     }
 
+    /**
+     * adds score to firebase
+     *
+     */
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         Long oldScore = (Long) dataSnapshot.child("level2").getValue();
