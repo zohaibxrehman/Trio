@@ -1,61 +1,82 @@
 package com.example.game.Level2.Model;
 
+import android.graphics.Color;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameMode2 implements Algorithms {
 
     MakeObjects objects;
     private int score;
     private boolean gameOver;
     private int targets;
-    private int tries;
+    private int lives;
+    private List<LeftBall> pressed;
+    private boolean undo;
 
-    public GameMode2(MakeObjects objects, int tries){
+    public GameMode2(MakeObjects objects, int lives){
         this.objects = objects;
         this.score = 0;
         this.gameOver = false;
         int targets = 0;
-        this.tries = tries;
+        this.lives = lives;
+        this.pressed = new ArrayList<>();
+        this.undo = false;
     }
 
     @Override
     public void buttonPressed(float x, float y) {
-        if (!this.gameOver){
+        if (!this.gameOver && lives > 0){
             for (LeftBall b: objects.getLeft()){
                 if (b.contains(x, y) && !b.getTouched()) {
                     b.setTouched();
                     if (!b.getIsTarget()){
                         targets++;
                         score++;
-                        b.setGreen();
+                        b.setColor(Color.GREEN);
+                        addDelay();
                     }
                     else{
-                        b.setRed();
+                        lives--;
+                        b.setColor(Color.RED);
+                        addDelay();
                     }
                     if(b.getIsTarget() | b.getPair().getIsTarget()){
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                        addDelay();
                         resetGame();
                     }
-                    if (score == 15){
-                        this.gameOver = true;
-                    }
+                }
+                if (score == 14){
+                    this.gameOver = true;
                 }
                 if (targets == 3){
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    addDelay();
                     resetGame();
                 }
             }
         }
     }
 
-    public int getTries(){
-        return this.tries;
+    private void addDelay(){
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void undo(){
+        this.gameOver = false;
+        this.lives = 1;
+        LeftBall b = this.pressed.get(pressed.size() - 1);
+        b.undo();
+    }
+
+    @Override
+    public int getLives(){
+        return this.lives;
     }
 
     @Override
@@ -71,5 +92,11 @@ public class GameMode2 implements Algorithms {
     @Override
     public boolean getGameOver() {
         return this.gameOver;
+    }
+
+
+    @Override
+    public boolean getUndo(){
+        return this.undo;
     }
 }

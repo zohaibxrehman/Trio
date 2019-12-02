@@ -1,7 +1,6 @@
 package com.example.game.Level2.Presenter;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -12,27 +11,21 @@ import com.example.game.Level2.View.MainThread;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
   private MainThread thread;
   private GameManager gameManager;
-  public static float charHeight;
-  public static float charWidth;
-  public static int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-  public static int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
-  private Context context;
   public int gameMode;
+  public boolean hard;
 
-  public GameView(Context context, int gameMode) {
+  public GameView(Context context, int gameMode, boolean hard) {
     super(context);
     getHolder().addCallback(this);
     thread = new MainThread(getHolder(), this);
     setFocusable(true);
-    this.context = context;
     this.gameMode = gameMode;
+    this.hard = hard;
   }
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
-    gameManager =
-        new GameManager(
-            (int) (screenHeight / charHeight), (int) (screenWidth / charWidth), gameMode);
+    gameManager = new GameManager(gameMode, hard);
     thread.setRunning(true);
     thread.start();
   }

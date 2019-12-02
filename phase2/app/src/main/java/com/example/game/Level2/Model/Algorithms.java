@@ -7,5 +7,11 @@ public interface Algorithms{
 
     String getScore();
 
+    int getLives();
+
+    void undo();
+
     boolean getGameOver();
+
+    boolean getUndo();
 }

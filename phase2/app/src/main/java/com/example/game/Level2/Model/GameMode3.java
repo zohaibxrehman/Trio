@@ -1,5 +1,7 @@
 package com.example.game.Level2.Model;
 
+import android.graphics.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,66 +9,93 @@ public class GameMode3 implements Algorithms {
 
     MakeObjects objects;
     private int tries;
+    private int lives;
     private int score;
     private double percent;
     private boolean gameOver;
     private List<LeftBall> pressed;
+    private boolean undo;
 
-    public GameMode3(MakeObjects objects, int tries){
+    public GameMode3(MakeObjects objects, int lives){
         this.objects = objects;
         this.tries = 0;
         this.score = 0;
         this.percent = 0.0;
         this.gameOver = false;
-        this.tries = tries;
+        this.lives = lives;
         pressed = new ArrayList<>();
+        this.undo = false;
 
     }
 
     @Override
     public void buttonPressed(float x, float y) {
-        if (!this.gameOver){
+        if (!this.gameOver && lives > 0){
             for (LeftBall b: objects.getLeft()){
                 if (b.contains(x, y) && !b.getTouched()) {
                     b.setTouched();
-                    b.setColor();
+                    tries++;
                     pressed.add(b);
                     if(b.getIsTarget() | b.getPair().getIsTarget()){
                         score++;
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                        b.setColor(Color.GREEN);
+                        addDelay();
                         resetGame();
                     }else{
-                        tries--;
+                        b.setColor(Color.RED);
+                        addDelay();
+                        lives--;
                     }
-                    if (score == 7){
+                    calculatePercent();
+                    if (tries > 5 && percent > 65){
                         this.gameOver = true;
+                        addDelay();
                     }
                 }
             }
         }
+        else{
+            UndoButton undoButton = objects.getUndoObject().get(0);
+            if (undoButton.contains(x, y)){
+                undo();
+            }
+        }
     }
 
+    private void addDelay(){
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void undo(){
-        this.gameOver = false;
-        this.tries = 1;
         LeftBall b = this.pressed.get(pressed.size() - 1);
         b.undo();
+        this.gameOver = false;
+        this.lives = 1;
+        this.tries--;
+        calculatePercent();
+        this.undo = true;
+    }
+
+    private void calculatePercent(){
+        percent = Math.round(((score * 1.0) / (tries * 1.0)) * 10000.0)/100.0;
     }
 
     @Override
     public String getScore() {
-        percent = (score * 1.0) / (tries * 1.0) * 100;
+        calculatePercent();
         String returnValue = Double.toString(percent);
         returnValue += "%";
         return returnValue;
     }
 
-    public int getTries(){
-        return this.tries;
+    @Override
+    public int getLives(){
+        return this.lives;
     }
 
     @Override
@@ -78,5 +107,11 @@ public class GameMode3 implements Algorithms {
     public void resetGame() {
         pressed = new ArrayList<>();
         objects.resetGame();
+    }
+
+
+    @Override
+    public boolean getUndo(){
+        return this.undo;
     }
 }

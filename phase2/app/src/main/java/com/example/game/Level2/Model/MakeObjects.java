@@ -12,10 +12,10 @@ import java.util.List;
 public class MakeObjects {
 
     private List<RightBall> right;
-
     private List<LeftBall> left;
     private List<Drawable> allObjects;
     private List<Line> lines;
+    private List<UndoButton> undoObject;
     private int difficulty;
 
     public MakeObjects(int difficulty){
@@ -24,10 +24,12 @@ public class MakeObjects {
         left = new ArrayList<>();
         lines = new ArrayList<>();
         allObjects = new ArrayList<>();
+        undoObject = new ArrayList<>();
         makeBalls(difficulty);
         makePairs();
         setTarget();
         makeLines();
+        createUndo();
     }
 
     private void makeBalls(int number) {
@@ -107,6 +109,13 @@ public class MakeObjects {
     }
 
     public List<Drawable> getAllObjects(){return allObjects;}
+
+    public List<UndoButton> getUndoObject(){return undoObject;}
+
+    public void createUndo(){
+        UndoButton undo = new UndoButton();
+        undoObject.add(undo);
+    }
 
     public void resetGame(){
         left = new ArrayList<>();
