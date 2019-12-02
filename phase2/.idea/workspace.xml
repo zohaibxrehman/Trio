@@ -14,23 +14,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_16_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_16_0_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_16_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_16_0_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_16_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_16_0_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_16_0_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_16_0_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_database_16_0_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_database_16_0_4_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Barrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Barrier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Button.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Interactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Interactor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Presenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1View.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1view.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1view.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/LevelSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/LevelSelection.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3845">
+            <state relative-caret-position="4216">
               <caret line="284" selection-start-line="284" selection-end-line="284" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -77,10 +69,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Algorithms.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Interactor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+            <state relative-caret-position="391">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Presenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -98,19 +99,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameMode3.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1view.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-31">
-              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Life.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+            <state relative-caret-position="313">
+              <caret line="48" column="27" lean-forward="true" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,28 +111,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameMode1.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="340">
+              <caret line="20" column="100" lean-forward="true" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1view.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/MainThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1564">
-              <caret line="108" column="23" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="23" />
+            <state relative-caret-position="68">
+              <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/LevelSelection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameMode2.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Life.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+            <state relative-caret-position="193">
+              <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -174,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Barrier.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Button.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/MainThread.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Life.java" />
@@ -188,8 +197,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level3/Level3.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level3/customise.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level2/Model/MakeObjects.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Presenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Interactor.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_customise.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level3/UserInterface/Customise.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level3/UserInterface/GameView.java" />
@@ -208,14 +215,11 @@
         <option value="$PROJECT_DIR$/../../gg/phase2/app/src/main/java/com/example/game/Level1/View/LevelSelection.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Customise1.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/LevelSelection.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Ball.java" />
         <option value="$PROJECT_DIR$/app/.gitignore" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Algorithms.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameMode2.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameMode3.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1view.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/GameStats.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Main2Activity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/MainActivity.java" />
@@ -225,6 +229,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Barrier.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Button.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameMode1.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Interactor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1View.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Presenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1view.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/LevelSelection.java" />
       </list>
     </option>
   </component>
@@ -665,11 +675,19 @@
       <option name="project" value="LOCAL" />
       <updated>1575250418166</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Cleaned up Entities package in Level1.">
+      <created>1575258773508</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1575258773508</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="top" id="Favorites" order="0" side_tool="true" weight="0.329429" />
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -746,22 +764,10 @@
     <MESSAGE value="Added javadoc and removed unused import statements and variables." />
     <MESSAGE value="Developing Level1" />
     <MESSAGE value="fixed a bug while winning the level1." />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed a bug while winning the level1." />
+    <MESSAGE value="Cleaned up Entities package in Level1." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up Entities package in Level1." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level3/Entities/Ball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1240#1241#0" expanded="true" />
-            <element signature="e#1265#1266#0" expanded="true" />
-            <element signature="e#1289#1290#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level3/GameLogic/EasterEgg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -861,23 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/LevelSelection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level2/Model/GameMode1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
@@ -896,34 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Presenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Interactor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1view.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="108" column="23" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1001,16 +962,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Barrier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="100" column="42" lean-forward="true" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Ball.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
@@ -1023,9 +974,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Life.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Interactor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Barrier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="100" column="42" lean-forward="true" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Logic/Game1Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/GameManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3845">
+        <state relative-caret-position="4216">
           <caret line="284" selection-start-line="284" selection-end-line="284" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1043,10 +1035,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/Entities/Life.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1view.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        <state relative-caret-position="313">
+          <caret line="48" column="27" lean-forward="true" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/Level1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="100" lean-forward="true" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/MainThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game/Level1/View/LevelSelection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

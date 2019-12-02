@@ -3,7 +3,6 @@ package com.example.game.Level1.View;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -15,39 +14,35 @@ import android.view.SurfaceView;
 
 import com.example.game.Level1.Entities.GameManager;
 import com.example.game.Level1.Logic.Game1Presenter;
-import com.example.game.Level1.Logic.Game1View;
-import com.example.game.Level2.View.Game2Instructions;
 import com.example.game.R;
 
 /**
  * Class for the view of the game
  */
 @SuppressLint("ViewConstructor")
-public class Level1view extends SurfaceView implements SurfaceHolder.Callback, Game1View {
+public class Level1view extends SurfaceView implements SurfaceHolder.Callback{
 
 
     private GameManager gameManager;
     public static Bitmap heart;
     public static boolean gameRunning ;
     private MainThread thread;
-    private String background, ballcolor, difficulty;
+    private String background,ballColor, difficulty;
     public static Canvas can;
     private Game1Presenter presenter;
-    private Context context;
     private String username;
     int gameMode;
 
 
 
-    public Level1view(Context context, String background, String ballcolor, String difficulty, String username, int gameMode)
+    public Level1view(Context context, String background, String ballColor, String difficulty, String username, int gameMode)
     {
         super(context);
         this.username = username;
-        this.context = context;
         this.gameMode = gameMode;
-        presenter = new Game1Presenter(this);
+        presenter = new Game1Presenter();
         this.background = background;
-        this.ballcolor = ballcolor;
+        this.ballColor = ballColor;
         this.difficulty = difficulty;
         getHolder().addCallback(this);
         this.thread = new MainThread(getHolder(), this);
@@ -66,7 +61,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         Paint paintText = new Paint();
         paintText.setTextSize(36);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
-        gameManager = new GameManager(difficulty, ballcolor,username, gameMode);
+        gameManager = new GameManager(difficulty,ballColor ,username, gameMode);
         gameManager.createItems();
         thread.setRunning(true);
         thread.start();
@@ -106,7 +101,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
             canvas.drawBitmap(background, 0, 0, null);
         }
         if (canvas != null) {
-            boolean a = presenter.draw(canvas, gameManager);}
+            presenter.draw(canvas, gameManager);}
     }
 
     /**
@@ -136,8 +131,4 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         return true;
     }
 
-    @Override
-    public void moveToNextGame() {
-        context.startActivity(new Intent(this.context, Game2Instructions.class));
-    }
 }

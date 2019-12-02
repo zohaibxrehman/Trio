@@ -7,12 +7,12 @@ import com.example.game.Level1.Entities.GameManager;
 public class Game1Interactor {
 
     boolean checker ;
-    public void ballMove(float touchX, GameManager manager) {
+    void ballMove(float touchX, GameManager manager) {
 
         manager.ballMove(touchX);
     }
 
-    public void update(GameManager manager) {
+    void update(GameManager manager) {
         manager.update();
 
     }
@@ -24,9 +24,5 @@ public class Game1Interactor {
         return gameManager.draw(canvas);
     }
 
-    interface Buttons{
-        void moveToNextGame();
-
-    }
 
 }
