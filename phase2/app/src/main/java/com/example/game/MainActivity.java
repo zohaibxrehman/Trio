@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
      * The Reference.
      */
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-    //private final String ACCOUNTS = "accounts";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
