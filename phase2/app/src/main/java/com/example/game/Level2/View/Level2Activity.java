@@ -13,6 +13,7 @@ import java.util.Objects;
 public class Level2Activity extends Activity {
 
     String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,7 @@ public class Level2Activity extends Activity {
         int gameModevalue = Integer.parseInt(Objects.requireNonNull(gameMode));
         username = getIntent().getStringExtra("name");
         intent.putExtra("name", username);
-        Boolean hard = intent.getBooleanExtra("difficulty", false);
+        boolean hard = intent.getBooleanExtra("difficulty", false);
         setContentView(new GameView(this, gameModevalue, hard, username));
     }
 }

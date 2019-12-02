@@ -7,14 +7,14 @@ import com.example.game.Level2.Model.Drawable;
 import com.example.game.Level2.Model.MakeObjects;
 
 public class DrawObjects {
-    public void draw(Canvas canvas, MakeObjects makeObjects){
-        for (Drawable allObjects: makeObjects.getAllObjects()){
+    public void draw(Canvas canvas, MakeObjects makeObjects) {
+        for (Drawable allObjects : makeObjects.getAllObjects()) {
             allObjects.draw(canvas);
         }
     }
 
-    public void undoButton(Canvas canvas, MakeObjects makeObjects){
-        for (Drawable undo: makeObjects.getUndoObject()){
+    void undoButton(Canvas canvas, MakeObjects makeObjects) {
+        for (Drawable undo : makeObjects.getUndoObject()) {
             undo.draw(canvas);
         }
     }

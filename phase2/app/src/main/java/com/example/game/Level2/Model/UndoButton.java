@@ -14,7 +14,7 @@ public class UndoButton implements Drawable {
         c.drawCircle(550, 1700, 300, p);
         p.setTextSize(150);
         p.setColor(Color.RED);
-        c.drawText("UNDO?", 300,1750,p);
+        c.drawText("UNDO?", 300, 1750, p);
     }
 
     public boolean contains(float l, float m) {

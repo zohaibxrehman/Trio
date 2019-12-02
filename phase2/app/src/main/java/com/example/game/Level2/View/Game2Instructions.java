@@ -17,7 +17,7 @@ public class Game2Instructions extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instructions);
         Switch simpleSwitch = findViewById(R.id.switch1);
-        if (simpleSwitch.isChecked()){
+        if (simpleSwitch.isChecked()) {
             this.hard = true;
         }
     }
@@ -31,7 +31,7 @@ public class Game2Instructions extends Activity {
         startActivity(intent);
     }
 
-    public void mode2Game(View view){
+    public void mode2Game(View view) {
         Intent intent = new Intent(this, Level2Activity.class);
         intent.putExtra("gameMode", "2");
         intent.putExtra("difficulty", this.hard);
@@ -40,7 +40,7 @@ public class Game2Instructions extends Activity {
         startActivity(intent);
     }
 
-    public void mode3Game(View view){
+    public void mode3Game(View view) {
         Intent intent = new Intent(this, Level2Activity.class);
         intent.putExtra("gameMode", "3");
         intent.putExtra("difficulty", this.hard);

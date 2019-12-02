@@ -18,7 +18,7 @@ public class MakeObjects {
     private List<UndoButton> undoObject;
     private int difficulty;
 
-    public MakeObjects(int difficulty){
+    public MakeObjects(int difficulty) {
         this.difficulty = difficulty;
         right = new ArrayList<>();
         left = new ArrayList<>();
@@ -45,7 +45,7 @@ public class MakeObjects {
         }
     }
 
-    private int randomizeBounds(int bounds){
+    private int randomizeBounds(int bounds) {
         return (int) (Math.random() * (bounds - 350)) + 350;
     }
 
@@ -76,6 +76,7 @@ public class MakeObjects {
 
         }
     }
+
     private void setTarget() {
         int r = (int) (Math.random() * right.size());
         RightBall b1 = right.get(r);
@@ -85,7 +86,7 @@ public class MakeObjects {
 
     private void makePairs() {
 
-        ArrayList<Integer> ints = new ArrayList<>(Arrays.asList(0,1,2,3));
+        ArrayList<Integer> ints = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
         int r;
         for (LeftBall b : left) {
             r = (int) (Math.random() * (ints.size()));
@@ -108,16 +109,20 @@ public class MakeObjects {
         return lines;
     }
 
-    public List<Drawable> getAllObjects(){return allObjects;}
+    public List<Drawable> getAllObjects() {
+        return allObjects;
+    }
 
-    public List<UndoButton> getUndoObject(){return undoObject;}
+    public List<UndoButton> getUndoObject() {
+        return undoObject;
+    }
 
-    public void createUndo(){
+    public void createUndo() {
         UndoButton undo = new UndoButton();
         undoObject.add(undo);
     }
 
-    public void resetGame(){
+    public void resetGame() {
         left = new ArrayList<>();
         right = new ArrayList<>();
         lines = new ArrayList<>();

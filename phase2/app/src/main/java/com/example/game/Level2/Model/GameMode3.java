@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GameMode3 implements Algorithms {
 
-    MakeObjects objects;
+    private MakeObjects objects;
     private int tries;
     private int lives;
     private int score;
@@ -16,7 +16,7 @@ public class GameMode3 implements Algorithms {
     private List<LeftBall> pressed;
     private boolean undo;
 
-    public GameMode3(MakeObjects objects, int lives){
+    public GameMode3(MakeObjects objects, int lives) {
         this.objects = objects;
         this.tries = 0;
         this.score = 0;
@@ -30,39 +30,38 @@ public class GameMode3 implements Algorithms {
 
     @Override
     public void buttonPressed(float x, float y) {
-        if (!this.gameOver && lives > 0){
-            for (LeftBall b: objects.getLeft()){
+        if (!this.gameOver && lives > 0) {
+            for (LeftBall b : objects.getLeft()) {
                 if (b.contains(x, y) && !b.getTouched()) {
                     b.setTouched();
                     tries++;
                     pressed.add(b);
-                    if(b.getIsTarget() | b.getPair().getIsTarget()){
+                    if (b.getIsTarget() | b.getPair().getIsTarget()) {
                         score++;
                         b.setColor(Color.GREEN);
                         addDelay();
                         resetGame();
-                    }else{
+                    } else {
                         b.setColor(Color.RED);
                         addDelay();
                         lives--;
                     }
                     calculatePercent();
-                    if (tries > 5 && percent > 65){
+                    if (tries > 5 && percent > 65) {
                         this.gameOver = true;
                         addDelay();
                     }
                 }
             }
-        }
-        else{
+        } else {
             UndoButton undoButton = objects.getUndoObject().get(0);
-            if (undoButton.contains(x, y)){
+            if (undoButton.contains(x, y)) {
                 undo();
             }
         }
     }
 
-    private void addDelay(){
+    private void addDelay() {
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
@@ -71,7 +70,7 @@ public class GameMode3 implements Algorithms {
     }
 
     @Override
-    public void undo(){
+    public void undo() {
         LeftBall b = this.pressed.get(pressed.size() - 1);
         b.undo();
         this.gameOver = false;
@@ -81,8 +80,8 @@ public class GameMode3 implements Algorithms {
         this.undo = true;
     }
 
-    private void calculatePercent(){
-        percent = Math.round(((score * 1.0) / (tries * 1.0)) * 10000.0)/100.0;
+    private void calculatePercent() {
+        percent = Math.round(((score * 1.0) / (tries * 1.0)) * 10000.0) / 100.0;
     }
 
     @Override
@@ -94,7 +93,7 @@ public class GameMode3 implements Algorithms {
     }
 
     @Override
-    public int getLives(){
+    public int getLives() {
         return this.lives;
     }
 
@@ -111,7 +110,7 @@ public class GameMode3 implements Algorithms {
 
 
     @Override
-    public boolean getUndo(){
+    public boolean getUndo() {
         return this.undo;
     }
 }

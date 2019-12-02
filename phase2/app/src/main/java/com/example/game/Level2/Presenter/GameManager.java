@@ -19,8 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 
-public class GameManager implements ValueEventListener
-{
+public class GameManager implements ValueEventListener {
     private String score;
     private MakeObjects makeObjects;
     private int gameMode;
@@ -28,7 +27,7 @@ public class GameManager implements ValueEventListener
     private int tries;
     private DrawObjects drawObjects;
     private DatabaseReference reference;
-    String username;
+    private String username;
 
     GameManager(int gameMode, boolean hard, String username) {
         int difficulty = 4;
@@ -74,7 +73,7 @@ public class GameManager implements ValueEventListener
             losePaint.setColor(Color.RED);
             losePaint.setTextSize(100);
             canvas.drawText("YOU LOSE", 300, 1000, losePaint);
-            if (!algorithm.getUndo()){
+            if (!algorithm.getUndo()) {
                 drawObjects.undoButton(canvas, makeObjects);
             }
         } else {
@@ -94,12 +93,13 @@ public class GameManager implements ValueEventListener
     }
 
     @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) { }
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+    }
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         Long oldScore = (Long) dataSnapshot.child("level3").getValue();
-        if(oldScore < Integer.parseInt(this.score))
+        if (oldScore < Integer.parseInt(this.score))
             this.reference.child("level3").setValue(Integer.parseInt(this.score));
     }
 }
