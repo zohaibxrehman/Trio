@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import androidx.annotation.NonNull;
 
-import com.example.game.GameStats;
 import com.example.game.Level3.Entities.Ball;
 import com.example.game.Level3.GameElements.GameBuilder;
 import com.example.game.Level3.GameElements.GameElements;
@@ -24,7 +23,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * The Game manager.
+ */
 public class GameManager implements ValueEventListener{
+    /**
+     * The Name.
+     */
     public String name;
     private DatabaseReference reference;
     private GameElements gameElements;
@@ -32,6 +37,18 @@ public class GameManager implements ValueEventListener{
     private GameStates gameStates;
     private EasterEgg easterEgg;
 
+    /**
+     * Instantiates a new Game manager.
+     *
+     * @param bitmapColours the bitmap colours
+     * @param heart         the heart
+     * @param time          the time
+     * @param success       the success
+     * @param failure       the failure
+     * @param whoosh        the whoosh
+     * @param boost         the boost
+     * @param name          the name
+     */
     public GameManager(ArrayList<Bitmap> bitmapColours, Drawable heart, int time, MediaPlayer success, MediaPlayer failure, MediaPlayer whoosh, MediaPlayer boost, String name) {
         GameBuilder gameBuilder = new GameBuilder(bitmapColours, heart, time);
         GameEngineer gameEngineer = new GameEngineer(gameBuilder);
@@ -52,6 +69,11 @@ public class GameManager implements ValueEventListener{
         Collections.shuffle(gameElements.bitmapColours);
     }
 
+    /**
+     * Draw the game elements on the screen such as lives(hearts), score and balls.
+     *
+     * @param canvas the canvas
+     */
     public void draw(Canvas canvas) {
         for (Ball ball: this.gameElements.balls) {
             if (ball != null)
@@ -79,16 +101,31 @@ public class GameManager implements ValueEventListener{
     }
 
 
+    /**
+     * Update the state of the game. This deals mainly with when the balls are hidden from
+     * the player. And also executes the easter egg if the player finds it.
+     *
+     */
     public void update() {
         this.gameStates.memoriseState(gameElements, soundFacade);
         this.easterEgg.executeEasterEgg(gameElements);
         this.gameOver();
     }
 
+    /**
+     * Game logic for when the player touches the balls. This deals mainly with when the balls are
+     * shown from the player.
+     *
+     * @param touchX the touch x
+     * @param touchY the touch y
+     */
     public void select(float touchX, float touchY) {
         gameStates.rememberState(touchX, touchY, gameElements, soundFacade);
     }
 
+    /**
+     * Update the score in the database and end the game.
+     */
     private void gameOver(){
         if (this.gameElements.lives == 0){
             this.soundFacade.boost.start();

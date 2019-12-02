@@ -7,7 +7,16 @@ import com.example.game.Level3.Sound.SoundFacade;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * The type Game states.
+ */
 class GameStates {
+    /**
+     * Game logic for when the balls are hidden. Implements the timer for this hidden period.
+     *
+     * @param gameElements the game elements
+     * @param soundFacade  the sound facade
+     */
     void memoriseState(GameElements gameElements, SoundFacade soundFacade){
         if (!gameElements.hiddenState) {
             if (gameElements.showCount == gameElements.time) {
@@ -23,6 +32,15 @@ class GameStates {
         }
     }
 
+    /**
+     * Game logic for when the balls are shown to the user. Updates the game as and when the user
+     * makes correct and wrong attempts.
+     *
+     * @param touchX       the touch x
+     * @param touchY       the touch y
+     * @param gameElements the game elements
+     * @param soundFacade  the sound facade
+     */
     void rememberState(float touchX, float touchY, GameElements gameElements, SoundFacade soundFacade) {
         if (gameElements.hiddenState) {
             for (Ball ball : gameElements.balls) {
@@ -51,6 +69,11 @@ class GameStates {
         }
     }
 
+    /**
+     * Update the lives and score when user levels up.
+     * @param gameElements game elements
+     * @param soundFacade sound facade
+     */
     private void levelUp(GameElements gameElements, SoundFacade soundFacade){
         if (gameElements.numberOfRefreshes % 3 == 0) {
             gameElements.level++;
@@ -76,6 +99,11 @@ class GameStates {
         }
     }
 
+    /**
+     * Reset the game elements so the user can play again
+     * @param gameElements game elements
+     * @param soundFacade sound facade
+     */
     private void resetGame(GameElements gameElements, SoundFacade soundFacade){
         gameElements.showCount = 0;
         gameElements.hiddenState = false;

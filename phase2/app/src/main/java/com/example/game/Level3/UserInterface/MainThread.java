@@ -3,15 +3,25 @@ package com.example.game.Level3.UserInterface;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
+/**
+ * The type Main thread.
+ */
 public class MainThread extends Thread {
     private GameView gameView;
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private boolean running;
+    /**
+     * The constant canvas.
+     */
     public static Canvas canvas;
-    private int targetFPS = 30;
-    private double averageFPS;
 
 
+    /**
+     * Instantiates a new Main thread.
+     *
+     * @param surfaceHolder the surface holder
+     * @param gameView      the game view
+     */
     MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
         super();
         this.surfaceHolder = surfaceHolder;
@@ -28,7 +38,8 @@ public class MainThread extends Thread {
         long waitTime;
         long totalTime = 0;
         int frameCount =0;
-        long targetTime = 1000/targetFPS;
+        int targetFPS = 30;
+        long targetTime = 1000/ targetFPS;
 
 
         while(running) {
@@ -40,7 +51,7 @@ public class MainThread extends Thread {
                     this.gameView.update();
                     this.gameView.draw(canvas);
                 }
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             finally{
                 if(canvas!=null)
@@ -56,7 +67,7 @@ public class MainThread extends Thread {
             waitTime = targetTime-timeMillis;
 
             try{
-                this.sleep(waitTime);
+                sleep(waitTime);
             }
             catch(Exception e){
                 e.printStackTrace();
@@ -66,7 +77,7 @@ public class MainThread extends Thread {
             frameCount++;
             if(frameCount == targetFPS)
             {
-                averageFPS = 1000/((totalTime/frameCount)/1000000);
+                double averageFPS = 1000 / ((totalTime / frameCount) / 1000000);
                 frameCount =0;
                 totalTime = 0;
                 System.out.println(averageFPS);
@@ -74,6 +85,11 @@ public class MainThread extends Thread {
         }
     }
 
+    /**
+     * Sets running.
+     *
+     * @param isRunning the is running
+     */
     void setRunning(boolean isRunning) {
         running = isRunning;
     }

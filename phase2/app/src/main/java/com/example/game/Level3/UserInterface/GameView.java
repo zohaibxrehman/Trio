@@ -1,5 +1,6 @@
 package com.example.game.Level3.UserInterface;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -18,19 +19,43 @@ import com.example.game.R;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * The type Game view.
+ */
+@SuppressLint("ViewConstructor")
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private GameManager level1Manager;
     private String difficulty;
+    /**
+     * The Username.
+     */
     public String username;
+    /**
+     * The Background.
+     */
     Drawable background;
+    /**
+     * The Heart.
+     */
     Drawable heart;
+    /**
+     * The Colours.
+     */
     ArrayList<Integer> colours;
     private MediaPlayer success;
     private MediaPlayer failure;
     private MediaPlayer whooshSound;
     private MediaPlayer boost;
 
+    /**
+     * Instantiates a new Game view.
+     *
+     * @param context    the context
+     * @param background the background
+     * @param difficulty the difficulty
+     * @param name       the name
+     */
     public GameView(Context context, String background, String difficulty, String name) {
         super(context);
         this.difficulty = difficulty;
@@ -75,6 +100,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
@@ -115,19 +141,19 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    /**
+     * Update the game states.
+     */
     public void update() {
         level1Manager.update();
-
     }
 
     private ArrayList<Bitmap> bmpColours() {
-
         ArrayList<android.graphics.Bitmap> bitmapColours = new ArrayList<>();
         Collections.shuffle(colours);
         for(int i = 0; i < 9; i++){
             bitmapColours.add(BitmapFactory.decodeResource(getResources(), colours.get(i)));
         }
-
         return bitmapColours;
     }
 
@@ -135,12 +161,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas)
     {
         super.draw(canvas);
-
         this.background.draw(canvas);
-
-        if(canvas!=null) {
-            level1Manager.draw(canvas);
-        }
-
+        level1Manager.draw(canvas);
     }
 }

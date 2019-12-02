@@ -8,6 +8,9 @@ import android.view.WindowManager;
 
 import com.example.game.R;
 
+/**
+ * The type Level 3.
+ */
 public class Level3 extends Activity {
     private MediaPlayer backgroundMusic;
     @Override
@@ -22,7 +25,9 @@ public class Level3 extends Activity {
         background = getIntent().getStringExtra("BACKGROUND");
         difficulty = getIntent().getStringExtra("DIFFICULTY");
         String username = getIntent().getStringExtra("name");
-        setContentView(new GameView(this, background, difficulty, username));
+        if (background != null) {
+            setContentView(new GameView(this, background, difficulty, username));
+        }
     }
 
     @Override

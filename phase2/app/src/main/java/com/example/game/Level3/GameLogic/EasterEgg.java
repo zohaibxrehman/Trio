@@ -5,12 +5,24 @@ import com.example.game.Level3.GameElements.GameElements;
 
 import java.util.ArrayList;
 
+/**
+ * The Easter egg.
+ */
 class EasterEgg {
     private boolean executed;
 
+    /**
+     * Instantiates a new Easter egg.
+     */
     EasterEgg(){
         this.executed = false;
     }
+
+    /**
+     * Execute easter egg on very specific and rare conditions.
+     *
+     * @param gameElements the game elements
+     */
     void executeEasterEgg(GameElements gameElements) {
         if (!this.executed) {
             ArrayList<Ball> balls = gameElements.balls;

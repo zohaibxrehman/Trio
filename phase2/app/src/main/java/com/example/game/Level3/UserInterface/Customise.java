@@ -10,10 +10,28 @@ import android.widget.RadioGroup;
 
 import com.example.game.R;
 
+/**
+ * The Customise.
+ */
 public class Customise extends Activity {
 
-    RadioGroup color, difficultyGroup;
-    RadioButton background, difficulty;
+    /**
+     * The Color.
+     */
+    RadioGroup color, /**
+     * The Difficulty group.
+     */
+    difficultyGroup;
+    /**
+     * The Background.
+     */
+    RadioButton background, /**
+     * The Difficulty.
+     */
+    difficulty;
+    /**
+     * The Apply.
+     */
     Button apply;
 
     @Override
