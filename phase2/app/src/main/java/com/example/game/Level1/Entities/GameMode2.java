@@ -3,6 +3,11 @@ package com.example.game.Level1.Entities;
 import java.util.ArrayList;
 
 public class GameMode2 implements Algorithms {
+
+    /**
+     * creates 4 barriers for the user and adds it to the list which the user has sent. The sent
+     * list is mutated.
+     */
     @Override
     public void createBarriers(ArrayList<Barrier> items) {
         Barrier b1 = new Barrier(0, "YB");
@@ -15,9 +20,14 @@ public class GameMode2 implements Algorithms {
             items.add(b4);
     }
 
+    /**
+     * Creates a single barrier which is specified by the user.
+     * @param newBarrierHeight      the height at which the barrier is supposed to be created.
+     * @return      Creates a yellow barrier at the height of newBarrierHeight.
+     */
     @Override
-    public Barrier addBarrierAtTop(Barrier b, float newBarrierHeight) {
-        b = new Barrier(newBarrierHeight, "YB");
+    public Barrier addBarrierAtTop(float newBarrierHeight) {
+        Barrier b = new Barrier(newBarrierHeight, "YB");
         return b;
     }
 }

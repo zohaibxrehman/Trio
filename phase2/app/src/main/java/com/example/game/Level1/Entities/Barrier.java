@@ -12,9 +12,10 @@ public class Barrier{
     private float height;
     private int start;
     private Paint paintText = new Paint();
-    String type;
+    private String type;
 
     Barrier(float height, String type) {
+
         this.height = height;
         this.type = type;
         if(this.type.equals("BB"))
@@ -29,8 +30,7 @@ public class Barrier{
         {
             paintText.setColor(Color.rgb(255, 255, 0));
         }
-        //paintText.setColor(-16041008);
-        start = 350 + (int)(Math.random() * 400);
+        start = 250 + (int)(Math.random() * 400);
     }
 
     /**
@@ -39,19 +39,20 @@ public class Barrier{
      */
     public void draw(Canvas canvas) {
 
-
-
         end = start + 250;
+        // creates the blue barrier
         if(this.type.equals("BB")) {
             canvas.drawRoundRect(-10, height * 42, start, (height + 1) * 42, 100, 100, paintText);
 
             canvas.drawRoundRect(end, height * 42, end + 600, (height + 1) * 42, 100,
                     100, paintText);
         }
+        // creates the white barrier
         else if(this.type.equals("WB"))
         {
             canvas.drawRoundRect(this.start, height * 42, end, (height + 1) * 42, 100, 100, paintText);
         }
+        // creates the yellow barrier
         else if(this.type.equals("YB"))
         {
             canvas.drawRoundRect(start, height * 42, end, (height + 1) * 42, 100,
@@ -70,9 +71,9 @@ public class Barrier{
     /**
      * Moves the barrier downwards
      */
+
     void move()
     {
-        // as we go lower on the screen, the height of object increases
         this.height += 1;
     }
 

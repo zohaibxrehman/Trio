@@ -25,9 +25,8 @@ import com.example.game.R;
 @SuppressLint("ViewConstructor")
 public class Level1view extends SurfaceView implements SurfaceHolder.Callback, Game1View {
 
-    public static float charHeight;
-    public static float charWidth;
-    public GameManager gameManager;
+
+    private GameManager gameManager;
     public static Bitmap heart;
     public static boolean gameRunning ;
     private MainThread thread;
@@ -46,7 +45,6 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         this.username = username;
         this.context = context;
         this.gameMode = gameMode;
-        //this.presenter = presenter;
         presenter = new Game1Presenter(this);
         this.background = background;
         this.ballcolor = ballcolor;
@@ -68,13 +66,7 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         Paint paintText = new Paint();
         paintText.setTextSize(36);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
-        charWidth = paintText.measureText("W");
-        charHeight = (-paintText.ascent() + paintText.descent());
-        System.out.println("this height");
-        System.out.println(charHeight);
-        System.out.println(charWidth);
-
-        gameManager = new GameManager(difficulty, ballcolor,username, gameMode);//, presenter);
+        gameManager = new GameManager(difficulty, ballcolor,username, gameMode);
         gameManager.createItems();
         thread.setRunning(true);
         thread.start();
@@ -115,13 +107,6 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
         }
         if (canvas != null) {
             boolean a = presenter.draw(canvas, gameManager);}
-            //if (!checker) {
-//                //System.exit(0);
-//           // }
-//
-//
-//        }
-
     }
 
     /**

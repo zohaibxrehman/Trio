@@ -23,23 +23,23 @@ import java.util.ArrayList;
 public class GameManager implements ValueEventListener {
 
     private Ball b;
-    private Paint paintText = new Paint();
-    private boolean flag = false;
+    private ArrayList<Barrier> items = new ArrayList<>();
     private String ballColor;
     private int points;
     private ArrayList<Life> lives = new ArrayList<>();
-    public static int finalScore=0;
-    private ArrayList<Barrier> items = new ArrayList<>();
-    float x;
+    private int livesX;
+    static int finalScore=0;
+    private float x;
     private DatabaseReference reference;
-    boolean checker;
+    private boolean checker;
     private ArrayList <Integer> hidden = new ArrayList<>();
     private ArrayList<Integer> hiddenChecker = new ArrayList<>();
     private Canvas canvas;
-    int totalBarriersAdded;
-    Algorithms algorithm;
+    protected int totalBarriersAdded;
+    private Algorithms algorithm;
     String username;
-    private int livesX;
+    private boolean flag = false;
+    private Paint paintText = new Paint();
 
 
     public GameManager(String points, String ballColor, String username, int gameMode){
@@ -67,6 +67,10 @@ public class GameManager implements ValueEventListener {
         this.totalBarriersAdded = 0;
     }
 
+    /**
+     * Creates the lives for the game 1
+     * @param m     m is the number of lives to be created
+     */
     private void createLives(int m)
     {
         for(int i = 0; i < m; i++)
@@ -76,6 +80,10 @@ public class GameManager implements ValueEventListener {
         }
     }
 
+    /**
+     * Choses between the first, second or third game.
+     * @param gameMode      gives the int value to signify which game to run.
+     */
     private void setGameMode(int gameMode){
         if (gameMode == 1){
             algorithm = new GameMode1();
@@ -110,6 +118,7 @@ public class GameManager implements ValueEventListener {
         }
         deleteAndAddBarrier();
     }
+
 
     private void collides(@org.jetbrains.annotations.NotNull Barrier temp)
     {
@@ -155,6 +164,7 @@ public class GameManager implements ValueEventListener {
         if(flag)
         {
             canvas.drawText("YOU LOSE", 400, 800, paintText);
+            deleteAllBarriers();
             checker = false;
             this.reference.addValueEventListener(this);
         }
@@ -167,7 +177,7 @@ public class GameManager implements ValueEventListener {
             }
             else
             {
-                tempUsername = username.substring(0, 4);
+                tempUsername = username.substring(0, 5);
             }
             canvas.drawText(tempUsername, 500, 55, paintText);
         }
@@ -177,7 +187,6 @@ public class GameManager implements ValueEventListener {
             this.reference.addValueEventListener(this);
             checker = false;
             gameStop();
-
             return true;
         }
 
@@ -225,6 +234,10 @@ public class GameManager implements ValueEventListener {
 
     }
 
+    /**
+     * Deletes the barrier which has reached below the screen and creates a new one at the top.
+     * This prevents any memory leaks of our code.
+     */
     private void deleteAndAddBarrier()
     {
         for(int i=0;i<items.size();i++)
@@ -239,6 +252,11 @@ public class GameManager implements ValueEventListener {
                 this.totalBarriersAdded +=1;
             }
         }
+    }
+
+    private void deleteAllBarriers()
+    {
+        this.items.clear();
     }
 
     /**
@@ -256,8 +274,7 @@ public class GameManager implements ValueEventListener {
     private void addBarrierAtTop()
     {   float newBarrierHeight = items.get(0).getHeight();
         newBarrierHeight -= 10;
-        Barrier b = null;
-        Barrier c = algorithm.addBarrierAtTop(b, newBarrierHeight);
+        Barrier c = algorithm.addBarrierAtTop(newBarrierHeight);
         items.add(0, c);
     }
 
@@ -269,6 +286,10 @@ public class GameManager implements ValueEventListener {
      *
      */
 
+    /**
+     * Moves the ball by setting the x coordinate of the ball as x.
+     * @param x     the x coordinate of the ball.
+     */
     public void ballMove(float x)
     {
         setX(x);
