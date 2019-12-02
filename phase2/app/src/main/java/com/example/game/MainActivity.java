@@ -2,7 +2,6 @@ package com.example.game;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 
 /**
@@ -42,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
      * The Reference.
      */
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-    private final String ACCOUNTS = "accounts";
+    //private final String ACCOUNTS = "accounts";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +51,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main2);
-        name = (EditText)findViewById(R.id.name);
-        password = (EditText)findViewById(R.id.password);
+        name = findViewById(R.id.name);
+        password = findViewById(R.id.password);
         login = findViewById(R.id.login);
         login.setOnClickListener(this);
         register = findViewById(R.id.register);
@@ -76,11 +77,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if(dataSnapshot.hasChild(username)){
-                            String passwordmade = dataSnapshot.child(username).child("password").getValue().toString();
-                            if(passwordmade.equals(temppassword)){
-
-                            }
-                            else{
+                            String passwordmade = Objects.requireNonNull(dataSnapshot.child(username).child("password").getValue()).toString();
+                            if(!passwordmade.equals(temppassword)){
                                 Toast.makeText(MainActivity.this, "Incorrect Password :))", Toast.LENGTH_SHORT).show();
                             }
                         }
