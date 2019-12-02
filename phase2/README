@@ -337,3 +337,7 @@ Commit Made: Added limited tries in level 2, also an undo button for the first t
 Step 56:
 Member: Zohaib Rehman
 Commit made: Added javadoc to Main Activities and Game Stats.
+
+Step 57:
+Member: Zohaib Rehman
+Commit made: Fixed firebase support in game 2.

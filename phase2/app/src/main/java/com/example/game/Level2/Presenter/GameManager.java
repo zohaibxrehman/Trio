@@ -70,6 +70,7 @@ public class GameManager implements ValueEventListener {
             winPaint.setColor(Color.GREEN);
             winPaint.setTextSize(100);
             canvas.drawText("YOU WIN", 300, 1000, winPaint);
+            reference.addListenerForSingleValueEvent(this);
         } else if (lives <= 0) {
             Paint losePaint = new Paint();
             losePaint.setColor(Color.RED);
@@ -77,7 +78,10 @@ public class GameManager implements ValueEventListener {
             canvas.drawText("YOU LOSE", 300, 1000, losePaint);
             if (!algorithm.getUndo()) {
                 drawObjects.undoButton(canvas, makeObjects);
+            } else {
+                reference.addListenerForSingleValueEvent(this);
             }
+
         } else {
             Paint scorePaint = new Paint();
             scorePaint.setColor(Color.WHITE);
