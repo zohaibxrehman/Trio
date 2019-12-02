@@ -18,17 +18,16 @@ public class Barrier{
 
         this.height = height;
         this.type = type;
-        if(this.type.equals("BB"))
-        {
-            paintText.setColor(Color.rgb(0, 0, 225));
-        }
-        else if(this.type.equals("WB"))
-        {
-            paintText.setColor(Color.rgb(255, 255, 255));
-        }
-        else if(this.type.equals("YB"))
-        {
-            paintText.setColor(Color.rgb(255, 255, 0));
+        switch (this.type) {
+            case "BB":
+                paintText.setColor(Color.rgb(0, 0, 225));
+                break;
+            case "WB":
+                paintText.setColor(Color.rgb(255, 255, 255));
+                break;
+            case "YB":
+                paintText.setColor(Color.rgb(255, 255, 0));
+                break;
         }
         start = 250 + (int)(Math.random() * 400);
     }
@@ -41,22 +40,22 @@ public class Barrier{
 
         end = start + 250;
         // creates the blue barrier
-        if(this.type.equals("BB")) {
-            canvas.drawRoundRect(-10, height * 42, start, (height + 1) * 42, 100, 100, paintText);
+        switch (this.type) {
+            case "BB":
+                canvas.drawRoundRect(-10, height * 42, start, (height + 1) * 42, 100, 100, paintText);
 
-            canvas.drawRoundRect(end, height * 42, end + 600, (height + 1) * 42, 100,
-                    100, paintText);
-        }
-        // creates the white barrier
-        else if(this.type.equals("WB"))
-        {
-            canvas.drawRoundRect(this.start, height * 42, end, (height + 1) * 42, 100, 100, paintText);
-        }
-        // creates the yellow barrier
-        else if(this.type.equals("YB"))
-        {
-            canvas.drawRoundRect(start, height * 42, end, (height + 1) * 42, 100,
-                    100, paintText);
+                canvas.drawRoundRect(end, height * 42, end + 600, (height + 1) * 42, 100,
+                        100, paintText);
+                break;
+            // creates the white barrier
+            case "WB":
+                canvas.drawRoundRect(this.start, height * 42, end, (height + 1) * 42, 100, 100, paintText);
+                break;
+            // creates the yellow barrier
+            case "YB":
+                canvas.drawRoundRect(start, height * 42, end, (height + 1) * 42, 100,
+                        100, paintText);
+                break;
         }
         try
         {
@@ -85,20 +84,15 @@ public class Barrier{
      */
     boolean contains(int x) {
         // this.score += 1;
-        if(this.type.equals("BB")) {
-            return (this.start) <= x && x <= ((this.end));
-        }
-        else if(this.type.equals("WB"))
-        {
-            return !((this.start) <= x && x <= ((this.end)));
-        }
-        else if(this.type.equals("YB"))
-        {
-            return ((this.start) <= x && x <= ((this.end)));
-        }
-        else
-        {
-            return false;
+        switch (this.type) {
+            case "BB":
+                return (this.start) <= x && x <= ((this.end));
+            case "WB":
+                return !((this.start) <= x && x <= ((this.end)));
+            case "YB":
+                return ((this.start) <= x && x <= ((this.end)));
+            default:
+                return false;
         }
     }
 
