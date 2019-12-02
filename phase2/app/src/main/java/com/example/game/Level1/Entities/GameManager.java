@@ -200,7 +200,6 @@ public class GameManager implements ValueEventListener {
         }
         else if(finalScore == points)
         {
-//            canvas.drawText("YOU WON", 400, 800, paintText);
             this.reference.addValueEventListener(this);
             checker = false;
             gameStop();
