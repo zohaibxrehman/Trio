@@ -114,13 +114,13 @@ public class Level1view extends SurfaceView implements SurfaceHolder.Callback, G
             canvas.drawBitmap(background, 0, 0, null);
         }
         if (canvas != null) {
-            boolean checker = presenter.draw(canvas, gameManager);
-            if (!checker) {
-                System.exit(0);
-            }
-
-
-        }
+            boolean a = presenter.draw(canvas, gameManager);}
+            //if (!checker) {
+//                //System.exit(0);
+//           // }
+//
+//
+//        }
 
     }
 

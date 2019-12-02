@@ -171,11 +171,12 @@ public class GameManager implements ValueEventListener {
             }
             canvas.drawText(tempUsername, 500, 55, paintText);
         }
-        if(finalScore == points)
+        else if(finalScore == points)
         {
             canvas.drawText("YOU WON", 400, 800, paintText);
             this.reference.addValueEventListener(this);
             checker = false;
+
             return true;
         }
 
@@ -220,7 +221,8 @@ public class GameManager implements ValueEventListener {
             if(temp.getHeight() > 40)
             {
                 removeBarrier(temp);
-                finalScore += 1;
+                if (checker){
+                finalScore += 1;}
                 addBarrierAtTop();
                 this.totalBarriersAdded +=1;
             }
