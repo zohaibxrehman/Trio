@@ -290,3 +290,7 @@ Commit made: Added javadoc and removed unused import statements and variables.
 Step 54:
 Member: Zohaib Rehman
 Commit made: Fixed issues with the .gitignore file.
+
+Step 55:
+Member: Rutav Shah
+Commit Made: Added limited tries in level 2, also an undo button for the first time you lose.

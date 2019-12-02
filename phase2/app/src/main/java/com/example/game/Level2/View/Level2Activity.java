@@ -20,6 +20,7 @@ public class Level2Activity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         String gameMode = intent.getStringExtra("gameMode");
         int gameModevalue = Integer.parseInt(Objects.requireNonNull(gameMode));
-        setContentView(new GameView(this, gameModevalue));
+        Boolean hard = intent.getBooleanExtra("difficulty", false);
+        setContentView(new GameView(this, gameModevalue, hard));
     }
 }

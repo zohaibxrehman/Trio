@@ -12,4 +12,10 @@ public class DrawObjects {
             allObjects.draw(canvas);
         }
     }
+
+    public void undoButton(Canvas canvas, MakeObjects makeObjects){
+        for (Drawable undo: makeObjects.getUndoObject()){
+            undo.draw(canvas);
+        }
+    }
 }
