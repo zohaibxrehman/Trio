@@ -11,11 +11,11 @@ public class LeftBall extends Drawableball {
         this.touched = false;
     }
 
-    public boolean getTouched() {
+    boolean getTouched() {
         return touched;
     }
 
-    public void setTouched() {
+    void setTouched() {
         this.touched = true;
     }
 
@@ -24,7 +24,7 @@ public class LeftBall extends Drawableball {
         this.pair.color = color;
     }
 
-    public void undo(){
+    void undo() {
         this.color = Color.BLUE;
         this.touched = false;
         this.pair.color = Color.BLUE;

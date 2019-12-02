@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GameMode2 implements Algorithms {
 
-    MakeObjects objects;
+    private MakeObjects objects;
     private int score;
     private boolean gameOver;
     private int targets;
@@ -15,11 +15,11 @@ public class GameMode2 implements Algorithms {
     private List<LeftBall> pressed;
     private boolean undo;
 
-    public GameMode2(MakeObjects objects, int lives){
+    public GameMode2(MakeObjects objects, int lives) {
         this.objects = objects;
         this.score = 0;
         this.gameOver = false;
-        int targets = 0;
+        targets = 0;
         this.lives = lives;
         this.pressed = new ArrayList<>();
         this.undo = false;
@@ -27,30 +27,29 @@ public class GameMode2 implements Algorithms {
 
     @Override
     public void buttonPressed(float x, float y) {
-        if (!this.gameOver && lives > 0){
-            for (LeftBall b: objects.getLeft()){
+        if (!this.gameOver && lives > 0) {
+            for (LeftBall b : objects.getLeft()) {
                 if (b.contains(x, y) && !b.getTouched()) {
                     b.setTouched();
-                    if (!b.getIsTarget()){
+                    if (!b.getIsTarget()) {
                         targets++;
                         score++;
                         b.setColor(Color.GREEN);
                         addDelay();
-                    }
-                    else{
+                    } else {
                         lives--;
                         b.setColor(Color.RED);
                         addDelay();
                     }
-                    if(b.getIsTarget() | b.getPair().getIsTarget()){
+                    if (b.getIsTarget() | b.getPair().getIsTarget()) {
                         addDelay();
                         resetGame();
                     }
                 }
-                if (score == 14){
+                if (score == 14) {
                     this.gameOver = true;
                 }
-                if (targets == 3){
+                if (targets == 3) {
                     addDelay();
                     resetGame();
                 }
@@ -58,7 +57,7 @@ public class GameMode2 implements Algorithms {
         }
     }
 
-    private void addDelay(){
+    private void addDelay() {
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
@@ -67,7 +66,7 @@ public class GameMode2 implements Algorithms {
     }
 
     @Override
-    public void undo(){
+    public void undo() {
         this.gameOver = false;
         this.lives = 1;
         LeftBall b = this.pressed.get(pressed.size() - 1);
@@ -75,14 +74,15 @@ public class GameMode2 implements Algorithms {
     }
 
     @Override
-    public int getLives(){
+    public int getLives() {
         return this.lives;
     }
 
     @Override
     public void resetGame() {
         targets = 0;
-        objects.resetGame();}
+        objects.resetGame();
+    }
 
     @Override
     public String getScore() {
@@ -96,7 +96,7 @@ public class GameMode2 implements Algorithms {
 
 
     @Override
-    public boolean getUndo(){
+    public boolean getUndo() {
         return this.undo;
     }
 }
