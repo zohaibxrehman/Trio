@@ -176,6 +176,7 @@ public class GameManager implements ValueEventListener {
             canvas.drawText("YOU WON", 400, 800, paintText);
             this.reference.addValueEventListener(this);
             checker = false;
+            gameStop();
 
             return true;
         }
@@ -207,7 +208,18 @@ public class GameManager implements ValueEventListener {
             e.printStackTrace();
         }
     }
-
+    void gameStop(){
+        try
+        {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        finalScore = 0;
+        System.exit(0);
+    }
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
