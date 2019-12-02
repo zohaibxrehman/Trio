@@ -201,7 +201,7 @@ public class GameManager implements ValueEventListener {
         }
         else if(finalScore == points)
         {
-            canvas.drawText("YOU WON", 400, 800, paintText);
+//            canvas.drawText("YOU WON", 400, 800, paintText);
             this.reference.addValueEventListener(this);
             checker = false;
             gameStop();
@@ -209,10 +209,6 @@ public class GameManager implements ValueEventListener {
         }
         return false;
     }
-
-    /**
-     * Helper method to delete and add the barrier when gone from which have gone off the screen
-     */
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -224,6 +220,7 @@ public class GameManager implements ValueEventListener {
             e.printStackTrace();
         }
     }
+
     void gameStop(){
         try
         {

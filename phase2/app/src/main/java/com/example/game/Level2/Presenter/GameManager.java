@@ -1,7 +1,6 @@
 package com.example.game.Level2.Presenter;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,17 +10,27 @@ import com.example.game.Level2.Model.GameMode1;
 import com.example.game.Level2.Model.GameMode2;
 import com.example.game.Level2.Model.GameMode3;
 import com.example.game.Level2.Model.MakeObjects;
-import com.example.game.Level2.View.Level2Activity;
 
-public class GameManager {
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import androidx.annotation.NonNull;
+
+public class GameManager implements ValueEventListener
+{
     private String score;
     private MakeObjects makeObjects;
     private int gameMode;
     private Algorithms algorithm;
     private int tries;
     private DrawObjects drawObjects;
+    private DatabaseReference reference;
+    String username;
 
-    GameManager(int gameMode, boolean hard) {
+    GameManager(int gameMode, boolean hard, String username) {
         int difficulty = 4;
         this.makeObjects = new MakeObjects(difficulty);
         this.gameMode = gameMode;
@@ -29,6 +38,8 @@ public class GameManager {
         setGameMode();
         score = algorithm.getScore();
         drawObjects = new DrawObjects();
+        this.username = username;
+        this.reference = FirebaseDatabase.getInstance().getReference().child(username);
     }
 
     private void setTries(boolean hard) {
@@ -82,5 +93,14 @@ public class GameManager {
         algorithm.buttonPressed(x, y);
     }
 
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) { }
+
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        Long oldScore = (Long) dataSnapshot.child("level3").getValue();
+        if(oldScore < Integer.parseInt(this.score))
+            this.reference.child("level3").setValue(Integer.parseInt(this.score));
+    }
 }
 

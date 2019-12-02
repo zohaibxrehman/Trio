@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class GameManager implements ValueEventListener{
     public String name;
@@ -59,9 +58,6 @@ public class GameManager implements ValueEventListener{
                 ball.draw(canvas);
         }
 
-//        Paint memory = new Paint();
-//        memory.setColor(Color.WHITE);
-//        canvas.drawCircle(this.gameElements.memoryBall.getX()+55, this.gameElements.memoryBall.getY(), 110, memory);
         this.gameElements.memoryBall.draw(canvas);
 
         Paint style = new Paint();

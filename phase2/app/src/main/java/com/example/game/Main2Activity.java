@@ -37,7 +37,6 @@ public class Main2Activity extends Activity implements View.OnClickListener{
             case R.id.imageButtonGame1:
                 Intent i = new Intent(this, Customise1.class);
                 i.putExtra("name", username);
-
                 startActivity(i);
                 break;
             case R.id.imageButtonGame2:

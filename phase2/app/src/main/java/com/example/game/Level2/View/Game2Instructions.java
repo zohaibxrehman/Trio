@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import com.example.game.R;
 
 public class Game2Instructions extends Activity {
     private boolean hard;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,8 @@ public class Game2Instructions extends Activity {
         Intent intent = new Intent(this, Level2Activity.class);
         intent.putExtra("gameMode", "1");
         intent.putExtra("difficulty", this.hard);
+        username = getIntent().getStringExtra("name");
+        intent.putExtra("name", username);
         startActivity(intent);
     }
 
@@ -33,6 +35,8 @@ public class Game2Instructions extends Activity {
         Intent intent = new Intent(this, Level2Activity.class);
         intent.putExtra("gameMode", "2");
         intent.putExtra("difficulty", this.hard);
+        username = getIntent().getStringExtra("name");
+        intent.putExtra("name", username);
         startActivity(intent);
     }
 
@@ -40,6 +44,8 @@ public class Game2Instructions extends Activity {
         Intent intent = new Intent(this, Level2Activity.class);
         intent.putExtra("gameMode", "3");
         intent.putExtra("difficulty", this.hard);
+        username = getIntent().getStringExtra("name");
+        intent.putExtra("name", username);
         startActivity(intent);
     }
 
