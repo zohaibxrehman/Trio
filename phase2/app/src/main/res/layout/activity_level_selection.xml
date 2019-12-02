@@ -65,7 +65,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="28dp"
         android:lineSpacingExtra="8sp"
-        android:text="Level 1: Dodge one barrier at a time \nLevel 2: Dodge two barriers at one time \nLevel 3: Go through the barrier"
+        android:text="Level 1: Dodge one barrier at a time \nLevel 2: Go on top of the barrier \nLevel 3: Go through the two barrier"
         android:textSize="14sp"
         android:textStyle="bold"
         android:typeface="normal"
