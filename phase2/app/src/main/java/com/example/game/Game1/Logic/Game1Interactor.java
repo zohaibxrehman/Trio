@@ -1,8 +1,8 @@
-package com.example.game.Level1.Logic;
+package com.example.game.Game1.Logic;
 
 import android.graphics.Canvas;
 
-import com.example.game.Level1.Entities.GameManager;
+import com.example.game.Game1.Entities.GameManager;
 
 public class Game1Interactor {
 

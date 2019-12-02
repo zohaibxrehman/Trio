@@ -1,4 +1,4 @@
-package com.example.game.Level1.Entities;
+package com.example.game.Game1.Entities;
 
 import java.util.ArrayList;
 

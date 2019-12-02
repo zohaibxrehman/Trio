@@ -1,5 +1,5 @@
 
-package com.example.game.Level1;
+package com.example.game.Game1;
 
         import android.app.Activity;
         import android.content.Intent;
@@ -8,10 +8,10 @@ package com.example.game.Level1;
         import android.widget.Button;
         import android.widget.RadioButton;
         import android.widget.RadioGroup;
-        import com.example.game.Level1.View.LevelSelection;
+        import com.example.game.Game1.View.LevelSelection;
         import com.example.game.R;
 
-public class Customise1 extends Activity {
+public class CustomiseGame1 extends Activity {
 
     RadioGroup color, ballColor, points;
     RadioButton col, tim, point;
@@ -31,7 +31,7 @@ public class Customise1 extends Activity {
                 col = findViewById(color.getCheckedRadioButtonId());
                 tim = findViewById(ballColor.getCheckedRadioButtonId());
                 point = findViewById(points.getCheckedRadioButtonId());
-                Intent i = new Intent(com.example.game.Level1.Customise1.this, LevelSelection.class);
+                Intent i = new Intent(CustomiseGame1.this, LevelSelection.class);
                 i.putExtra("COLOR", col.getText().toString());
                 i.putExtra("TIME", tim.getText().toString());
                 i.putExtra("POINTS", point.getText().toString());

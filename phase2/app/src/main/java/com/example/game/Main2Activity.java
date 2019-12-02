@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.game.Level1.Customise1;
+import com.example.game.Game1.CustomiseGame1;
 import com.example.game.Level2.View.Game2Instructions;
 import com.example.game.Level3.UserInterface.Customise;
 
@@ -15,7 +15,6 @@ import com.example.game.Level3.UserInterface.Customise;
  * The activity for choosing which game to play.
  */
 public class Main2Activity extends Activity implements View.OnClickListener{
-    private ImageButton b1, b2, b3, b4;
     private String username;
 
     @Override
@@ -23,10 +22,10 @@ public class Main2Activity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         username = getIntent().getStringExtra("name");
-        b1 = findViewById(R.id.imageButtonGame1);
-        b2 = findViewById(R.id.imageButtonGame2);
-        b3 = findViewById(R.id.imageButtonGame3);
-        b4 = findViewById(R.id.imageButtonScore);
+        ImageButton b1 = findViewById(R.id.imageButtonGame1);
+        ImageButton b2 = findViewById(R.id.imageButtonGame2);
+        ImageButton b3 = findViewById(R.id.imageButtonGame3);
+        ImageButton b4 = findViewById(R.id.imageButtonScore);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
@@ -38,7 +37,7 @@ public class Main2Activity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.imageButtonGame1:
-                Intent i = new Intent(this, Customise1.class);
+                Intent i = new Intent(this, CustomiseGame1.class);
                 i.putExtra("name", username);
                 startActivity(i);
                 break;
