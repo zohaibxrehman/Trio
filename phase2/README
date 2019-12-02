@@ -19,7 +19,18 @@ The other way to win the a game is score 15 points in that if selected 'easy' mo
 We are applying the Strategy design pattern by using Algorithm interface to decrease coupling and
 increase cohesion.
 
-Game 2:
+Game 2: The Matching Game
+Info: In this game the goal is to click the ball on the left that matches certain ones on the right
+If you select hard mode you will have 5 tries (incorrect answers) and default easy mode is 7 tries
+
+    Mode 1: Click the ball on the left that matches the yellow one on the right, score 7 to win
+
+    Mode 2: Click the balls on the left that DO NOT match the yellow one on the right, score 15 to
+    win
+
+    Mode 3: Just like game mode, but the stat tracked is accuracy get 60% accuracy after at least 5
+    clicks on the ball to win
+
 
 
 
