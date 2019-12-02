@@ -28,6 +28,7 @@ public class GameManager implements ValueEventListener {
     private DrawObjects drawObjects;
     private DatabaseReference reference;
     private String username;
+    private int finalScore;
 
     GameManager(int gameMode, boolean hard, String username) {
         int difficulty = 4;
@@ -39,6 +40,7 @@ public class GameManager implements ValueEventListener {
         drawObjects = new DrawObjects();
         this.username = username;
         this.reference = FirebaseDatabase.getInstance().getReference().child(username);
+        this.finalScore = 0;
     }
 
     private void setTries(boolean hard) {
@@ -85,7 +87,7 @@ public class GameManager implements ValueEventListener {
             score = algorithm.getScore();
             canvas.drawText("Score: " + score, 100, 1950, scorePaint);
         }
-
+        finalScore = algorithm.getGameScore();
     }
 
     void buttonPressed(float x, float y) {
@@ -98,9 +100,13 @@ public class GameManager implements ValueEventListener {
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        Long oldScore = (Long) dataSnapshot.child("level3").getValue();
-        if (oldScore < Integer.parseInt(this.score))
-            this.reference.child("level3").setValue(Integer.parseInt(this.score));
+        Long oldScore = (Long) dataSnapshot.child("level2").getValue();
+        try {
+            if (oldScore < this.finalScore)
+                this.reference.child("level2").setValue(this.finalScore);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 }
 

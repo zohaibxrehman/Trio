@@ -47,7 +47,7 @@ public class GameMode3 implements Algorithms {
                         lives--;
                     }
                     calculatePercent();
-                    if (tries > 5 && percent > 65) {
+                    if (tries > 5 && percent > 60) {
                         this.gameOver = true;
                         addDelay();
                     }
@@ -108,6 +108,12 @@ public class GameMode3 implements Algorithms {
         objects.resetGame();
     }
 
+    @Override
+    public int getGameScore(){
+        calculatePercent();
+        double returnScore = percent / 10;
+        return (int) Math.round(returnScore);
+    }
 
     @Override
     public boolean getUndo() {

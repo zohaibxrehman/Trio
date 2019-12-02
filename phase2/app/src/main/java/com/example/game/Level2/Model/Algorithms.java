@@ -1,6 +1,6 @@
 package com.example.game.Level2.Model;
 
-public interface Algorithms {
+public interface Algorithms{
     void buttonPressed(float x, float y);
 
     void resetGame();
@@ -14,4 +14,6 @@ public interface Algorithms {
     boolean getGameOver();
 
     boolean getUndo();
+
+    int getGameScore();
 }

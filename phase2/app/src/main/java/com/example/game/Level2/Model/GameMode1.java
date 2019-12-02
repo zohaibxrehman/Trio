@@ -95,4 +95,9 @@ public class GameMode1 implements Algorithms {
     public boolean getUndo() {
         return this.undo;
     }
+
+    @Override
+    public int getGameScore() {
+        return this.score;
+    }
 }
