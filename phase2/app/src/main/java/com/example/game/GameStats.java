@@ -16,6 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.logging.Level;
 
+/**
+ * The Game stats class for viewing the high score.
+ */
 public class GameStats extends AppCompatActivity {
 
     @Override

@@ -20,9 +20,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+/**
+ * The activity for log in page.
+ */
 public class MainActivity extends Activity implements View.OnClickListener{
-    EditText name, password;
-    Button login, register;
+    /**
+     * The Name.
+     */
+    EditText name, /**
+     * The Password.
+     */
+    password;
+    /**
+     * The Login.
+     */
+    Button login, /**
+     * The Register.
+     */
+    register;
+    /**
+     * The Reference.
+     */
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
     private final String ACCOUNTS = "accounts";
 

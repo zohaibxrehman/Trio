@@ -294,3 +294,7 @@ Commit made: Fixed issues with the .gitignore file.
 Step 55:
 Member: Rutav Shah
 Commit Made: Added limited tries in level 2, also an undo button for the first time you lose.
+
+Step 56:
+Member: Zohaib Rehman
+Commit made: Added javadoc to Main Activities and Game Stats.

@@ -11,6 +11,9 @@ import com.example.game.Level2.View.Game2Instructions;
 import com.example.game.Level3.UserInterface.Customise;
 
 
+/**
+ * The activity for choosing which game to play.
+ */
 public class Main2Activity extends Activity implements View.OnClickListener{
     private ImageButton b1, b2, b3, b4;
     private String username;
