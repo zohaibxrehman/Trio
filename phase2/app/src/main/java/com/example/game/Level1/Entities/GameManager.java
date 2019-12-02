@@ -112,7 +112,6 @@ public class GameManager implements ValueEventListener {
             Barrier temp = items.get(items.size()-1);
             if(temp.getHeight() == 39)
             {
-                // checks if the ball collides
                 collides(temp);
             }
         }
@@ -161,6 +160,25 @@ public class GameManager implements ValueEventListener {
     public boolean draw(Canvas canvas)
 
     {   this.canvas = canvas;
+        boolean outcome = displayFinalMessage();
+        if(outcome) {
+            return true;
+        }
+        for(int i = 0; i<items.size(); i++)
+        {
+            items.get(i).draw(canvas);
+        }
+        b.draw(canvas, x);
+        lives.get(0).draw(canvas);
+        for(Life l:lives)
+        {
+            l.draw(canvas);
+        }
+        return false;
+    }
+
+    private boolean displayFinalMessage()
+    {
         if(flag)
         {
             canvas.drawText("YOU LOSE", 400, 800, paintText);
@@ -188,17 +206,6 @@ public class GameManager implements ValueEventListener {
             checker = false;
             gameStop();
             return true;
-        }
-
-        for(int i = 0; i<items.size(); i++)
-        {
-            items.get(i).draw(canvas);
-        }
-        b.draw(canvas, x);
-        lives.get(0).draw(canvas);
-        for(Life l:lives)
-        {
-            l.draw(canvas);
         }
         return false;
     }
