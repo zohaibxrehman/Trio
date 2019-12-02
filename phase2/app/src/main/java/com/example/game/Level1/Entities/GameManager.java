@@ -28,16 +28,15 @@ public class GameManager implements ValueEventListener {
     private int points;
     private ArrayList<Life> lives = new ArrayList<>();
     private int livesX;
-    static int finalScore=0;
+    private static int finalScore=0;
     private float x;
     private DatabaseReference reference;
     private boolean checker;
     private ArrayList <Integer> hidden = new ArrayList<>();
     private ArrayList<Integer> hiddenChecker = new ArrayList<>();
     private Canvas canvas;
-    protected int totalBarriersAdded;
     private Algorithms algorithm;
-    String username;
+    private String username;
     private boolean flag = false;
     private Paint paintText = new Paint();
 
@@ -54,6 +53,7 @@ public class GameManager implements ValueEventListener {
         this.reference = FirebaseDatabase.getInstance().getReference().child(username);
         paintText.setTextSize(60);
         paintText.setTypeface(Typeface.DEFAULT_BOLD);
+        paintText.setColor(Color.WHITE);
         this.ballColor = ballColor;
 
         if (points.equals("EASY"))
@@ -63,17 +63,16 @@ public class GameManager implements ValueEventListener {
 
         paintText.setColor(Color.WHITE);
         this.livesX = 940;
-        createLives(3);
-        this.totalBarriersAdded = 0;
+        createLives();
+
     }
 
     /**
      * Creates the lives for the game 1
-     * @param m     m is the number of lives to be created
      */
-    private void createLives(int m)
+    private void createLives()
     {
-        for(int i = 0; i < m; i++)
+        for(int i = 0; i < 3; i++)
         {
             lives.add(new Life(Level1view.heart, livesX, 0));
             livesX -= 70;
@@ -188,7 +187,7 @@ public class GameManager implements ValueEventListener {
         }
         else if(finalScore < points) {
             canvas.drawText("SCORE:" + finalScore, 60, 55, paintText);
-            String tempUsername = "";
+            String tempUsername;
             if(username.length() < 5)
             {
                 tempUsername = username;
@@ -214,14 +213,15 @@ public class GameManager implements ValueEventListener {
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         Long oldScore = (Long) dataSnapshot.child("level1").getValue();
         try {
-            if (oldScore < this.finalScore)
-                this.reference.child("level1").setValue(this.finalScore);
+            if (oldScore < finalScore) {
+                this.reference.child("level1").setValue(finalScore);
+            }
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    void gameStop(){
+    private void gameStop(){
         try
         {
             Thread.sleep(1000);
@@ -253,7 +253,7 @@ public class GameManager implements ValueEventListener {
                 if (checker){
                 finalScore += 1;}
                 addBarrierAtTop();
-                this.totalBarriersAdded +=1;
+
             }
         }
     }
@@ -282,13 +282,6 @@ public class GameManager implements ValueEventListener {
         items.add(0, c);
     }
 
-    /**
-     * Responds to the button either left or right button pressed.
-     *
-     * @param x     the x coordinate of the tap
-    //* @param y     the y coordinate of the tap
-     *
-     */
 
     /**
      * Moves the ball by setting the x coordinate of the ball as x.
