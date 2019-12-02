@@ -1,4 +1,4 @@
-package com.example.game.Level1.Entities;
+package com.example.game.Game1.Entities;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -7,7 +7,7 @@ import android.graphics.Typeface;
 
 import androidx.annotation.NonNull;
 
-import com.example.game.Level1.View.Level1view;
+import com.example.game.Game1.View.Level1view;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

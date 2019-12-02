@@ -1,4 +1,4 @@
-package com.example.game.Level1.View;
+package com.example.game.Game1.View;
 
 
 import android.annotation.SuppressLint;
@@ -12,8 +12,8 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.example.game.Level1.Entities.GameManager;
-import com.example.game.Level1.Logic.Game1Presenter;
+import com.example.game.Game1.Entities.GameManager;
+import com.example.game.Game1.Logic.Game1Presenter;
 import com.example.game.R;
 
 /**

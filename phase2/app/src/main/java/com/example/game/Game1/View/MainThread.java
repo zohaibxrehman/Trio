@@ -1,5 +1,5 @@
 
-package com.example.game.Level1.View;
+package com.example.game.Game1.View;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
