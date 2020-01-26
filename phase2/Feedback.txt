@@ -1,0 +1,29 @@
+Dear group_0579
+
+This semester, we talked about MVP, the Model-View-Presenter architecture. It has many advantages, particularly when working with Android. As you can see from your project, your activity classes have methods that are specific to Android. If you encapsulate the rest of your code sufficiently, it is possible to port it to another platform simply by creating a new UI (for example, a website).
+
+Encapsulation can take on many forms. You can package your View classes together. You can ensure that your dependencies go one-way, towards the inner more abstract layers. You can incorporate SOLID principles as much as possible and design patterns where they make sense.
+Here is feedback that is specific to your project:
+
+You made good use of…
++ Good use of design patterns (i.e. Facade’s and Builders)
++ Inheritance and extensibility for the Ball class in the matching game: it is easy to match more balls in the second game without changing much of the code
++ Great job putting user login information and statistics on the cloud!
+
+The user sees…
++ 3 games and a stats option with appealing UI and music
++ Good user experience: store credentials on cloud
+
+A good next step would be to…
++ Instead of using algorithm interface, try to utilize inheritance for the barriers in the first game. You can make the current barrier an abstract class to handle the common drawing part, and implement separate methods in the three subclasses to handle the interaction between the ball and barriers. By designing the inheritance properly, you won’t need to store the type of the barrier as well. Moreover, you will not need to do case statements because the behavior of the method call depends on the class of the caller.
++ Add javadoc and comments to your code for instance variables and methods so other developers can easily understand what the code is doing. This is important when the variable name is ambiguous or uninformative (e.g. private float x).
++ Improve encapsulation: I have seen several instance variables that are not private. What about making it private and implement public getter and setter methods?
++ Try to make your code concise, e.g. if you want to increase the number of lives by 3 but not exceed 7, simply use the max() method.
++ (Optional) Add a timer stat to the labyrinth game (i.e. if a user can complete all levels, the next challenge for them should be to see how quick they can complete it)
+
+
+We hope that you enjoyed working on this project and found it a useful learning experience.
+
+Cheers,
+The CSC207 Instructional Team
+
