@@ -1,6 +1,8 @@
 We created three games for our CSC207 project. In this project, we have an android application where
 we have seperate games. All the three games have three separate sub games in it.
 
+The focus of the assignment was to make use of design principles, patterns and architecture. 
+
 Game 1: The Labyrinth
 Info: In this game we have a bunch of barriers and a ball. The basic purpose of the game to get the
 ball through the barrier or avoid it. In this game we have 3 lives for the player.
