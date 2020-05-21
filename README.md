@@ -39,11 +39,12 @@ If you select hard mode you will have 5 tries (incorrect answers) and default ea
 
 
 **Game 3: The Memory Game**
-Info: In this game the user is first shown 9 colored balls for a short duration.
+In this game the user is first shown 9 colored balls for a short duration.
 They should be memorise the position of these colored balls. After this short duration, they will be
 prompted with one of those colored balls. The player should now select the position of the ball
 where this colour had initially appeared and they receive a point.
 
+```
 *Levels*: For every 3 correct answers, the level increases. When the level goes up, the player is given at
 most 3 extra lives(if they had lost any) and an extra point. The difficulty of the game increases,ie,
 they are given fewer time to complete each stages of the next level.
@@ -54,3 +55,4 @@ most 7 wrong attempts. They gain back lives as they complete levels.
 
 *Easter Egg*: If the player selects the 4 corner balls in such a way that they end up having only 1
 life left then they will be granted with 25 extra points and all of their lives back!
+```
