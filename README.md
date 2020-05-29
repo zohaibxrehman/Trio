@@ -1,4 +1,4 @@
-We created three games for our CSC207 project using Android Studio. The focus of the assignment was to make use of design principles, patterns and architecture. 
+We created three games for our CSC207 project using Android Studio. The focus of the assignment was to make good use of design principles, patterns and architecture. 
 
 ```
 Frontend - XML
